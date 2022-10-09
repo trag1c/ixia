@@ -82,8 +82,12 @@ def gauss(mu: Number, sigma: Number) -> float:
     return mu + z * sigma
 
 
-def getrandbits(k):
-    ...
+def getrandbits(k: int) -> int:
+    if k < 0:
+        raise ValueError("number of bits must be non-negative")
+    numbytes = (k + 7) // 8
+    x = int.from_bytes(urandom(numbytes), "big")
+    return x >> (numbytes * 8 - k)
 
 
 def lognormvariate(mu: Number, sigma: Number) -> float:
