@@ -183,7 +183,7 @@ def randrange(start: int, stop: int | None = None, step: int = 1) -> int:
     return start + step * s.randbelow(n)
 
 
-def sample(seq: Sequence[T], k: int, *, counts: Iterable[int] | None = None) -> Sequence[T]:
+def sample(seq: Sequence[T], k: int, *, counts: Iterable[int] | None = None) -> list[T]:
     n = len(seq)
 
     if counts is not None:
