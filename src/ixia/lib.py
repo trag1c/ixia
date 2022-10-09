@@ -3,9 +3,9 @@ from itertools import accumulate
 
 import secrets as s
 from bisect import bisect
-from math import acos, cos, e, exp, floor, log, pi, sin, sqrt, isfinite
+from math import acos, ceil, cos, e, exp, floor, log, pi, sin, sqrt, isfinite
 from os import urandom
-from typing import Any, MutableSequence, Sequence, TypeVar, Union
+from typing import Any, MutableSequence, Sequence, TypeVar, Union, Iterable
 
 T = TypeVar("T")
 Number = Union[int, float]
@@ -178,9 +178,40 @@ def randrange(start: int, stop: int | None = None, step: int = 1) -> int:
     return start + step * s.randbelow(n)
 
 
-def sample(seq: Sequence[T], k: int, *, counts=None) -> Sequence[T]:
-    ...
-
+def sample(seq: Sequence[T], k: int, *, counts: Iterable[int] | None = None) -> Sequence[T]:
+    n = len(seq)
+    if counts is not None:
+        cum_counts = list(accumulate(counts))
+        if len(cum_counts) != n:
+            raise ValueError("The number of counts does not match the population")
+        total = cum_counts.pop()
+        if not isinstance(total, int):
+            raise TypeError("Counts must be integers")
+        if total <= 0:
+            raise ValueError("Total of counts must be greater than zero")
+        selections = sample(range(total), k=k)
+        return [seq[bisect(cum_counts, s)] for s in selections]
+    if not 0 <= k <= n:
+        raise ValueError("Sample larger than population or is negative")
+    result: list[T] = []
+    setsize = 21
+    if k > 5:
+        setsize += 4 ** ceil(log(k * 3, 4))
+    if n <= setsize:
+        pool = list(seq)
+        for i in range(k):
+            j = s.randbelow(n - i)
+            result.append(pool[j])
+            pool[j] = pool[n - i - 1]
+    else:
+        selected = set()
+        for i in range(k):
+            j = s.randbelow(n)
+            while j in selected:
+                j = s.randbelow(n)
+            selected.add(j)
+            result.append(seq[j])
+    return result
 
 def shuffle(seq: MutableSequence[Any]) -> None:
     for i in reversed(range(1, len(seq))):
