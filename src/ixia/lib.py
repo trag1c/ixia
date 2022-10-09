@@ -21,8 +21,36 @@ def choice(seq: Sequence[T]) -> T:
     return s.choice(seq)
 
 
-def choices(population, weights=None, *, cum_weights=None, k=1):
-    ...
+def choices(
+    seq: Sequence[T],
+    weights: Sequence[int] | None = None,
+    *,
+    cum_weights: Sequence[int] | None = None,
+    k: int = 1,
+) -> list[T]:
+    n = len(seq)
+    if cum_weights is None:
+        if weights is None:
+            return [seq[floor(random() * n)] for _ in range(k)]
+        try:
+            cum_weights = list(accumulate(weights))
+        except TypeError:
+            if not isinstance(weights, int):
+                raise
+            raise TypeError(
+                f"The number of choices must be a keyword argument: k={weights}"
+            ) from None
+    elif weights is not None:
+        raise TypeError("Cannot specify both weights and cumulative weights")
+    if len(cum_weights) != n:
+        raise ValueError("The number of weights does not match the population")
+    total = cum_weights[-1] + 0.0
+    if total <= 0.0:
+        raise ValueError("Total of weights must be greater than zero")
+    if not isfinite(total):
+        raise ValueError("Total of weights must be finite")
+    hi = n - 1
+    return [seq[bisect(cum_weights, random() * total, 0, hi)] for _ in range(k)]
 
 
 def expovariate(lambda_: float) -> float:
@@ -32,7 +60,7 @@ def expovariate(lambda_: float) -> float:
 def gammavariate(alpha: Number, beta: Number) -> float:
     if alpha <= 0.0 or beta <= 0.0:
         raise ValueError("gammavariate: alpha and beta must be > 0.0")
-    
+
     if alpha > 1.0:
         ainv = sqrt(2.0 * alpha - 1.0)
         b = alpha - log(4)
