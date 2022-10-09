@@ -106,8 +106,8 @@ def paretovariate(alpha: Number) -> float:
     return u ** (-1.0 / alpha)
 
 
-def randbytes(n):
-    ...
+def randbytes(n: int) -> bytes:
+    return urandom(n)
 
 
 def randint(a: int, b: int) -> int:
