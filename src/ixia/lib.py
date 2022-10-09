@@ -1,5 +1,5 @@
 from __future__ import annotations
-from math import acos, cos, exp, log, pi, sin, sqrt
+from math import acos, cos, exp, log, e, pi, sin, sqrt
 from os import urandom
 import secrets as s
 from typing import Any, MutableSequence, Sequence, TypeVar, Union
@@ -10,8 +10,11 @@ Number = Union[int, float]
 gauss_next: list[float | None] = [None]
 
 
-def betavariate(alpha, beta):
-    ...
+def betavariate(alpha: Number, beta: Number) -> float:
+    y = gammavariate(alpha, 1.0)
+    if y:
+        return y / (y + gammavariate(beta, 1.0))
+    return 0.0
 
 
 def choice(seq: Sequence[T]) -> T:
@@ -26,8 +29,46 @@ def expovariate(lambda_: float) -> float:
     return -log(1.0 - random()) / lambda_
 
 
-def gammavariate(alpha, beta):
-    ...
+def gammavariate(alpha: Number, beta: Number) -> float:
+    if alpha <= 0.0 or beta <= 0.0:
+        raise ValueError("gammavariate: alpha and beta must be > 0.0")
+    
+    if alpha > 1.0:
+        ainv = sqrt(2.0 * alpha - 1.0)
+        b = alpha - log(4)
+        c = alpha + ainv
+
+        while True:
+            u1 = random()
+            if not 1e-7 < u1 < 0.9999999:
+                continue
+            u2 = 1.0 - random()
+            v = log(u1 / (1.0 - u1)) / ainv
+            x = alpha * exp(v)
+            z = u1 * u1 * u2
+            r = b + c * v - x
+            if r + 0 - 4.5 * z >= 0 or r >= log(z):
+                return x * beta
+
+    elif alpha == 1.0:
+        return -log(1.0 - random()) * beta
+
+    else:
+        while True:
+            u = random()
+            b = (e + alpha) / e
+            p = b * u
+            if p <= 1.0:
+                x = p ** (1.0 / alpha)
+            else:
+                x = -log((b - p) / alpha)
+            u1 = random()
+            if p > 1.0:
+                if u1 <= x ** (alpha - 1.0):
+                    break
+            elif u1 <= exp(-x):
+                break
+        return x * beta
 
 
 def gauss(mu: Number, sigma: Number) -> float:
