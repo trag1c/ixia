@@ -6,7 +6,7 @@ authors = ["trag1c <trag1cdev@yahoo.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.8"
 
 [tool.poetry.dev-dependencies]
 black = "^22.10.0"
