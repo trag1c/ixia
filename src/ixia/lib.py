@@ -1,7 +1,10 @@
 from __future__ import annotations
-from math import acos, cos, exp, log, e, pi, sin, sqrt
-from os import urandom
+from itertools import accumulate
+
 import secrets as s
+from bisect import bisect
+from math import acos, cos, e, exp, floor, log, pi, sin, sqrt, isfinite
+from os import urandom
 from typing import Any, MutableSequence, Sequence, TypeVar, Union
 
 T = TypeVar("T")
@@ -143,11 +146,11 @@ def randbytes(n: int) -> bytes:
 
 
 def randint(a: int, b: int) -> int:
-    return randrange(a, b+1)
+    return randrange(a, b + 1)
 
 
 def random() -> float:
-    return (int.from_bytes(urandom(7), "big") >> 3) * 2 ** -53
+    return (int.from_bytes(urandom(7), "big") >> 3) * 2**-53
 
 
 def randrange(start: int, stop: int | None = None, step: int = 1) -> int:
