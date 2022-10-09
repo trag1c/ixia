@@ -155,5 +155,6 @@ def vonmisevariate(mu: Number, kappa: Number) -> float:
     return (mu - acos(f)) % (2 * pi)
 
 
-def weibullvariate(alpha, beta):
-    ...
+def weibullvariate(alpha: Number, beta: Number) -> float:
+    u = 1.0 - random()
+    return alpha * (-log(u)) ** (1.0 / beta)
