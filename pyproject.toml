@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "regrets"
+name = "ixia"
 version = "0.1.0"
 description = "A library connecting secrets' security with random's usability"
 authors = ["trag1c <trag1cdev@yahoo.com>"]
