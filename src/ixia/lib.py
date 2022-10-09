@@ -1,11 +1,11 @@
 from __future__ import annotations
-from itertools import accumulate
 
 import secrets as s
 from bisect import bisect
-from math import acos, ceil, cos, e, exp, floor, log, pi, sin, sqrt, isfinite
+from itertools import accumulate
+from math import acos, ceil, cos, e, exp, floor, isfinite, log, pi, sin, sqrt
 from os import urandom
-from typing import Any, MutableSequence, Sequence, TypeVar, Union, Iterable
+from typing import Any, Iterable, MutableSequence, Sequence, TypeVar, Union
 
 T = TypeVar("T")
 Number = Union[int, float]
@@ -32,6 +32,7 @@ def choices(
     k: int = 1,
 ) -> list[T]:
     n = len(seq)
+
     if cum_weights is None:
         if weights is None:
             return [seq[floor(random() * n)] for _ in range(k)]
@@ -45,13 +46,17 @@ def choices(
             ) from None
     elif weights is not None:
         raise TypeError("Cannot specify both weights and cumulative weights")
+
     if len(cum_weights) != n:
         raise ValueError("The number of weights does not match the population")
+
     total = cum_weights[-1] + 0.0
     if total <= 0.0:
         raise ValueError("Total of weights must be greater than zero")
+
     if not isfinite(total):
         raise ValueError("Total of weights must be finite")
+
     hi = n - 1
     return [seq[bisect(cum_weights, random() * total, 0, hi)] for _ in range(k)]
 
@@ -180,6 +185,7 @@ def randrange(start: int, stop: int | None = None, step: int = 1) -> int:
 
 def sample(seq: Sequence[T], k: int, *, counts: Iterable[int] | None = None) -> Sequence[T]:
     n = len(seq)
+
     if counts is not None:
         cum_counts = list(accumulate(counts))
         if len(cum_counts) != n:
@@ -193,10 +199,12 @@ def sample(seq: Sequence[T], k: int, *, counts: Iterable[int] | None = None) -> 
         return [seq[bisect(cum_counts, s)] for s in selections]
     if not 0 <= k <= n:
         raise ValueError("Sample larger than population or is negative")
+
     result: list[T] = []
     setsize = 21
     if k > 5:
         setsize += 4 ** ceil(log(k * 3, 4))
+
     if n <= setsize:
         pool = list(seq)
         for i in range(k):
@@ -206,11 +214,11 @@ def sample(seq: Sequence[T], k: int, *, counts: Iterable[int] | None = None) -> 
     else:
         selected = set()
         for i in range(k):
-            j = s.randbelow(n)
-            while j in selected:
-                j = s.randbelow(n)
+            while (j := s.randbelow(n)) in selected:
+                pass
             selected.add(j)
             result.append(seq[j])
+
     return result
 
 def shuffle(seq: MutableSequence[Any]) -> None:
