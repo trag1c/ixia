@@ -60,8 +60,9 @@ def normalvariate(mu: Number, sigma: Number) -> float:
     return mu + z * sigma
 
 
-def paretovariate(alpha):
-    ...
+def paretovariate(alpha: Number) -> float:
+    u = 1.0 - random()
+    return u ** (-1.0 / alpha)
 
 
 def randbytes(n):
