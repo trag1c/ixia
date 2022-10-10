@@ -394,5 +394,4 @@ def weibull_variate(alpha: Number, beta: Number) -> float:
 
     alpha is the scale parameter, beta is the shape parameter.
     """
-    u = 1.0 - random()
-    return alpha * (-log(u)) ** (1.0 / beta)
+    return alpha * (-log(1.0 - random())) ** (1.0 / beta)
