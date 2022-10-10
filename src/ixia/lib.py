@@ -13,10 +13,9 @@ Number = Union[int, float]
 gauss_next: list[float | None] = [None]
 
 
-def betavariate(alpha: Number, beta: Number) -> float:
-    y = gammavariate(alpha, 1.0)
-    if y:
-        return y / (y + gammavariate(beta, 1.0))
+def beta_variate(alpha: Number, beta: Number) -> float:
+    if y := gamma_variate(alpha, 1.0):
+        return y / (y + gamma_variate(beta, 1.0))
     return 0.0
 
 
@@ -26,18 +25,18 @@ def choice(seq: Sequence[T]) -> T:
 
 def choices(
     seq: Sequence[T],
-    weights: Sequence[int] | None = None,
+    weights: Sequence[Number] | None = None,
     *,
-    cum_weights: Sequence[int] | None = None,
+    cumulative_weights: Sequence[Number] | None = None,
     k: int = 1,
 ) -> list[T]:
     n = len(seq)
 
-    if cum_weights is None:
+    if cumulative_weights is None:
         if weights is None:
             return [seq[floor(random() * n)] for _ in range(k)]
         try:
-            cum_weights = list(accumulate(weights))
+            cumulative_weights = list(accumulate(weights))
         except TypeError:
             if not isinstance(weights, int):
                 raise
@@ -47,10 +46,10 @@ def choices(
     elif weights is not None:
         raise TypeError("Cannot specify both weights and cumulative weights")
 
-    if len(cum_weights) != n:
+    if len(cumulative_weights) != n:
         raise ValueError("The number of weights does not match the population")
 
-    total = cum_weights[-1] + 0.0
+    total = cumulative_weights[-1] + 0.0
     if total <= 0.0:
         raise ValueError("Total of weights must be greater than zero")
 
@@ -58,16 +57,16 @@ def choices(
         raise ValueError("Total of weights must be finite")
 
     hi = n - 1
-    return [seq[bisect(cum_weights, random() * total, 0, hi)] for _ in range(k)]
+    return [seq[bisect(cumulative_weights, random() * total, 0, hi)] for _ in range(k)]
 
 
-def expovariate(lambda_: float) -> float:
+def expo_variate(lambda_: float) -> float:
     return -log(1.0 - random()) / lambda_
 
 
-def gammavariate(alpha: Number, beta: Number) -> float:
+def gamma_variate(alpha: Number, beta: Number) -> float:
     if alpha <= 0.0 or beta <= 0.0:
-        raise ValueError("gammavariate: alpha and beta must be > 0.0")
+        raise ValueError("gamma_variate: alpha and beta must be > 0.0")
 
     if alpha > 1.0:
         ainv = sqrt(2.0 * alpha - 1.0)
@@ -75,13 +74,13 @@ def gammavariate(alpha: Number, beta: Number) -> float:
         c = alpha + ainv
 
         while True:
-            u1 = random()
-            if not 1e-7 < u1 < 0.9999999:
+            u = random()
+            if not 1e-7 < u < 0.9999999:
                 continue
             u2 = 1.0 - random()
-            v = log(u1 / (1.0 - u1)) / ainv
+            v = log(u / (1.0 - u)) / ainv
             x = alpha * exp(v)
-            z = u1 * u1 * u2
+            z = u * u * u2
             r = b + c * v - x
             if r + 0 - 4.5 * z >= 0 or r >= log(z):
                 return x * beta
@@ -91,18 +90,17 @@ def gammavariate(alpha: Number, beta: Number) -> float:
 
     else:
         while True:
-            u = random()
             b = (e + alpha) / e
-            p = b * u
+            p = b * random()
             if p <= 1.0:
                 x = p ** (1.0 / alpha)
             else:
                 x = -log((b - p) / alpha)
-            u1 = random()
+            u = random()
             if p > 1.0:
-                if u1 <= x ** (alpha - 1.0):
+                if u <= x ** (alpha - 1.0):
                     break
-            elif u1 <= exp(-x):
+            elif u <= exp(-x):
                 break
         return x * beta
 
@@ -118,7 +116,7 @@ def gauss(mu: Number, sigma: Number) -> float:
     return mu + z * sigma
 
 
-def getrandbits(k: int) -> int:
+def get_rand_bits(k: int) -> int:
     if k < 0:
         raise ValueError("number of bits must be non-negative")
     numbytes = (k + 7) // 8
@@ -126,11 +124,11 @@ def getrandbits(k: int) -> int:
     return x >> (numbytes * 8 - k)
 
 
-def lognormvariate(mu: Number, sigma: Number) -> float:
-    return exp(normalvariate(mu, sigma))
+def log_norm_variate(mu: Number, sigma: Number) -> float:
+    return exp(normal_variate(mu, sigma))
 
 
-def normalvariate(mu: Number, sigma: Number) -> float:
+def normal_variate(mu: Number, sigma: Number) -> float:
     nv = 4 * exp(-0.5) / sqrt(2.0)
     while True:
         u1 = random()
@@ -141,45 +139,44 @@ def normalvariate(mu: Number, sigma: Number) -> float:
     return mu + z * sigma
 
 
-def paretovariate(alpha: Number) -> float:
-    u = 1.0 - random()
-    return u ** (-1.0 / alpha)
+def pareto_variate(alpha: Number) -> float:
+    return (1.0 - random()) ** (-1.0 / alpha)
 
 
-def randbytes(n: int) -> bytes:
+def rand_bytes(n: int) -> bytes:
     return urandom(n)
 
 
-def randint(a: int, b: int) -> int:
-    return randrange(a, b + 1)
+def rand_int(a: int, b: int) -> int:
+    return rand_range(a, b + 1)
 
 
 def random() -> float:
     return (int.from_bytes(urandom(7), "big") >> 3) * 2**-53
 
 
-def randrange(start: int, stop: int | None = None, step: int = 1) -> int:
+def rand_range(start: int, stop: int | None = None, step: int = 1) -> int:
     if stop is None:
         if step != 1:
             raise TypeError("Missing a non-None stop argument")
         if start > 0:
             return s.randbelow(start)
-        raise ValueError("empty range for randrange")
+        raise ValueError("empty range for rand_range")
 
     width = stop - start
     if step == 1:
         if width > 0:
             return start + s.randbelow(width)
-        raise ValueError(f"empty range for randrange ({start}, {stop}, {step})")
+        raise ValueError(f"empty range for rand_range ({start}, {stop}, {step})")
 
     if step > 0:
         n = (width + step - 1) // step
     elif step < 0:
         n = (width + step + 1) // step
     else:
-        raise ValueError("zero step for randrange")
+        raise ValueError("zero step for rand_range")
     if n <= 0:
-        raise ValueError("empty range for randrange")
+        raise ValueError("empty range for rand_range")
     return start + step * s.randbelow(n)
 
 
@@ -221,22 +218,23 @@ def sample(seq: Sequence[T], k: int, *, counts: Iterable[int] | None = None) -> 
 
     return result
 
+
 def shuffle(seq: MutableSequence[Any]) -> None:
     for i in reversed(range(1, len(seq))):
         j = s.randbelow(i + 1)
         seq[i], seq[j] = seq[j], seq[i]
 
 
-def shuffled(seq: Sequence[T]) -> Sequence[T]:
+def shuffled(seq: Sequence[T]) -> list[T]:
     return sample(seq, len(seq))
 
 
 def triangular(low: float = 0.0, high: float = 1.0, mode: float | None = None) -> float:
-    u = random()
     try:
         c = 0.5 if mode is None else (mode - low) / (high - low)
     except ZeroDivisionError:
         return low
+    u = random()
     if u > c:
         u = 1.0 - u
         c = 1.0 - c
@@ -248,7 +246,7 @@ def uniform(a: Number, b: Number) -> float:
     return a + (b - a) * random()
 
 
-def vonmisevariate(mu: Number, kappa: Number) -> float:
+def von_mises_variate(mu: Number, kappa: Number) -> float:
     if kappa <= 1e-6:
         return 2 * pi * random()
 
@@ -256,21 +254,19 @@ def vonmisevariate(mu: Number, kappa: Number) -> float:
     r = s + sqrt(1.0 + s * s)
 
     while True:
-        u1 = random()
-        z = cos(pi * u1)
+        z = cos(pi * random())
         d = z / (r + z)
-        u2 = random()
-        if u2 < 1.0 - d * d or u2 <= (1.0 - d) * exp(d):
+        u = random()
+        if u < 1.0 - d * d or u <= (1.0 - d) * exp(d):
             break
 
     q = 1.0 / r
     f = (q + z) / (1.0 + q * z)
-    u3 = random()
-    if u3 > 0.5:
+    if random() > 0.5:
         return (mu + acos(f)) % (2 * pi)
     return (mu - acos(f)) % (2 * pi)
 
 
-def weibullvariate(alpha: Number, beta: Number) -> float:
+def weibull_variate(alpha: Number, beta: Number) -> float:
     u = 1.0 - random()
     return alpha * (-log(u)) ** (1.0 / beta)
