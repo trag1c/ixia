@@ -5,7 +5,7 @@ from bisect import bisect
 from itertools import accumulate
 from math import acos, ceil, cos, e, exp, floor, isfinite, log, pi, sin, sqrt
 from os import urandom
-from typing import Any, Iterable, MutableSequence, Sequence, TypeVar, Union
+from typing import Any, Iterable, MutableSequence, Sequence, TypeVar, Union, overload
 
 T = TypeVar("T")
 Number = Union[int, float]
@@ -14,12 +14,19 @@ gauss_next: list[float | None] = [None]
 
 
 def beta_variate(alpha: Number, beta: Number) -> float:
+    """
+    Beta distribution.
+
+    Conditions on the parameters are alpha > 0 and beta > 0.
+    Returned values range between 0 and 1.
+    """
     if y := gamma_variate(alpha, 1.0):
         return y / (y + gamma_variate(beta, 1.0))
     return 0.0
 
 
 def choice(seq: Sequence[T]) -> T:
+    """Chooses a random element from a non-empty sequence."""
     return s.choice(seq)
 
 
@@ -30,6 +37,12 @@ def choices(
     cumulative_weights: Sequence[Number] | None = None,
     k: int = 1,
 ) -> list[T]:
+    """
+    Return a k sized list of sequence elements chosen with replacement.
+
+    If the relative weights or cumulative weights are not specified,
+    the selections are made with equal probability.
+    """
     n = len(seq)
 
     if cumulative_weights is None:
@@ -47,7 +60,7 @@ def choices(
         raise TypeError("Cannot specify both weights and cumulative weights")
 
     if len(cumulative_weights) != n:
-        raise ValueError("The number of weights does not match the population")
+        raise ValueError("The number of weights does not match the sequence")
 
     total = cumulative_weights[-1] + 0.0
     if total <= 0.0:
@@ -61,10 +74,22 @@ def choices(
 
 
 def expo_variate(lambda_: float) -> float:
+    """
+    Exponential distribution.
+
+    lambda_ is 1.0 divided by the desired mean. It should be nonzero.
+    Return values range from 0 to positive infinity if lambda_ is positive,
+    and from negative infinity to 0 if lambda_ is negative.
+    """
     return -log(1.0 - random()) / lambda_
 
 
 def gamma_variate(alpha: Number, beta: Number) -> float:
+    """
+    Gamma distribution.
+
+    Conditions on the parameters are alpha > 0 and beta > 0.
+    """
     if alpha <= 0.0 or beta <= 0.0:
         raise ValueError("gamma_variate: alpha and beta must be > 0.0")
 
@@ -106,6 +131,14 @@ def gamma_variate(alpha: Number, beta: Number) -> float:
 
 
 def gauss(mu: Number, sigma: Number) -> float:
+    """
+    Gaussian distribution.
+
+    mu is the mean, and sigma is the standard deviation.
+    This is slightly faster than the normal_variate() function.
+
+    Not thread-safe without a lock around calls.
+    """
     z = gauss_next[0]
     gauss_next[0] = None
     if z is None:
@@ -117,6 +150,7 @@ def gauss(mu: Number, sigma: Number) -> float:
 
 
 def get_rand_bits(k: int) -> int:
+    """Generates an int with k random bits."""
     if k < 0:
         raise ValueError("number of bits must be non-negative")
     numbytes = (k + 7) // 8
@@ -125,10 +159,22 @@ def get_rand_bits(k: int) -> int:
 
 
 def log_norm_variate(mu: Number, sigma: Number) -> float:
+    """
+    Log normal distribution.
+
+    If you take the natural logarithm of this distribution, you'll get
+    a normal distribution with mean mu and standard deviation sigma.
+    mu can have any value, and sigma must be greater than zero.
+    """
     return exp(normal_variate(mu, sigma))
 
 
 def normal_variate(mu: Number, sigma: Number) -> float:
+    """
+    Normal distribution.
+
+    mu is the mean, and sigma is the standard deviation.
+    """
     nv = 4 * exp(-0.5) / sqrt(2.0)
     while True:
         u1 = random()
@@ -140,22 +186,31 @@ def normal_variate(mu: Number, sigma: Number) -> float:
 
 
 def pareto_variate(alpha: Number) -> float:
+    """
+    Pareto distribution.
+
+    alpha is the shape parameter.
+    """
     return (1.0 - random()) ** (-1.0 / alpha)
 
 
 def rand_bytes(n: int) -> bytes:
+    """Generates n random bytes."""
     return urandom(n)
 
 
 def rand_int(a: int, b: int) -> int:
+    """Returns random integer in range [a, b], including both end points."""
     return rand_range(a, b + 1)
 
 
 def random() -> float:
+    """Generates a random number in range [0.0, 1.0)."""
     return (int.from_bytes(urandom(7), "big") >> 3) * 2**-53
 
 
 def rand_range(start: int, stop: int | None = None, step: int = 1) -> int:
+    """Chooses a random item from range([start,] stop[, step])."""
     if stop is None:
         if step != 1:
             raise TypeError("Missing a non-None stop argument")
@@ -181,12 +236,38 @@ def rand_range(start: int, stop: int | None = None, step: int = 1) -> int:
 
 
 def sample(seq: Sequence[T], k: int, *, counts: Iterable[int] | None = None) -> list[T]:
+    """
+    Chooses k unique random elements from the sequence.
+
+    Returns a new list containing elements from the sequence while leaving the original
+    sequence unchanged. The resulting list is in selection order so that all sub-slices
+    will also be valid random samples. This allows raffle winners (the sample) to be
+    partitioned into grand prize and second place winners (the subslices).
+
+    Members of the sequence don't need to be hashable nor unique. If the sequence
+    contains repeats, then each occurence is a possible selection in the sample.
+
+    Repeated elements can be specified one at a time or with
+    the optional counts parameter. For example:
+
+        sample(["red", "blue"], counts=[4, 2], k=5)
+
+    is equivalent to:
+
+        sample("red", "red", "red", "red", "blue", "blue"], k=5)
+
+    To choose a sample from a range of integers, use range() for the sequence
+    argument. This is especially fast and space efficient
+    for sampling from a large sequence:
+
+        sample(range(10_000_000), 60)
+    """
     n = len(seq)
 
     if counts is not None:
         cum_counts = list(accumulate(counts))
         if len(cum_counts) != n:
-            raise ValueError("The number of counts does not match the population")
+            raise ValueError("The number of counts does not match the sequence")
         total = cum_counts.pop()
         if not isinstance(total, int):
             raise TypeError("Counts must be integers")
@@ -195,7 +276,7 @@ def sample(seq: Sequence[T], k: int, *, counts: Iterable[int] | None = None) -> 
         selections = sample(range(total), k=k)
         return [seq[bisect(cum_counts, s)] for s in selections]
     if not 0 <= k <= n:
-        raise ValueError("Sample larger than population or is negative")
+        raise ValueError("Sample larger than sequence or is negative")
 
     result: list[T] = []
     setsize = 21
@@ -220,16 +301,47 @@ def sample(seq: Sequence[T], k: int, *, counts: Iterable[int] | None = None) -> 
 
 
 def shuffle(seq: MutableSequence[Any]) -> None:
+    """
+    Shuffles the sequence in place, and returns None.
+
+    Use shuffled() for out of place shuffling.
+    """
     for i in reversed(range(1, len(seq))):
         j = s.randbelow(i + 1)
         seq[i], seq[j] = seq[j], seq[i]
 
 
+@overload
+def shuffled(seq: MutableSequence[T]) -> MutableSequence[T]:
+    ...
+
+
+@overload
 def shuffled(seq: Sequence[T]) -> list[T]:
+    ...
+
+
+def shuffled(seq: Sequence[T] | MutableSequence[T]) -> list[T] | MutableSequence[T]:
+    """
+    Returns a shuffled copy of the sequence.
+    Returns a list for immutable sequences.
+
+    Use shuffle() for in place shuffling.
+    """
+    if isinstance(seq, MutableSequence):
+        seq_ = seq[:]
+        shuffle(seq_)
+        return seq_
     return sample(seq, len(seq))
 
 
 def triangular(low: float = 0.0, high: float = 1.0, mode: float | None = None) -> float:
+    """
+    Triangular distribution.
+
+    Continuous distribution bounded by given lower and upper limits,
+    and having a given mode value in-between.
+    """
     try:
         c = 0.5 if mode is None else (mode - low) / (high - low)
     except ZeroDivisionError:
@@ -243,10 +355,19 @@ def triangular(low: float = 0.0, high: float = 1.0, mode: float | None = None) -
 
 
 def uniform(a: Number, b: Number) -> float:
+    """Generates a random number in range [a, b) or [a, b] depending on rounding."""
     return a + (b - a) * random()
 
 
 def von_mises_variate(mu: Number, kappa: Number) -> float:
+    """
+    Circular data distribution.
+
+    mu is the mean angle, expressed in raidans between 0 and 2*pi, and kappa is the
+    concentration parameter, which must be greater than or equal to zero. If kappa is
+    equal to zero, this distribution reduces to a uniform random angle over
+    the range 0 to 2*pi.
+    """
     if kappa <= 1e-6:
         return 2 * pi * random()
 
@@ -268,5 +389,10 @@ def von_mises_variate(mu: Number, kappa: Number) -> float:
 
 
 def weibull_variate(alpha: Number, beta: Number) -> float:
+    """
+    Weibull distribution.
+
+    alpha is the scale parameter, beta is the shape parameter.
+    """
     u = 1.0 - random()
     return alpha * (-log(u)) ** (1.0 / beta)
