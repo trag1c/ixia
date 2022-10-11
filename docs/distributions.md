@@ -40,7 +40,8 @@ Gamma distribution.
 
 Conditions on the parameters are `alpha > 0` and `beta > 0`.
 
-The probability distribution function is \\( \text{pdf}(x)=\frac{x^{\alpha-1}\cdot e^{\frac{-x}{\beta}}}{\Gamma(\alpha)\cdot\beta^\alpha} \\)
+The probability distribution function is
+\\[ f(x)=\frac{x^{\alpha-1}\cdot e^{\frac{-x}{\beta}}}{\Gamma(\alpha)\cdot\beta^\alpha} \\]
 
 ## `gauss`
 
