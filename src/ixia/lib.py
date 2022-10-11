@@ -150,15 +150,6 @@ def gauss(mu: Number, sigma: Number) -> float:
     return mu + z * sigma
 
 
-def get_rand_bits(k: int) -> int:
-    """Generates an int with k random bits."""
-    if k < 0:
-        raise ValueError("number of bits must be non-negative")
-    numbytes = (k + 7) // 8
-    x = int.from_bytes(urandom(numbytes), "big")
-    return x >> (numbytes * 8 - k)
-
-
 def log_norm_variate(mu: Number, sigma: Number) -> float:
     """
     Log normal distribution.
@@ -193,6 +184,15 @@ def pareto_variate(alpha: Number) -> float:
     alpha is the shape parameter.
     """
     return (1.0 - random()) ** (-1.0 / alpha)
+
+
+def rand_bits(k: int) -> int:
+    """Generates an int with k random bits."""
+    if k < 0:
+        raise ValueError("number of bits must be non-negative")
+    numbytes = (k + 7) // 8
+    x = int.from_bytes(urandom(numbytes), "big")
+    return x >> (numbytes * 8 - k)
 
 
 def rand_bytes(n: int) -> bytes:
