@@ -5,7 +5,7 @@ from bisect import bisect
 from itertools import accumulate
 from math import acos, ceil, cos, e, exp, factorial, floor, isfinite, log, pi, sin, sqrt
 from os import urandom
-from typing import Any, Iterable, MutableSequence, Sequence, TypeVar, Union, overload
+from typing import Any, Iterable, MutableSequence, Sequence, TypeVar, Union
 
 T = TypeVar("T")
 Number = Union[int, float]
