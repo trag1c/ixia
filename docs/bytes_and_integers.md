@@ -1,4 +1,4 @@
-# Functions for bytes and integers
+# Bytes and integers
 
 ## `rand_bits`
 

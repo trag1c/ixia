@@ -1,4 +1,4 @@
-# Functions for real-valued distributions
+# Real-valued distributions
 
 ## `beta_variate`
 
