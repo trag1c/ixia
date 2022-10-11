@@ -307,22 +307,12 @@ def shuffle(seq: MutableSequence[Any]) -> None:
 
     Use shuffled() for out of place shuffling.
     """
-    for i in reversed(range(1, len(seq))):
+    for i in range(len(seq) - 1, 0, -1):
         j = s.randbelow(i + 1)
         seq[i], seq[j] = seq[j], seq[i]
 
 
-@overload
-def shuffled(seq: MutableSequence[T]) -> MutableSequence[T]:
-    ...
-
-
-@overload
-def shuffled(seq: Sequence[T]) -> list[T]:
-    ...
-
-
-def shuffled(seq: Sequence[T] | MutableSequence[T]) -> list[T] | MutableSequence[T]:
+def shuffled(seq: Sequence[T]) -> MutableSequence[T]:
     """
     Returns a shuffled copy of the sequence.
     Returns a list for immutable sequences.
