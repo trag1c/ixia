@@ -53,13 +53,13 @@ def gauss(mu: Number, sigma: Number) -> float
 
 Normal distribution, also called the Gaussian distribution.
 
-`mu` is the mean, and `sigma` is the standard deviation. This is slightly faster than the `ixia.normal_variate()` function.
+`mu` is the mean, and `sigma` is the standard deviation. This is slightly faster than the [`ixia.normal_variate()`](#normal_variate) function.
 
-> **Multitherading Note**
+> **Multitherading Note**  
 > When two threads call this function simultaneously, it is possible that they will receive the same return value.
 > This can be avoided in two ways:
 > 1. Put locks around all calls
-> 2. Use the slower, but thread-safe `ixia.normal_variate()` function instead.
+> 2. Use the slower, but thread-safe [`ixia.normal_variate()`](#normal_variate) function instead.
 
 
 ## `log_norm_variate`
