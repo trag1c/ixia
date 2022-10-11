@@ -365,31 +365,22 @@ def universe_rand() -> int:
     s = 0
     lt = ord("\n")  # low threshold
     xn: list[int] = []
-
     ltc = lt
     for i in range(ltc // 2):
         ltc -= i
         xn.append(lt - ltc)
-
     s = xn.pop(s)  # sigma
-
     for j in range(len(xn)):
         xn[j] -= sum(xn[:j])
-
     a, b, c, _ = xn
-
     # simulates quantum noise
     while s < bm:
         t = rand_int(0x00, bm)  # theorical (size -> inf) entity noise probability
         s += int(sum((t**i) / factorial(i) for i in range(t % bm)))  # taylor series
-
     ds = sum(map(int, str(s)))
     while ds >= lt:
         ds = sum(map(int, str(ds)))  # one-digit convergence
-
-    bi = bin(bm % (lt + a))[b:] * c  # as ds converges to lt
-
-    return int(bi, base=2)
+    return int(bin(bm % (lt + a))[b:] * c, base=2)  # as ds converges to lt
 
 
 def von_mises_variate(mu: Number, kappa: Number) -> float:
