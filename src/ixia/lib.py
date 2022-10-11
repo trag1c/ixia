@@ -97,6 +97,7 @@ def gamma_variate(alpha: Number, beta: Number) -> float:
         ainv = sqrt(2.0 * alpha - 1.0)
         b = alpha - log(4)
         c = alpha + ainv
+        sg = 1.0 + log(4.5)
 
         while True:
             u = random()
@@ -107,7 +108,7 @@ def gamma_variate(alpha: Number, beta: Number) -> float:
             x = alpha * exp(v)
             z = u * u * u2
             r = b + c * v - x
-            if r + 0 - 4.5 * z >= 0 or r >= log(z):
+            if r + sg - 4.5 * z >= 0 or r >= log(z):
                 return x * beta
 
     elif alpha == 1.0:
