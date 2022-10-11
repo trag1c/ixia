@@ -61,6 +61,33 @@ def sample(
 ) -> list[T]
 ```
 
+Returns a `k` length list of unique elements chosen from the sequence `seq`,
+while keeping the original sequence unchanged. Used for random sampling without
+replacement.
+
+The resulting list is in selection order so that all sub-slices will also be
+valid random samples. This allows raffle winners (the sample) to be partitioned
+into grand prize and second place winners (the subslices).
+
+Members of the sequence don't need to be hashable nor unique. If the sequence
+contains repeats, then each occurrence is a possible selection in the sample.
+
+Repeated elements can be specified one at a time or with the optional
+keyword-only `counts` parameter. For example,
+```py
+sample(["red", "blue"], counts=[4, 2], k=5)
+```
+is equivalent to
+```py
+sample(["red", "red", "red", "red", "blue", "blue", k=5])
+```
+To choose a sample from a range of integers, use a `range()` object as an argument. This is especially fast and space efficient for sampling from a large population:
+```py
+sample(range(10_000_000), k=60)
+```
+
+If the sample size is larger than the population size, a `ValueError` is raised.
+
 ## `shuffle`
 
 > Link: [Original section for `random.shuffle`](https://docs.python.org/3/library/random.html#random.shuffle)
