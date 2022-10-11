@@ -50,6 +50,8 @@ assumed to be non-negative and finite. If all weights are zero, a `ValueError` i
 
 ## `sample`
 
+> Link: [Original section for `random.sample`](https://docs.python.org/3/library/random.html#random.sample)
+
 ```py
 def sample(
     seq: Sequence[T],
@@ -60,6 +62,8 @@ def sample(
 ```
 
 ## `shuffle`
+
+> Link: [Original section for `random.shuffle`](https://docs.python.org/3/library/random.html#random.shuffle)
 
 ```py
 def shuffle(seq: MutableSequence[Any]) -> None
