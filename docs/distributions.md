@@ -24,7 +24,7 @@ def expo_variate(lambda_: float) -> float
 Exponential distribution.
 
 `lambda_` is 1.0 divided by the desired mean. It should be nonzero. Returned
-values are in range $[0, +\infty)$ for `lambda_ > 0`, and $(-\infty, 0]$ for
+values are in range \\( [0, +\infty) \\) for `lambda_ > 0`, and \\( (-\infty, 0] \\) for
 `lambda_ < 0`.
 
 
@@ -40,8 +40,7 @@ Gamma distribution.
 
 Conditions on the parameters are `alpha > 0` and `beta > 0`.
 
-The probability distribution function is
-$\text{pdf}(x)=\frac{x^{\alpha-1}\cdot e^{\frac{-x}{\beta}}}{\Gamma(\alpha)\cdot\beta^\alpha}$
+The probability distribution function is \\( \text{pdf}(x)=\frac{x^{\alpha-1}\cdot e^{\frac{-x}{\beta}}}{\Gamma(\alpha)\cdot\beta^\alpha} \\)
 
 ## `gauss`
 
