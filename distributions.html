@@ -171,6 +171,17 @@ values are in range \( [0, +\infty) \) for <code>lambda_ &gt; 0</code>, and \( (
 </blockquote>
 <pre><code class="language-py">def gauss(mu: Number, sigma: Number) -&gt; float
 </code></pre>
+<p>Normal distribution, also called the Gaussian distribution.</p>
+<p><code>mu</code> is the mean, and <code>sigma</code> is the standard deviation. This is slightly faster than the <code>ixia.normal_variate()</code> function.</p>
+<blockquote>
+<p><strong>Multitherading Note</strong>
+When two threads call this function simultaneously, it is possible that they will receive the same return value.
+This can be avoided in two ways:</p>
+<ol>
+<li>Put locks around all calls</li>
+<li>Use the slower, but thread-safe <code>ixia.normal_variate()</code> function instead.</li>
+</ol>
+</blockquote>
 <h2 id="log_norm_variate"><a class="header" href="#log_norm_variate"><code>log_norm_variate</code></a></h2>
 <blockquote>
 <p>Link: <a href="https://docs.python.org/3/library/random.html#random.lognormvariate">Original section for <code>random.lognormvariate</code></a></p>
