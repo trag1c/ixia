@@ -383,9 +383,9 @@ def universe_rand() -> int:
         t = rand_int(0x00, bm)  # theorical (size -> inf) entity noise probability
         s += int(sum((t**i) / factorial(i) for i in range(t % bm)))  # taylor series
 
-    ds = sum(int(d) for d in str(s))
+    ds = sum(map(int, str(s)))
     while ds >= lt:
-        ds = sum(int(d) for d in str(ds))  # one-digit convergence
+        ds = sum(map(int, str(ds)))  # one-digit convergence
 
     bi = bin(bm % (lt + a))[b:] * c  # as ds converges to lt
 
