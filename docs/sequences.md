@@ -48,11 +48,26 @@ interoperates with the `float` values returned by `ixia.random()` (that
 includes integers, floats, and fractions but excludes dceimals). Weights are
 assumed to be non-negative and finite. If all weights are zero, a `ValueError` is raised.
 
+## `sample`
+
+```py
+def sample(
+    seq: Sequence[T],
+    k: int,
+    *,
+    counts: Iterable[int] | None = None
+) -> list[T]
+```
+
 ## `shuffle`
+
+```py
+def shuffle(seq: MutableSequence[Any]) -> None
+```
 
 
 ## `shuffled`
 
-
-## `sample`
-
+```py
+def shuffled(seq: Sequence[T]) -> MutableSequence[T]
+```
