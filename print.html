@@ -273,18 +273,28 @@ If <code>seq</code> is an immutable type <code>IM[T]</code>, the function will r
 </blockquote>
 <pre><code class="language-py">def beta_variate(alpha: Number, beta: Number) -&gt; float
 </code></pre>
+<p>Beta distribution.</p>
+<p>Conditions on the parameters are <code>alpha &gt; 0</code> and <code>beta &gt; 0</code>. Returned values range between 0 and 1.</p>
 <h2 id="expo_variate"><a class="header" href="#expo_variate"><code>expo_variate</code></a></h2>
 <blockquote>
 <p>Link: <a href="https://docs.python.org/3/library/random.html#random.expovariate">Original section for <code>random.expovariate</code></a></p>
 </blockquote>
 <pre><code class="language-py">def expo_variate(lambda_: float) -&gt; float
 </code></pre>
+<p>Exponential distribution.</p>
+<p><code>lambda_</code> is 1.0 divided by the desired mean. It should be nonzero. Returned
+values are in range $[0, +\infty)$ for <code>lambda_ &gt; 0</code>, and $(-\infty, 0]$ for
+<code>lambda_ &lt; 0</code>.</p>
 <h2 id="gamma_variate"><a class="header" href="#gamma_variate"><code>gamma_variate</code></a></h2>
 <blockquote>
 <p>Link: <a href="https://docs.python.org/3/library/random.html#random.gammavariate">Original section for <code>random.gammavariate</code></a></p>
 </blockquote>
 <pre><code class="language-py">def gamma_variate(alpha: Number, beta: Number) -&gt; float
 </code></pre>
+<p>Gamma distribution.</p>
+<p>Conditions on the parameters are <code>alpha &gt; 0</code> and <code>beta &gt; 0</code>.</p>
+<p>The probability distribution function is
+$\text{pdf}(x)=\frac{x^{\alpha-1}\cdot e^{\frac{-x}{\beta}}}{\Gamma(\alpha)\cdot\beta^\alpha}$</p>
 <h2 id="gauss"><a class="header" href="#gauss"><code>gauss</code></a></h2>
 <blockquote>
 <p>Link: <a href="https://docs.python.org/3/library/random.html#random.gauss">Original section for <code>random.gauss</code></a></p>
