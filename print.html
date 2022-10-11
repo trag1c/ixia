@@ -216,7 +216,7 @@ made with equal probability. If a weights sequence is supplied, it must be the
 same length as the <code>seq</code> sequence. Specifying both <code>weights</code> and
 <code>cumulative_weights</code> will raise a <code>TypeError</code>.</p>
 <p>The <code>weights</code> or <code>cumulative_weights</code> can use any numeric type that
-interoperates with the <code>float</code> values returned by <code>ixia.random()</code> (that
+interoperates with the <code>float</code> values returned by <a href="distributions.html#random"><code>ixia.random()</code></a> (that
 includes integers, floats, and fractions but excludes decimals). Weights are
 assumed to be non-negative and finite. If all weights are zero, a <code>ValueError</code> is raised.</p>
 <h2 id="sample"><a class="header" href="#sample"><code>sample</code></a></h2>
@@ -257,7 +257,7 @@ keyword-only <code>counts</code> parameter. For example,</p>
 </code></pre>
 <p>Shuffles the sequence <code>seq</code> in place.</p>
 <blockquote>
-<p>For out of place shuffling, use <code>ixia.shuffled()</code>.</p>
+<p>For out of place shuffling, use <a href="sequences.html#shuffled"><code>ixia.shuffled()</code></a>.</p>
 </blockquote>
 <h2 id="shuffled"><a class="header" href="#shuffled"><code>shuffled</code></a></h2>
 <pre><code class="language-py">def shuffled(seq: Sequence[T]) -&gt; MutableSequence[T]
@@ -266,7 +266,7 @@ keyword-only <code>counts</code> parameter. For example,</p>
 <p>If <code>seq</code> is a mutable type <code>M[T]</code>, the function will return <code>M[T]</code>.<br />
 If <code>seq</code> is an immutable type <code>IM[T]</code>, the function will return <code>list[T]</code>.</p>
 <blockquote>
-<p>For in place shuffling, use <code>ixia.shuffle()</code>.</p>
+<p>For in place shuffling, use <a href="sequences.html#shuffle"><code>ixia.shuffle()</code></a>.</p>
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="real-valued-distributions"><a class="header" href="#real-valued-distributions">Real-valued distributions</a></h1>
 <h2 id="beta_variate"><a class="header" href="#beta_variate"><code>beta_variate</code></a></h2>
@@ -304,14 +304,14 @@ values are in range \( [0, +\infty) \) for <code>lambda_ &gt; 0</code>, and \( (
 <pre><code class="language-py">def gauss(mu: Number, sigma: Number) -&gt; float
 </code></pre>
 <p>Normal distribution, also called the Gaussian distribution.</p>
-<p><code>mu</code> is the mean, and <code>sigma</code> is the standard deviation. This is slightly faster than the <code>ixia.normal_variate()</code> function.</p>
+<p><code>mu</code> is the mean, and <code>sigma</code> is the standard deviation. This is slightly faster than the <a href="distributions.html#normal_variate"><code>ixia.normal_variate()</code></a> function.</p>
 <blockquote>
-<p><strong>Multitherading Note</strong>
+<p><strong>Multitherading Note</strong><br />
 When two threads call this function simultaneously, it is possible that they will receive the same return value.
 This can be avoided in two ways:</p>
 <ol>
 <li>Put locks around all calls</li>
-<li>Use the slower, but thread-safe <code>ixia.normal_variate()</code> function instead.</li>
+<li>Use the slower, but thread-safe <a href="distributions.html#normal_variate"><code>ixia.normal_variate()</code></a> function instead.</li>
 </ol>
 </blockquote>
 <h2 id="log_norm_variate"><a class="header" href="#log_norm_variate"><code>log_norm_variate</code></a></h2>
