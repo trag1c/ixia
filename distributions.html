@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>weibull_variate - Ixia</title>
+        <title>Real-valued distributions - Ixia</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="bytes_and_integers.html"><strong aria-hidden="true">2.</strong> Bytes and integers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="bytes_and_integers.html"><strong aria-hidden="true">2.1.</strong> get_rand_bits</a></li><li class="chapter-item expanded "><a href="bytes_and_integers.html"><strong aria-hidden="true">2.2.</strong> rand_bytes</a></li><li class="chapter-item expanded "><a href="bytes_and_integers.html"><strong aria-hidden="true">2.3.</strong> rand_int</a></li><li class="chapter-item expanded "><a href="bytes_and_integers.html"><strong aria-hidden="true">2.4.</strong> rand_range</a></li></ol></li><li class="chapter-item expanded "><a href="sequences.html"><strong aria-hidden="true">3.</strong> Sequences</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="sequences.html"><strong aria-hidden="true">3.1.</strong> choice</a></li><li class="chapter-item expanded "><a href="sequences.html"><strong aria-hidden="true">3.2.</strong> choices</a></li><li class="chapter-item expanded "><a href="sequences.html"><strong aria-hidden="true">3.3.</strong> shuffle</a></li><li class="chapter-item expanded "><a href="sequences.html"><strong aria-hidden="true">3.4.</strong> shuffled</a></li><li class="chapter-item expanded "><a href="sequences.html"><strong aria-hidden="true">3.5.</strong> sample</a></li></ol></li><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">4.</strong> Real-valued distributions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">4.1.</strong> beta_variate</a></li><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">4.2.</strong> expo_variate</a></li><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">4.3.</strong> gamma_variate</a></li><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">4.4.</strong> gauss</a></li><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">4.5.</strong> log_norm_variate</a></li><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">4.6.</strong> normal_variate</a></li><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">4.7.</strong> pareto_variate</a></li><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">4.8.</strong> random</a></li><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">4.9.</strong> triangular</a></li><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">4.10.</strong> uniform</a></li><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">4.11.</strong> von_mises_variate</a></li><li class="chapter-item expanded "><a href="distributions.html" class="active"><strong aria-hidden="true">4.12.</strong> weibull_variate</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="credits.html">Credits</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="bytes_and_integers.html"><strong aria-hidden="true">2.</strong> Bytes and integers</a></li><li class="chapter-item expanded "><a href="sequences.html"><strong aria-hidden="true">3.</strong> Sequences</a></li><li class="chapter-item expanded "><a href="distributions.html" class="active"><strong aria-hidden="true">4.</strong> Real-valued distributions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="credits.html">Credits</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -134,13 +134,89 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="weibull_variate"><a class="header" href="#weibull_variate">weibull_variate</a></h1>
+                        <h1 id="real-valued-distributions"><a class="header" href="#real-valued-distributions">Real-valued distributions</a></h1>
+<h2 id="beta_variate"><a class="header" href="#beta_variate"><code>beta_variate</code></a></h2>
+<blockquote>
+<p>Link: <a href="https://docs.python.org/3/library/random.html#random.betavariate">Original section for <code>random.betavariate</code></a></p>
+</blockquote>
+<pre><code class="language-py">def beta_variate(alpha: Number, beta: Number) -&gt; float
+</code></pre>
+<h2 id="expo_variate"><a class="header" href="#expo_variate"><code>expo_variate</code></a></h2>
+<blockquote>
+<p>Link: <a href="https://docs.python.org/3/library/random.html#random.expovariate">Original section for <code>random.expovariate</code></a></p>
+</blockquote>
+<pre><code class="language-py">def expo_variate(lambda_: float) -&gt; float
+</code></pre>
+<h2 id="gamma_variate"><a class="header" href="#gamma_variate"><code>gamma_variate</code></a></h2>
+<blockquote>
+<p>Link: <a href="https://docs.python.org/3/library/random.html#random.gammavariate">Original section for <code>random.gammavariate</code></a></p>
+</blockquote>
+<pre><code class="language-py">def gamma_variate(alpha: Number, beta: Number) -&gt; float
+</code></pre>
+<h2 id="gauss"><a class="header" href="#gauss"><code>gauss</code></a></h2>
+<blockquote>
+<p>Link: <a href="https://docs.python.org/3/library/random.html#random.gauss">Original section for <code>random.gauss</code></a></p>
+</blockquote>
+<pre><code class="language-py">def gauss(mu: Number, sigma: Number) -&gt; float
+</code></pre>
+<h2 id="log_norm_variate"><a class="header" href="#log_norm_variate"><code>log_norm_variate</code></a></h2>
+<blockquote>
+<p>Link: <a href="https://docs.python.org/3/library/random.html#random.lognormvariate">Original section for <code>random.lognormvariate</code></a></p>
+</blockquote>
+<pre><code class="language-py">def log_norm_variate(mu: Number, sigma: Number) -&gt; float
+</code></pre>
+<h2 id="normal_variate"><a class="header" href="#normal_variate"><code>normal_variate</code></a></h2>
+<blockquote>
+<p>Link: <a href="https://docs.python.org/3/library/random.html#random.normalvariate">Original section for <code>random.normalvariate</code></a></p>
+</blockquote>
+<pre><code class="language-py">def normal_variate(mu: Number, sigma: Number) -&gt; float
+</code></pre>
+<h2 id="pareto_variate"><a class="header" href="#pareto_variate"><code>pareto_variate</code></a></h2>
+<blockquote>
+<p>Link: <a href="https://docs.python.org/3/library/random.html#random.paretovariate">Original section for <code>random.paretovariate</code></a></p>
+</blockquote>
+<pre><code class="language-py">def pareto_variate(alpha: Number) -&gt; float
+</code></pre>
+<h2 id="random"><a class="header" href="#random"><code>random</code></a></h2>
+<blockquote>
+<p>Link: <a href="https://docs.python.org/3/library/random.html#random.random">Original section for <code>random.random</code></a></p>
+</blockquote>
+<pre><code class="language-py">def random() -&gt; float
+</code></pre>
+<h2 id="triangular"><a class="header" href="#triangular"><code>triangular</code></a></h2>
+<blockquote>
+<p>Link: <a href="https://docs.python.org/3/library/random.html#random.triangular">Original section for <code>random.triangular</code></a></p>
+</blockquote>
+<pre><code class="language-py">def triangular(
+    low: float = 0.0,
+    high: float = 1.0,
+    mode: float | None = None
+) -&gt; float
+</code></pre>
+<h2 id="uniform"><a class="header" href="#uniform"><code>uniform</code></a></h2>
+<blockquote>
+<p>Link: <a href="https://docs.python.org/3/library/random.html#random.uniform">Original section for <code>random.uniform</code></a></p>
+</blockquote>
+<pre><code class="language-py">def uniform(a: Number, b: Number) -&gt; float
+</code></pre>
+<h2 id="von_mises_variate"><a class="header" href="#von_mises_variate"><code>von_mises_variate</code></a></h2>
+<blockquote>
+<p>Link: <a href="https://docs.python.org/3/library/random.html#random.vonmisesvariate">Original section for <code>random.vonmisesvariate</code></a></p>
+</blockquote>
+<pre><code class="language-py">def von_mises_variate(mu: Number, kappa: Number) -&gt; float
+</code></pre>
+<h2 id="weibull_variate"><a class="header" href="#weibull_variate"><code>weibull_variate</code></a></h2>
+<blockquote>
+<p>Link: <a href="https://docs.python.org/3/library/random.html#random.weibullvariate">Original section for <code>random.weibullvariate</code></a></p>
+</blockquote>
+<pre><code class="language-py">def weibull_variate(alpha: Number, beta: Number) -&gt; float
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="distributions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="sequences.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                             <a rel="next" href="credits.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
@@ -152,7 +228,7 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="distributions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="sequences.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                     <a rel="next" href="credits.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
