@@ -38,7 +38,7 @@ def choices(
     k: int = 1,
 ) -> list[T]:
     """
-    Return a k sized list of sequence elements chosen with replacement.
+    Returns a k sized list of sequence elements chosen with replacement.
 
     If the relative weights or cumulative weights are not specified,
     the selections are made with equal probability.
