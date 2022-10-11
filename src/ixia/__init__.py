@@ -18,6 +18,7 @@ from .lib import (
     shuffled,
     triangular,
     uniform,
+    universe_rand,
     von_mises_variate,
     weibull_variate,
 )
@@ -42,6 +43,7 @@ __all__ = (
     "shuffled",
     "triangular",
     "uniform",
+    "universe_rand",
     "von_mises_variate",
     "weibull_variate",
 )
