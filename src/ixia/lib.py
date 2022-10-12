@@ -210,6 +210,11 @@ def random() -> float:
     return (int.from_bytes(urandom(7), "big") >> 3) * 2**-53
 
 
+def rand_hex(n: int) -> str:
+    """Returns a hex string composed of n random bytes."""
+    return "".join(f"{s.randbelow(255):0>2x}" for _ in range(n))
+
+
 def rand_range(start: int, stop: int | None = None, step: int = 1) -> int:
     """Chooses a random item from range([start,] stop[, step])."""
     if stop is None:
