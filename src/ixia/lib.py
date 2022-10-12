@@ -351,7 +351,7 @@ def uniform(a: Number, b: Number) -> float:
 
 
 def universe_rand() -> int:
-    """Generates a random number based on universe."""
+    """Generates a random number based on the universe."""
     bm = 0xFF  # bound max, 1 byte
     s = 0
     lt = ord("\n")  # low threshold
@@ -366,7 +366,7 @@ def universe_rand() -> int:
     a, b, c, _ = xn
     # simulates quantum noise
     while s < bm:
-        t = rand_int(0x00, bm)  # theorical (size -> inf) entity noise probability
+        t = rand_int(0x00, bm)  # theoretical (size -> inf) entity noise probability
         s += int(sum((t**i) / factorial(i) for i in range(t % bm)))  # taylor series
     ds = sum(map(int, str(s)))
     while ds >= lt:
