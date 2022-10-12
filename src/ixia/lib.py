@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import secrets as s
+from base64 import urlsafe_b64encode
 from bisect import bisect
 from itertools import accumulate
 from math import acos, ceil, cos, e, exp, factorial, floor, isfinite, log, pi, sin, sqrt
@@ -239,6 +240,12 @@ def rand_range(start: int, stop: int | None = None, step: int = 1) -> int:
     if n <= 0:
         raise ValueError("empty range for rand_range")
     return start + step * s.randbelow(n)
+
+
+def rand_urlsafe(n: int = 32) -> str:
+    """Returns a random URL-safe text string, in Base64 encoding."""
+    return urlsafe_b64encode(rand_bytes(n)).rstrip(b"=").decode("ascii")
+
 
 
 def sample(seq: Sequence[T], k: int, *, counts: Iterable[int] | None = None) -> list[T]:
