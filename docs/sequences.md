@@ -2,7 +2,7 @@
 
 ## `choice`
 
-> Link: [Original section for `random.choices`](https://docs.python.org/3/library/random.html#random.choice)
+> **Link:** [Original section for `random.choices`](https://docs.python.org/3/library/random.html#random.choice)
 
 ```py
 def choice(seq: Sequence[T]) -> T
@@ -15,7 +15,7 @@ If `seq` is empty, `IndexError` is raised.
 
 ## `choices`
 
-> Link: [Original section for `random.choices`](https://docs.python.org/3/library/random.html#random.choices)
+> **Link:** [Original section for `random.choices`](https://docs.python.org/3/library/random.html#random.choices)
 
 ```py
 def choices(
@@ -50,7 +50,7 @@ assumed to be non-negative and finite. If all weights are zero, a `ValueError` i
 
 ## `sample`
 
-> Link: [Original section for `random.sample`](https://docs.python.org/3/library/random.html#random.sample)
+> **Link:** [Original section for `random.sample`](https://docs.python.org/3/library/random.html#random.sample)
 
 ```py
 def sample(
@@ -90,7 +90,7 @@ If the sample size is larger than the population size, a `ValueError` is raised.
 
 ## `shuffle`
 
-> Link: [Original section for `random.shuffle`](https://docs.python.org/3/library/random.html#random.shuffle)
+> **Link:** [Original section for `random.shuffle`](https://docs.python.org/3/library/random.html#random.shuffle)
 
 ```py
 def shuffle(seq: MutableSequence[Any]) -> None

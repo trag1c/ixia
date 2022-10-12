@@ -2,7 +2,7 @@
 
 ## `rand_bits`
 
-> Link: [Original section for `random.getrandbits`](https://docs.python.org/3/library/random.html#random.getrandbits)
+> **Link:** [Original section for `random.getrandbits`](https://docs.python.org/3/library/random.html#random.getrandbits)
 
 ```py
 def rand_bits(k: int) -> int
@@ -13,7 +13,7 @@ Returns a non-negative Python integer with `k` random bits.
 
 ## `rand_bytes`
 
-> Link: [Original section for `random.randbytes`](https://docs.python.org/3/library/random.html#random.randbytes)
+> **Link:** [Original section for `random.randbytes`](https://docs.python.org/3/library/random.html#random.randbytes)
 
 ```py
 def rand_bytes(n: int = 32) -> bytes
@@ -24,7 +24,7 @@ Generates `n` random bytes. Defaults to 32.
 
 ## `rand_hex`
 
-> Link: [Original section for `secrets.token_hex`](https://docs.python.org/3/library/secrets.html#secrets.token_hex)
+> **Link:** [Original section for `secrets.token_hex`](https://docs.python.org/3/library/secrets.html#secrets.token_hex)
 
 ```py
 def rand_hex(n: int) -> str
@@ -35,7 +35,7 @@ Returns a hex string composed of `n` random bytes.
 
 ## `rand_int`
 
-> Link: [Original section for `random.randint`](https://docs.python.org/3/library/random.html#random.randint)
+> **Link:** [Original section for `random.randint`](https://docs.python.org/3/library/random.html#random.randint)
 
 ```py
 def rand_int(a: int, b: int) -> int
@@ -46,7 +46,7 @@ Alias for [`ixia.rand_range(a, b+1)`](#rand_range).
 
 ## `rand_range`
 
-> Link: [Original section for `random.randrange`](https://docs.python.org/3/library/random.html#random.randrange)
+> **Link:** [Original section for `random.randrange`](https://docs.python.org/3/library/random.html#random.randrange)
 
 ```py
 def rand_range(start: int, stop: int | None = None, step: int = 1) -> int

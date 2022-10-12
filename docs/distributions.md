@@ -2,7 +2,7 @@
 
 ## `beta_variate`
 
-> Link: [Original section for `random.betavariate`](https://docs.python.org/3/library/random.html#random.betavariate)
+> **Link:** [Original section for `random.betavariate`](https://docs.python.org/3/library/random.html#random.betavariate)
 
 ```py
 def beta_variate(alpha: Number, beta: Number) -> float
@@ -16,7 +16,7 @@ Returned values range between \\( 0 \\) and \\( 1 \\).
 
 ## `expo_variate`
 
-> Link: [Original section for `random.expovariate`](https://docs.python.org/3/library/random.html#random.expovariate)
+> **Link:** [Original section for `random.expovariate`](https://docs.python.org/3/library/random.html#random.expovariate)
 
 ```py
 def expo_variate(lambda_: float) -> float
@@ -31,7 +31,7 @@ and \\( (-\infty, 0] \\) for `lambda_ < 0`.
 
 ## `gamma_variate`
 
-> Link: [Original section for `random.gammavariate`](https://docs.python.org/3/library/random.html#random.gammavariate)
+> **Link:** [Original section for `random.gammavariate`](https://docs.python.org/3/library/random.html#random.gammavariate)
 
 ```py
 def gamma_variate(alpha: Number, beta: Number) -> float
@@ -46,7 +46,7 @@ The probability distribution function is
 
 ## `gauss`
 
-> Link: [Original section for `random.gauss`](https://docs.python.org/3/library/random.html#random.gauss)
+> **Link:** [Original section for `random.gauss`](https://docs.python.org/3/library/random.html#random.gauss)
 
 ```py
 def gauss(mu: Number, sigma: Number) -> float
@@ -68,7 +68,7 @@ faster than the [`ixia.normal_variate()`](#normal_variate) function.
 
 ## `log_norm_variate`
 
-> Link: [Original section for `random.lognormvariate`](https://docs.python.org/3/library/random.html#random.lognormvariate)
+> **Link:** [Original section for `random.lognormvariate`](https://docs.python.org/3/library/random.html#random.lognormvariate)
 
 ```py
 def log_norm_variate(mu: Number, sigma: Number) -> float
@@ -83,7 +83,7 @@ value, and `sigma` must be greater than \\( 0 \\).
 
 ## `normal_variate`
 
-> Link: [Original section for `random.normalvariate`](https://docs.python.org/3/library/random.html#random.normalvariate)
+> **Link:** [Original section for `random.normalvariate`](https://docs.python.org/3/library/random.html#random.normalvariate)
 
 ```py
 def normal_variate(mu: Number, sigma: Number) -> float
@@ -96,7 +96,7 @@ Normal distribution.
 
 ## `pareto_variate`
 
-> Link: [Original section for `random.paretovariate`](https://docs.python.org/3/library/random.html#random.paretovariate)
+> **Link:** [Original section for `random.paretovariate`](https://docs.python.org/3/library/random.html#random.paretovariate)
 
 ```py
 def pareto_variate(alpha: Number) -> float
@@ -109,7 +109,7 @@ Pareto distribution.
 
 ## `random`
 
-> Link: [Original section for `random.random`](https://docs.python.org/3/library/random.html#random.random)
+> **Link:** [Original section for `random.random`](https://docs.python.org/3/library/random.html#random.random)
 
 ```py
 def random() -> float
@@ -120,7 +120,7 @@ Generates a random floating point number in the range \\( [0, 1) \\).
 
 ## `triangular`
 
-> Link: [Original section for `random.triangular`](https://docs.python.org/3/library/random.html#random.triangular)
+> **Link:** [Original section for `random.triangular`](https://docs.python.org/3/library/random.html#random.triangular)
 
 ```py
 def triangular(
@@ -138,7 +138,7 @@ bounds, giving a symmetric distribution.
 
 ## `uniform`
 
-> Link: [Original section for `random.uniform`](https://docs.python.org/3/library/random.html#random.uniform)
+> **Link:** [Original section for `random.uniform`](https://docs.python.org/3/library/random.html#random.uniform)
 
 ```py
 def uniform(a: Number, b: Number) -> float
@@ -153,7 +153,7 @@ floating-point rounding in the equation `a + (b-a) * random()`.
 
 ## `von_mises_variate`
 
-> Link: [Original section for `random.vonmisesvariate`](https://docs.python.org/3/library/random.html#random.vonmisesvariate)
+> **Link:** [Original section for `random.vonmisesvariate`](https://docs.python.org/3/library/random.html#random.vonmisesvariate)
 
 ```py
 def von_mises_variate(mu: Number, kappa: Number) -> float
@@ -167,7 +167,7 @@ reduces to a uniform random angle over the range \\( 0 \\) to \\( 2\pi \\).
 
 ## `weibull_variate`
 
-> Link: [Original section for `random.weibullvariate`](https://docs.python.org/3/library/random.html#random.weibullvariate)
+> **Link:** [Original section for `random.weibullvariate`](https://docs.python.org/3/library/random.html#random.weibullvariate)
 
 ```py
 def weibull_variate(alpha: Number, beta: Number) -> float
