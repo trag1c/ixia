@@ -83,7 +83,7 @@ sample(["red", "red", "red", "red", "blue", "blue", k=5])
 ```
 To choose a sample from a range of integers, use a `range()` object as an argument. This is especially fast and space efficient for sampling from a large population:
 ```py
-sample(range(10_000_000), k=60)
+sample(range(10 ** 7), k=60)
 ```
 
 If the sample size is larger than the population size, a `ValueError` is raised.
