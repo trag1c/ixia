@@ -1,5 +1,8 @@
 # Ixia
-
+Ixia is a cryptographically secure RNG library. It mainly merges `secrets`'
+security with `random`'s many features. Ixia also implements some of its own
+functions, such as [`ixia.shuffled()`](sequences.md#shuffled) or
+[`ixia.universe_rand()`](bytes_and_integers.md#universe_rand).
 
 ## ⚠️ Important Notes
 While supporting Python 3.8+, Ixia is based on the Python 3.10 implementation
