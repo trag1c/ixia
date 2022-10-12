@@ -10,7 +10,8 @@ def beta_variate(alpha: Number, beta: Number) -> float
 
 Beta distribution.
 
-Conditions on the parameters are `alpha > 0` and `beta > 0`. Returned values range between 0 and 1.
+Conditions on the parameters are `alpha > 0` and `beta > 0`.
+Returned values range between \\( 0 \\) and \\( 1 \\).
 
 
 ## `expo_variate`
@@ -23,9 +24,9 @@ def expo_variate(lambda_: float) -> float
 
 Exponential distribution.
 
-`lambda_` is 1.0 divided by the desired mean. It should be nonzero. Returned
-values are in range \\( [0, +\infty) \\) for `lambda_ > 0`, and \\( (-\infty, 0] \\) for
-`lambda_ < 0`.
+`lambda_` is \\( 1 \\) divided by the desired mean. It should be nonzero.
+Returned values are in range \\( [0, +\infty) \\) for `lambda_ > 0`,
+and \\( (-\infty, 0] \\) for `lambda_ < 0`.
 
 
 ## `gamma_variate`
@@ -53,13 +54,16 @@ def gauss(mu: Number, sigma: Number) -> float
 
 Normal distribution, also called the Gaussian distribution.
 
-`mu` is the mean, and `sigma` is the standard deviation. This is slightly faster than the [`ixia.normal_variate()`](#normal_variate) function.
+`mu` is the mean, and `sigma` is the standard deviation. This is slightly
+faster than the [`ixia.normal_variate()`](#normal_variate) function.
 
 > **Multitherading Note**  
-> When two threads call this function simultaneously, it is possible that they will receive the same return value.
+> When two threads call this function simultaneously, it is possible that they
+> will receive the same return value.
 > This can be avoided in two ways:
 > 1. Put locks around all calls
-> 2. Use the slower, but thread-safe [`ixia.normal_variate()`](#normal_variate) function instead.
+> 2. Use the slower, but thread-safe [`ixia.normal_variate()`](#normal_variate)
+> function instead.
 
 
 ## `log_norm_variate`
@@ -70,6 +74,12 @@ Normal distribution, also called the Gaussian distribution.
 def log_norm_variate(mu: Number, sigma: Number) -> float
 ```
 
+Log normal distribution.
+
+If you take the natural logarithm of this distribution, you'll get a normal
+distribution with mean `mu` and standard deviation `sigma`. `mu` can have any
+value, and `sigma` must be greater than \\( 0 \\).
+
 
 ## `normal_variate`
 
@@ -78,6 +88,10 @@ def log_norm_variate(mu: Number, sigma: Number) -> float
 ```py
 def normal_variate(mu: Number, sigma: Number) -> float
 ```
+
+Normal distribution.
+
+`mu` is the mean, and `sigma` is the standard deviation.
 
 
 ## `pareto_variate`
@@ -88,6 +102,10 @@ def normal_variate(mu: Number, sigma: Number) -> float
 def pareto_variate(alpha: Number) -> float
 ```
 
+Pareto distribution.
+
+`alpha` is the shape parameter.
+
 
 ## `random`
 
@@ -96,6 +114,8 @@ def pareto_variate(alpha: Number) -> float
 ```py
 def random() -> float
 ```
+
+Generates a random floating point number in the range \\( [0, 1) \\).
 
 
 ## `triangular`
@@ -110,6 +130,11 @@ def triangular(
 ) -> float
 ```
 
+Returns a random floating point number `N` such that `low <= N <= high` and
+with the specified mode between those bounds. The low and high bounds default
+to zero and one. The mode argument defaults to the midpoint between the
+bounds, giving a symmetric distribution.
+
 
 ## `uniform`
 
@@ -118,6 +143,12 @@ def triangular(
 ```py
 def uniform(a: Number, b: Number) -> float
 ```
+
+Returns a random floating point number `N` such that `a <= N <= b` for `a <= b`
+and `b <= N <= a` for `b < a`.
+
+The end-point value b may or may not be included in the range depending on
+floating-point rounding in the equation `a + (b-a) * random()`.
 
 
 ## `von_mises_variate`
@@ -128,6 +159,12 @@ def uniform(a: Number, b: Number) -> float
 def von_mises_variate(mu: Number, kappa: Number) -> float
 ```
 
+`mu` is the mean angle, expressed in radians between \\( 0 \\)
+and \\( 2\pi \\), and `kappa` is the concentration parameter, which must be
+greater than or equal to zero. If `kappa` is equal to zero, this distribution
+reduces to a uniform random angle over the range \\( 0 \\) to \\( 2\pi \\).
+
+
 ## `weibull_variate`
 
 > Link: [Original section for `random.weibullvariate`](https://docs.python.org/3/library/random.html#random.weibullvariate)
@@ -135,3 +172,7 @@ def von_mises_variate(mu: Number, kappa: Number) -> float
 ```py
 def weibull_variate(alpha: Number, beta: Number) -> float
 ```
+
+Weibull distribution.
+
+`alpha` is the scale parameter and `beta` is the shape parameter.
