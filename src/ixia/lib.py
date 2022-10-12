@@ -297,7 +297,7 @@ def sample(seq: Sequence[T], k: int, *, counts: Iterable[int] | None = None) -> 
             pool[j] = pool[n - i - 1]
     else:
         selected: set[int] = set()
-        for i in range(k):
+        for _ in range(k):
             while (j := s.randbelow(n)) in selected:
                 pass
             selected.add(j)
