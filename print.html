@@ -276,7 +276,8 @@ If <code>seq</code> is an immutable type <code>IM[T]</code>, the function will r
 <pre><code class="language-py">def beta_variate(alpha: Number, beta: Number) -&gt; float
 </code></pre>
 <p>Beta distribution.</p>
-<p>Conditions on the parameters are <code>alpha &gt; 0</code> and <code>beta &gt; 0</code>. Returned values range between 0 and 1.</p>
+<p>Conditions on the parameters are <code>alpha &gt; 0</code> and <code>beta &gt; 0</code>.
+Returned values range between \( 0 \) and \( 1 \).</p>
 <h2 id="expo_variate"><a class="header" href="#expo_variate"><code>expo_variate</code></a></h2>
 <blockquote>
 <p>Link: <a href="https://docs.python.org/3/library/random.html#random.expovariate">Original section for <code>random.expovariate</code></a></p>
@@ -284,9 +285,9 @@ If <code>seq</code> is an immutable type <code>IM[T]</code>, the function will r
 <pre><code class="language-py">def expo_variate(lambda_: float) -&gt; float
 </code></pre>
 <p>Exponential distribution.</p>
-<p><code>lambda_</code> is 1.0 divided by the desired mean. It should be nonzero. Returned
-values are in range \( [0, +\infty) \) for <code>lambda_ &gt; 0</code>, and \( (-\infty, 0] \) for
-<code>lambda_ &lt; 0</code>.</p>
+<p><code>lambda_</code> is \( 1 \) divided by the desired mean. It should be nonzero.
+Returned values are in range \( [0, +\infty) \) for <code>lambda_ &gt; 0</code>,
+and \( (-\infty, 0] \) for <code>lambda_ &lt; 0</code>.</p>
 <h2 id="gamma_variate"><a class="header" href="#gamma_variate"><code>gamma_variate</code></a></h2>
 <blockquote>
 <p>Link: <a href="https://docs.python.org/3/library/random.html#random.gammavariate">Original section for <code>random.gammavariate</code></a></p>
@@ -304,14 +305,17 @@ values are in range \( [0, +\infty) \) for <code>lambda_ &gt; 0</code>, and \( (
 <pre><code class="language-py">def gauss(mu: Number, sigma: Number) -&gt; float
 </code></pre>
 <p>Normal distribution, also called the Gaussian distribution.</p>
-<p><code>mu</code> is the mean, and <code>sigma</code> is the standard deviation. This is slightly faster than the <a href="distributions.html#normal_variate"><code>ixia.normal_variate()</code></a> function.</p>
+<p><code>mu</code> is the mean, and <code>sigma</code> is the standard deviation. This is slightly
+faster than the <a href="distributions.html#normal_variate"><code>ixia.normal_variate()</code></a> function.</p>
 <blockquote>
 <p><strong>Multitherading Note</strong><br />
-When two threads call this function simultaneously, it is possible that they will receive the same return value.
+When two threads call this function simultaneously, it is possible that they
+will receive the same return value.
 This can be avoided in two ways:</p>
 <ol>
 <li>Put locks around all calls</li>
-<li>Use the slower, but thread-safe <a href="distributions.html#normal_variate"><code>ixia.normal_variate()</code></a> function instead.</li>
+<li>Use the slower, but thread-safe <a href="distributions.html#normal_variate"><code>ixia.normal_variate()</code></a>
+function instead.</li>
 </ol>
 </blockquote>
 <h2 id="log_norm_variate"><a class="header" href="#log_norm_variate"><code>log_norm_variate</code></a></h2>
@@ -320,24 +324,33 @@ This can be avoided in two ways:</p>
 </blockquote>
 <pre><code class="language-py">def log_norm_variate(mu: Number, sigma: Number) -&gt; float
 </code></pre>
+<p>Log normal distribution.</p>
+<p>If you take the natural logarithm of this distribution, you'll get a normal
+distribution with mean <code>mu</code> and standard deviation <code>sigma</code>. <code>mu</code> can have any
+value, and <code>sigma</code> must be greater than \( 0 \).</p>
 <h2 id="normal_variate"><a class="header" href="#normal_variate"><code>normal_variate</code></a></h2>
 <blockquote>
 <p>Link: <a href="https://docs.python.org/3/library/random.html#random.normalvariate">Original section for <code>random.normalvariate</code></a></p>
 </blockquote>
 <pre><code class="language-py">def normal_variate(mu: Number, sigma: Number) -&gt; float
 </code></pre>
+<p>Normal distribution.</p>
+<p><code>mu</code> is the mean, and <code>sigma</code> is the standard deviation.</p>
 <h2 id="pareto_variate"><a class="header" href="#pareto_variate"><code>pareto_variate</code></a></h2>
 <blockquote>
 <p>Link: <a href="https://docs.python.org/3/library/random.html#random.paretovariate">Original section for <code>random.paretovariate</code></a></p>
 </blockquote>
 <pre><code class="language-py">def pareto_variate(alpha: Number) -&gt; float
 </code></pre>
+<p>Pareto distribution.</p>
+<p><code>alpha</code> is the shape parameter.</p>
 <h2 id="random"><a class="header" href="#random"><code>random</code></a></h2>
 <blockquote>
 <p>Link: <a href="https://docs.python.org/3/library/random.html#random.random">Original section for <code>random.random</code></a></p>
 </blockquote>
 <pre><code class="language-py">def random() -&gt; float
 </code></pre>
+<p>Generates a random floating point number in the range \( [0, 1) \).</p>
 <h2 id="triangular"><a class="header" href="#triangular"><code>triangular</code></a></h2>
 <blockquote>
 <p>Link: <a href="https://docs.python.org/3/library/random.html#random.triangular">Original section for <code>random.triangular</code></a></p>
@@ -348,24 +361,38 @@ This can be avoided in two ways:</p>
     mode: float | None = None
 ) -&gt; float
 </code></pre>
+<p>Returns a random floating point number <code>N</code> such that <code>low &lt;= N &lt;= high</code> and
+with the specified mode between those bounds. The low and high bounds default
+to zero and one. The mode argument defaults to the midpoint between the
+bounds, giving a symmetric distribution.</p>
 <h2 id="uniform"><a class="header" href="#uniform"><code>uniform</code></a></h2>
 <blockquote>
 <p>Link: <a href="https://docs.python.org/3/library/random.html#random.uniform">Original section for <code>random.uniform</code></a></p>
 </blockquote>
 <pre><code class="language-py">def uniform(a: Number, b: Number) -&gt; float
 </code></pre>
+<p>Returns a random floating point number <code>N</code> such that <code>a &lt;= N &lt;= b</code> for <code>a &lt;= b</code>
+and <code>b &lt;= N &lt;= a</code> for <code>b &lt; a</code>.</p>
+<p>The end-point value b may or may not be included in the range depending on
+floating-point rounding in the equation <code>a + (b-a) * random()</code>.</p>
 <h2 id="von_mises_variate"><a class="header" href="#von_mises_variate"><code>von_mises_variate</code></a></h2>
 <blockquote>
 <p>Link: <a href="https://docs.python.org/3/library/random.html#random.vonmisesvariate">Original section for <code>random.vonmisesvariate</code></a></p>
 </blockquote>
 <pre><code class="language-py">def von_mises_variate(mu: Number, kappa: Number) -&gt; float
 </code></pre>
+<p><code>mu</code> is the mean angle, expressed in radians between \( 0 \)
+and \( 2\pi \), and <code>kappa</code> is the concentration parameter, which must be
+greater than or equal to zero. If <code>kappa</code> is equal to zero, this distribution
+reduces to a uniform random angle over the range \( 0 \) to \( 2\pi \).</p>
 <h2 id="weibull_variate"><a class="header" href="#weibull_variate"><code>weibull_variate</code></a></h2>
 <blockquote>
 <p>Link: <a href="https://docs.python.org/3/library/random.html#random.weibullvariate">Original section for <code>random.weibullvariate</code></a></p>
 </blockquote>
 <pre><code class="language-py">def weibull_variate(alpha: Number, beta: Number) -&gt; float
 </code></pre>
+<p>Weibull distribution.</p>
+<p><code>alpha</code> is the scale parameter and <code>beta</code> is the shape parameter.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="credits"><a class="header" href="#credits">Credits</a></h1>
 <ul>
 <li>The original <code>random</code> module documentation: <a href="https://docs.python.org/3/library/random.html">Python Software Foundation</a></li>
