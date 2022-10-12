@@ -273,7 +273,7 @@ keyword-only <code>counts</code> parameter. For example,</p>
 <pre><code class="language-py">sample([&quot;red&quot;, &quot;red&quot;, &quot;red&quot;, &quot;red&quot;, &quot;blue&quot;, &quot;blue&quot;, k=5])
 </code></pre>
 <p>To choose a sample from a range of integers, use a <code>range()</code> object as an argument. This is especially fast and space efficient for sampling from a large population:</p>
-<pre><code class="language-py">sample(range(10_000_000), k=60)
+<pre><code class="language-py">sample(range(10 ** 7), k=60)
 </code></pre>
 <p>If the sample size is larger than the population size, a <code>ValueError</code> is raised.</p>
 <h2 id="ixiashuffle"><a class="header" href="#ixiashuffle"><code>ixia.shuffle</code></a></h2>
