@@ -16,3 +16,6 @@ Additionally, Ixia executes 3.9 and 3.10 deprecations, thus:
 - `ixia.rand_range` doesn't convert non-integer types to equivalent integers
 - `ixia.sample` doesn't support `set` as a sequence type
 - `ixia.shuffle` doesn't support the `random` parameter
+
+On the following pages of this documentation, function signatures often mention
+the `Number` type—that's simply an alias to `Union[int, float]`.
