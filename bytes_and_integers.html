@@ -148,9 +148,16 @@
 <blockquote>
 <p>Link: <a href="https://docs.python.org/3/library/random.html#random.randbytes">Original section for <code>random.randbytes</code></a></p>
 </blockquote>
-<pre><code class="language-py">def rand_bytes(n: int) -&gt; bytes
+<pre><code class="language-py">def rand_bytes(n: int = 32) -&gt; bytes
 </code></pre>
-<p>Generates <code>n</code> random bytes.</p>
+<p>Generates <code>n</code> random bytes. Defaults to 32.</p>
+<h2 id="rand_hex"><a class="header" href="#rand_hex"><code>rand_hex</code></a></h2>
+<blockquote>
+<p>Link: <a href="https://docs.python.org/3/library/secrets.html#secrets.token_hex">Original section for <code>secrets.token_hex</code></a></p>
+</blockquote>
+<pre><code class="language-py">def rand_hex(n: int) -&gt; str
+</code></pre>
+<p>Returns a hex string composed of <code>n</code> random bytes.</p>
 <h2 id="rand_int"><a class="header" href="#rand_int"><code>rand_int</code></a></h2>
 <blockquote>
 <p>Link: <a href="https://docs.python.org/3/library/random.html#random.randint">Original section for <code>random.randint</code></a></p>
@@ -170,6 +177,13 @@ equivalent to <code>ixia.choice(range(start, stop, step))</code>, but doesn't ac
 build a range object.</p>
 <p>The positional argument pattern matches that of <code>range()</code>. Keyword arguments
 should not be used because the function may use them in unexpected ways.</p>
+<h2 id="rand_urlsafe"><a class="header" href="#rand_urlsafe"><code>rand_urlsafe</code></a></h2>
+<blockquote>
+<p><a href="https://docs.python.org/3/library/secrets.html#secrets.token_urlsafe">Original section for <code>secrets.token_urlsafe</code></a></p>
+</blockquote>
+<pre><code class="language-py">def rand_urlsafe(n: int = 32) -&gt; str
+</code></pre>
+<p>Returns a random URL-safe text string, composed of <code>n</code> bytes, in Base64 encoding. Defaults to 32.</p>
 <h2 id="universe_rand"><a class="header" href="#universe_rand"><code>universe_rand</code></a></h2>
 <pre><code class="language-py">def universe_rand() -&gt; int
 </code></pre>
