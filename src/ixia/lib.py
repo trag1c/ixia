@@ -206,11 +206,6 @@ def rand_int(a: int, b: int) -> int:
     return rand_range(a, b + 1)
 
 
-def random() -> float:
-    """Generates a random number in range [0.0, 1.0)."""
-    return (int.from_bytes(urandom(7), "big") >> 3) * 2**-53
-
-
 def rand_hex(n: int) -> str:
     """Returns a hex string composed of n random bytes."""
     return "".join(f"{s.randbelow(255):0>2x}" for _ in range(n))
@@ -246,6 +241,10 @@ def rand_urlsafe(n: int = 32) -> str:
     """Returns a random URL-safe text string, in Base64 encoding."""
     return urlsafe_b64encode(rand_bytes(n)).rstrip(b"=").decode("ascii")
 
+
+def random() -> float:
+    """Generates a random number in range [0.0, 1.0)."""
+    return (int.from_bytes(urandom(7), "big") >> 3) * 2**-53
 
 
 def sample(seq: Sequence[T], k: int, *, counts: Iterable[int] | None = None) -> list[T]:
