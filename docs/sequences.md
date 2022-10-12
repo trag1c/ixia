@@ -1,6 +1,6 @@
 # Sequences
 
-## `choice`
+## `ixia.choice`
 
 > **Link:** [Original section for `random.choices`](https://docs.python.org/3/library/random.html#random.choice)
 
@@ -13,7 +13,7 @@ Chooses a random element from a non-empty sequence `seq`.
 If `seq` is empty, `IndexError` is raised.
 
 
-## `choices`
+## `ixia.choices`
 
 > **Link:** [Original section for `random.choices`](https://docs.python.org/3/library/random.html#random.choices)
 
@@ -48,7 +48,7 @@ interoperates with the `float` values returned by [`ixia.random()`](distribution
 includes integers, floats, and fractions but excludes decimals). Weights are
 assumed to be non-negative and finite. If all weights are zero, a `ValueError` is raised.
 
-## `sample`
+## `ixia.sample`
 
 > **Link:** [Original section for `random.sample`](https://docs.python.org/3/library/random.html#random.sample)
 
@@ -88,7 +88,7 @@ sample(range(10_000_000), k=60)
 
 If the sample size is larger than the population size, a `ValueError` is raised.
 
-## `shuffle`
+## `ixia.shuffle`
 
 > **Link:** [Original section for `random.shuffle`](https://docs.python.org/3/library/random.html#random.shuffle)
 
@@ -101,7 +101,7 @@ Shuffles the sequence `seq` in place.
 > For out of place shuffling, use [`ixia.shuffled()`](#shuffled).
 
 
-## `shuffled`
+## `ixia.shuffled`
 
 ```py
 def shuffled(seq: Sequence[T]) -> MutableSequence[T]

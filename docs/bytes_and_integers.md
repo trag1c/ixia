@@ -1,6 +1,6 @@
 # Bytes and integers
 
-## `rand_bits`
+## `ixia.rand_bits`
 
 > **Link:** [Original section for `random.getrandbits`](https://docs.python.org/3/library/random.html#random.getrandbits)
 
@@ -11,7 +11,7 @@ def rand_bits(k: int) -> int
 Returns a non-negative Python integer with `k` random bits.
 
 
-## `rand_bytes`
+## `ixia.rand_bytes`
 
 > **Link:** [Original section for `random.randbytes`](https://docs.python.org/3/library/random.html#random.randbytes)
 
@@ -22,7 +22,7 @@ def rand_bytes(n: int = 32) -> bytes
 Generates `n` random bytes. Defaults to 32.
 
 
-## `rand_hex`
+## `ixia.rand_hex`
 
 > **Link:** [Original section for `secrets.token_hex`](https://docs.python.org/3/library/secrets.html#secrets.token_hex)
 
@@ -33,7 +33,7 @@ def rand_hex(n: int) -> str
 Returns a hex string composed of `n` random bytes.
 
 
-## `rand_int`
+## `ixia.rand_int`
 
 > **Link:** [Original section for `random.randint`](https://docs.python.org/3/library/random.html#random.randint)
 
@@ -44,7 +44,7 @@ def rand_int(a: int, b: int) -> int
 Returns a random integer `N` such that `a <= N <= b`.
 Alias for [`ixia.rand_range(a, b+1)`](#rand_range).
 
-## `rand_range`
+## `ixia.rand_range`
 
 > **Link:** [Original section for `random.randrange`](https://docs.python.org/3/library/random.html#random.randrange)
 
@@ -60,7 +60,7 @@ The positional argument pattern matches that of `range()`. Keyword arguments
 should not be used because the function may use them in unexpected ways.
 
 
-## `rand_urlsafe`
+## `ixia.rand_urlsafe`
 
 > [Original section for `secrets.token_urlsafe`](https://docs.python.org/3/library/secrets.html#secrets.token_urlsafe)
 
@@ -71,7 +71,7 @@ def rand_urlsafe(n: int = 32) -> str
 Returns a random URL-safe text string, composed of `n` bytes, in Base64 encoding. Defaults to 32.
 
 
-## `universe_rand`
+## `ixia.universe_rand`
 
 ```py
 def universe_rand() -> int

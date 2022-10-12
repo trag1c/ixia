@@ -1,6 +1,6 @@
 # Real-valued distributions
 
-## `beta_variate`
+## `ixia.beta_variate`
 
 > **Link:** [Original section for `random.betavariate`](https://docs.python.org/3/library/random.html#random.betavariate)
 
@@ -14,7 +14,7 @@ Conditions on the parameters are `alpha > 0` and `beta > 0`.
 Returned values range between \\( 0 \\) and \\( 1 \\).
 
 
-## `expo_variate`
+## `ixia.expo_variate`
 
 > **Link:** [Original section for `random.expovariate`](https://docs.python.org/3/library/random.html#random.expovariate)
 
@@ -29,7 +29,7 @@ Returned values are in range \\( [0, +\infty) \\) for `lambda_ > 0`,
 and \\( (-\infty, 0] \\) for `lambda_ < 0`.
 
 
-## `gamma_variate`
+## `ixia.gamma_variate`
 
 > **Link:** [Original section for `random.gammavariate`](https://docs.python.org/3/library/random.html#random.gammavariate)
 
@@ -44,7 +44,7 @@ Conditions on the parameters are `alpha > 0` and `beta > 0`.
 The probability distribution function is
 \\[ f(x)=\frac{x^{\alpha-1}\cdot e^{\frac{-x}{\beta}}}{\Gamma(\alpha)\cdot\beta^\alpha} \\]
 
-## `gauss`
+## `ixia.gauss`
 
 > **Link:** [Original section for `random.gauss`](https://docs.python.org/3/library/random.html#random.gauss)
 
@@ -66,7 +66,7 @@ faster than the [`ixia.normal_variate()`](#normal_variate) function.
 > function instead.
 
 
-## `log_norm_variate`
+## `ixia.log_norm_variate`
 
 > **Link:** [Original section for `random.lognormvariate`](https://docs.python.org/3/library/random.html#random.lognormvariate)
 
@@ -81,7 +81,7 @@ distribution with mean `mu` and standard deviation `sigma`. `mu` can have any
 value, and `sigma` must be greater than \\( 0 \\).
 
 
-## `normal_variate`
+## `ixia.normal_variate`
 
 > **Link:** [Original section for `random.normalvariate`](https://docs.python.org/3/library/random.html#random.normalvariate)
 
@@ -94,7 +94,7 @@ Normal distribution.
 `mu` is the mean, and `sigma` is the standard deviation.
 
 
-## `pareto_variate`
+## `ixia.pareto_variate`
 
 > **Link:** [Original section for `random.paretovariate`](https://docs.python.org/3/library/random.html#random.paretovariate)
 
@@ -107,7 +107,7 @@ Pareto distribution.
 `alpha` is the shape parameter.
 
 
-## `random`
+## `ixia.random`
 
 > **Link:** [Original section for `random.random`](https://docs.python.org/3/library/random.html#random.random)
 
@@ -118,7 +118,7 @@ def random() -> float
 Generates a random floating point number in the range \\( [0, 1) \\).
 
 
-## `triangular`
+## `ixia.triangular`
 
 > **Link:** [Original section for `random.triangular`](https://docs.python.org/3/library/random.html#random.triangular)
 
@@ -136,7 +136,7 @@ to zero and one. The mode argument defaults to the midpoint between the
 bounds, giving a symmetric distribution.
 
 
-## `uniform`
+## `ixia.uniform`
 
 > **Link:** [Original section for `random.uniform`](https://docs.python.org/3/library/random.html#random.uniform)
 
@@ -151,7 +151,7 @@ The end-point value b may or may not be included in the range depending on
 floating-point rounding in the equation `a + (b-a) * random()`.
 
 
-## `von_mises_variate`
+## `ixia.von_mises_variate`
 
 > **Link:** [Original section for `random.vonmisesvariate`](https://docs.python.org/3/library/random.html#random.vonmisesvariate)
 
@@ -165,7 +165,7 @@ greater than or equal to zero. If `kappa` is equal to zero, this distribution
 reduces to a uniform random angle over the range \\( 0 \\) to \\( 2\pi \\).
 
 
-## `weibull_variate`
+## `ixia.weibull_variate`
 
 > **Link:** [Original section for `random.weibullvariate`](https://docs.python.org/3/library/random.html#random.weibullvariate)
 
