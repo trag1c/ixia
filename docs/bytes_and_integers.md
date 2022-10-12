@@ -16,10 +16,21 @@ Returns a non-negative Python integer with `k` random bits.
 > Link: [Original section for `random.randbytes`](https://docs.python.org/3/library/random.html#random.randbytes)
 
 ```py
-def rand_bytes(n: int) -> bytes
+def rand_bytes(n: int = 32) -> bytes
 ```
 
-Generates `n` random bytes.
+Generates `n` random bytes. Defaults to 32.
+
+
+## `rand_hex`
+
+> Link: [Original section for `secrets.token_hex`](https://docs.python.org/3/library/secrets.html#secrets.token_hex)
+
+```py
+def rand_hex(n: int) -> str
+```
+
+Returns a hex string composed of `n` random bytes.
 
 
 ## `rand_int`
@@ -47,6 +58,17 @@ build a range object.
 
 The positional argument pattern matches that of `range()`. Keyword arguments
 should not be used because the function may use them in unexpected ways.
+
+
+## `rand_urlsafe`
+
+> [Original section for `secrets.token_urlsafe`](https://docs.python.org/3/library/secrets.html#secrets.token_urlsafe)
+
+```py
+def rand_urlsafe(n: int = 32) -> str
+```
+
+Returns a random URL-safe text string, composed of `n` bytes, in Base64 encoding. Defaults to 32.
 
 
 ## `universe_rand`
