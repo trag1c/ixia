@@ -195,8 +195,8 @@ def rand_bits(k: int) -> int:
     return x >> (numbytes * 8 - k)
 
 
-def rand_bytes(n: int) -> bytes:
-    """Generates n random bytes."""
+def rand_bytes(n: int = 32) -> bytes:
+    """Generates n random bytes. Defaults to 32."""
     return urandom(n)
 
 
