@@ -158,38 +158,38 @@ since Python 3.8:</p>
 <li><code>ixia.shuffle</code> doesn't support the <code>random</code> parameter</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="bytes-and-integers"><a class="header" href="#bytes-and-integers">Bytes and integers</a></h1>
-<h2 id="rand_bits"><a class="header" href="#rand_bits"><code>rand_bits</code></a></h2>
+<h2 id="ixiarand_bits"><a class="header" href="#ixiarand_bits"><code>ixia.rand_bits</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.getrandbits">Original section for <code>random.getrandbits</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.getrandbits">Original section for <code>random.getrandbits</code></a></p>
 </blockquote>
 <pre><code class="language-py">def rand_bits(k: int) -&gt; int
 </code></pre>
 <p>Returns a non-negative Python integer with <code>k</code> random bits.</p>
-<h2 id="rand_bytes"><a class="header" href="#rand_bytes"><code>rand_bytes</code></a></h2>
+<h2 id="ixiarand_bytes"><a class="header" href="#ixiarand_bytes"><code>ixia.rand_bytes</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.randbytes">Original section for <code>random.randbytes</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.randbytes">Original section for <code>random.randbytes</code></a></p>
 </blockquote>
 <pre><code class="language-py">def rand_bytes(n: int = 32) -&gt; bytes
 </code></pre>
 <p>Generates <code>n</code> random bytes. Defaults to 32.</p>
-<h2 id="rand_hex"><a class="header" href="#rand_hex"><code>rand_hex</code></a></h2>
+<h2 id="ixiarand_hex"><a class="header" href="#ixiarand_hex"><code>ixia.rand_hex</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/secrets.html#secrets.token_hex">Original section for <code>secrets.token_hex</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/secrets.html#secrets.token_hex">Original section for <code>secrets.token_hex</code></a></p>
 </blockquote>
 <pre><code class="language-py">def rand_hex(n: int) -&gt; str
 </code></pre>
 <p>Returns a hex string composed of <code>n</code> random bytes.</p>
-<h2 id="rand_int"><a class="header" href="#rand_int"><code>rand_int</code></a></h2>
+<h2 id="ixiarand_int"><a class="header" href="#ixiarand_int"><code>ixia.rand_int</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.randint">Original section for <code>random.randint</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.randint">Original section for <code>random.randint</code></a></p>
 </blockquote>
 <pre><code class="language-py">def rand_int(a: int, b: int) -&gt; int
 </code></pre>
 <p>Returns a random integer <code>N</code> such that <code>a &lt;= N &lt;= b</code>.
 Alias for <a href="bytes_and_integers.html#rand_range"><code>ixia.rand_range(a, b+1)</code></a>.</p>
-<h2 id="rand_range"><a class="header" href="#rand_range"><code>rand_range</code></a></h2>
+<h2 id="ixiarand_range"><a class="header" href="#ixiarand_range"><code>ixia.rand_range</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.randrange">Original section for <code>random.randrange</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.randrange">Original section for <code>random.randrange</code></a></p>
 </blockquote>
 <pre><code class="language-py">def rand_range(start: int, stop: int | None = None, step: int = 1) -&gt; int
 </code></pre>
@@ -198,28 +198,28 @@ equivalent to <code>ixia.choice(range(start, stop, step))</code>, but doesn't ac
 build a range object.</p>
 <p>The positional argument pattern matches that of <code>range()</code>. Keyword arguments
 should not be used because the function may use them in unexpected ways.</p>
-<h2 id="rand_urlsafe"><a class="header" href="#rand_urlsafe"><code>rand_urlsafe</code></a></h2>
+<h2 id="ixiarand_urlsafe"><a class="header" href="#ixiarand_urlsafe"><code>ixia.rand_urlsafe</code></a></h2>
 <blockquote>
 <p><a href="https://docs.python.org/3/library/secrets.html#secrets.token_urlsafe">Original section for <code>secrets.token_urlsafe</code></a></p>
 </blockquote>
 <pre><code class="language-py">def rand_urlsafe(n: int = 32) -&gt; str
 </code></pre>
 <p>Returns a random URL-safe text string, composed of <code>n</code> bytes, in Base64 encoding. Defaults to 32.</p>
-<h2 id="universe_rand"><a class="header" href="#universe_rand"><code>universe_rand</code></a></h2>
+<h2 id="ixiauniverse_rand"><a class="header" href="#ixiauniverse_rand"><code>ixia.universe_rand</code></a></h2>
 <pre><code class="language-py">def universe_rand() -&gt; int
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="sequences"><a class="header" href="#sequences">Sequences</a></h1>
-<h2 id="choice"><a class="header" href="#choice"><code>choice</code></a></h2>
+<h2 id="ixiachoice"><a class="header" href="#ixiachoice"><code>ixia.choice</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.choice">Original section for <code>random.choices</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.choice">Original section for <code>random.choices</code></a></p>
 </blockquote>
 <pre><code class="language-py">def choice(seq: Sequence[T]) -&gt; T
 </code></pre>
 <p>Chooses a random element from a non-empty sequence <code>seq</code>.</p>
 <p>If <code>seq</code> is empty, <code>IndexError</code> is raised.</p>
-<h2 id="choices"><a class="header" href="#choices"><code>choices</code></a></h2>
+<h2 id="ixiachoices"><a class="header" href="#ixiachoices"><code>ixia.choices</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.choices">Original section for <code>random.choices</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.choices">Original section for <code>random.choices</code></a></p>
 </blockquote>
 <pre><code class="language-py">def choices(
     seq: Sequence[T],
@@ -246,9 +246,9 @@ same length as the <code>seq</code> sequence. Specifying both <code>weights</cod
 interoperates with the <code>float</code> values returned by <a href="distributions.html#random"><code>ixia.random()</code></a> (that
 includes integers, floats, and fractions but excludes decimals). Weights are
 assumed to be non-negative and finite. If all weights are zero, a <code>ValueError</code> is raised.</p>
-<h2 id="sample"><a class="header" href="#sample"><code>sample</code></a></h2>
+<h2 id="ixiasample"><a class="header" href="#ixiasample"><code>ixia.sample</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.sample">Original section for <code>random.sample</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.sample">Original section for <code>random.sample</code></a></p>
 </blockquote>
 <pre><code class="language-py">def sample(
     seq: Sequence[T],
@@ -276,9 +276,9 @@ keyword-only <code>counts</code> parameter. For example,</p>
 <pre><code class="language-py">sample(range(10_000_000), k=60)
 </code></pre>
 <p>If the sample size is larger than the population size, a <code>ValueError</code> is raised.</p>
-<h2 id="shuffle"><a class="header" href="#shuffle"><code>shuffle</code></a></h2>
+<h2 id="ixiashuffle"><a class="header" href="#ixiashuffle"><code>ixia.shuffle</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.shuffle">Original section for <code>random.shuffle</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.shuffle">Original section for <code>random.shuffle</code></a></p>
 </blockquote>
 <pre><code class="language-py">def shuffle(seq: MutableSequence[Any]) -&gt; None
 </code></pre>
@@ -286,7 +286,7 @@ keyword-only <code>counts</code> parameter. For example,</p>
 <blockquote>
 <p>For out of place shuffling, use <a href="sequences.html#shuffled"><code>ixia.shuffled()</code></a>.</p>
 </blockquote>
-<h2 id="shuffled"><a class="header" href="#shuffled"><code>shuffled</code></a></h2>
+<h2 id="ixiashuffled"><a class="header" href="#ixiashuffled"><code>ixia.shuffled</code></a></h2>
 <pre><code class="language-py">def shuffled(seq: Sequence[T]) -&gt; MutableSequence[T]
 </code></pre>
 <p>Shuffles the sequence <code>seq</code> out of place.</p>
@@ -296,18 +296,18 @@ If <code>seq</code> is an immutable type <code>IM[T]</code>, the function will r
 <p>For in place shuffling, use <a href="sequences.html#shuffle"><code>ixia.shuffle()</code></a>.</p>
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="real-valued-distributions"><a class="header" href="#real-valued-distributions">Real-valued distributions</a></h1>
-<h2 id="beta_variate"><a class="header" href="#beta_variate"><code>beta_variate</code></a></h2>
+<h2 id="ixiabeta_variate"><a class="header" href="#ixiabeta_variate"><code>ixia.beta_variate</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.betavariate">Original section for <code>random.betavariate</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.betavariate">Original section for <code>random.betavariate</code></a></p>
 </blockquote>
 <pre><code class="language-py">def beta_variate(alpha: Number, beta: Number) -&gt; float
 </code></pre>
 <p>Beta distribution.</p>
 <p>Conditions on the parameters are <code>alpha &gt; 0</code> and <code>beta &gt; 0</code>.
 Returned values range between \( 0 \) and \( 1 \).</p>
-<h2 id="expo_variate"><a class="header" href="#expo_variate"><code>expo_variate</code></a></h2>
+<h2 id="ixiaexpo_variate"><a class="header" href="#ixiaexpo_variate"><code>ixia.expo_variate</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.expovariate">Original section for <code>random.expovariate</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.expovariate">Original section for <code>random.expovariate</code></a></p>
 </blockquote>
 <pre><code class="language-py">def expo_variate(lambda_: float) -&gt; float
 </code></pre>
@@ -315,9 +315,9 @@ Returned values range between \( 0 \) and \( 1 \).</p>
 <p><code>lambda_</code> is \( 1 \) divided by the desired mean. It should be nonzero.
 Returned values are in range \( [0, +\infty) \) for <code>lambda_ &gt; 0</code>,
 and \( (-\infty, 0] \) for <code>lambda_ &lt; 0</code>.</p>
-<h2 id="gamma_variate"><a class="header" href="#gamma_variate"><code>gamma_variate</code></a></h2>
+<h2 id="ixiagamma_variate"><a class="header" href="#ixiagamma_variate"><code>ixia.gamma_variate</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.gammavariate">Original section for <code>random.gammavariate</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.gammavariate">Original section for <code>random.gammavariate</code></a></p>
 </blockquote>
 <pre><code class="language-py">def gamma_variate(alpha: Number, beta: Number) -&gt; float
 </code></pre>
@@ -325,9 +325,9 @@ and \( (-\infty, 0] \) for <code>lambda_ &lt; 0</code>.</p>
 <p>Conditions on the parameters are <code>alpha &gt; 0</code> and <code>beta &gt; 0</code>.</p>
 <p>The probability distribution function is
 \[ f(x)=\frac{x^{\alpha-1}\cdot e^{\frac{-x}{\beta}}}{\Gamma(\alpha)\cdot\beta^\alpha} \]</p>
-<h2 id="gauss"><a class="header" href="#gauss"><code>gauss</code></a></h2>
+<h2 id="ixiagauss"><a class="header" href="#ixiagauss"><code>ixia.gauss</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.gauss">Original section for <code>random.gauss</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.gauss">Original section for <code>random.gauss</code></a></p>
 </blockquote>
 <pre><code class="language-py">def gauss(mu: Number, sigma: Number) -&gt; float
 </code></pre>
@@ -345,9 +345,9 @@ This can be avoided in two ways:</p>
 function instead.</li>
 </ol>
 </blockquote>
-<h2 id="log_norm_variate"><a class="header" href="#log_norm_variate"><code>log_norm_variate</code></a></h2>
+<h2 id="ixialog_norm_variate"><a class="header" href="#ixialog_norm_variate"><code>ixia.log_norm_variate</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.lognormvariate">Original section for <code>random.lognormvariate</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.lognormvariate">Original section for <code>random.lognormvariate</code></a></p>
 </blockquote>
 <pre><code class="language-py">def log_norm_variate(mu: Number, sigma: Number) -&gt; float
 </code></pre>
@@ -355,32 +355,32 @@ function instead.</li>
 <p>If you take the natural logarithm of this distribution, you'll get a normal
 distribution with mean <code>mu</code> and standard deviation <code>sigma</code>. <code>mu</code> can have any
 value, and <code>sigma</code> must be greater than \( 0 \).</p>
-<h2 id="normal_variate"><a class="header" href="#normal_variate"><code>normal_variate</code></a></h2>
+<h2 id="ixianormal_variate"><a class="header" href="#ixianormal_variate"><code>ixia.normal_variate</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.normalvariate">Original section for <code>random.normalvariate</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.normalvariate">Original section for <code>random.normalvariate</code></a></p>
 </blockquote>
 <pre><code class="language-py">def normal_variate(mu: Number, sigma: Number) -&gt; float
 </code></pre>
 <p>Normal distribution.</p>
 <p><code>mu</code> is the mean, and <code>sigma</code> is the standard deviation.</p>
-<h2 id="pareto_variate"><a class="header" href="#pareto_variate"><code>pareto_variate</code></a></h2>
+<h2 id="ixiapareto_variate"><a class="header" href="#ixiapareto_variate"><code>ixia.pareto_variate</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.paretovariate">Original section for <code>random.paretovariate</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.paretovariate">Original section for <code>random.paretovariate</code></a></p>
 </blockquote>
 <pre><code class="language-py">def pareto_variate(alpha: Number) -&gt; float
 </code></pre>
 <p>Pareto distribution.</p>
 <p><code>alpha</code> is the shape parameter.</p>
-<h2 id="random"><a class="header" href="#random"><code>random</code></a></h2>
+<h2 id="ixiarandom"><a class="header" href="#ixiarandom"><code>ixia.random</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.random">Original section for <code>random.random</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.random">Original section for <code>random.random</code></a></p>
 </blockquote>
 <pre><code class="language-py">def random() -&gt; float
 </code></pre>
 <p>Generates a random floating point number in the range \( [0, 1) \).</p>
-<h2 id="triangular"><a class="header" href="#triangular"><code>triangular</code></a></h2>
+<h2 id="ixiatriangular"><a class="header" href="#ixiatriangular"><code>ixia.triangular</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.triangular">Original section for <code>random.triangular</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.triangular">Original section for <code>random.triangular</code></a></p>
 </blockquote>
 <pre><code class="language-py">def triangular(
     low: float = 0.0,
@@ -392,9 +392,9 @@ value, and <code>sigma</code> must be greater than \( 0 \).</p>
 with the specified mode between those bounds. The low and high bounds default
 to zero and one. The mode argument defaults to the midpoint between the
 bounds, giving a symmetric distribution.</p>
-<h2 id="uniform"><a class="header" href="#uniform"><code>uniform</code></a></h2>
+<h2 id="ixiauniform"><a class="header" href="#ixiauniform"><code>ixia.uniform</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.uniform">Original section for <code>random.uniform</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.uniform">Original section for <code>random.uniform</code></a></p>
 </blockquote>
 <pre><code class="language-py">def uniform(a: Number, b: Number) -&gt; float
 </code></pre>
@@ -402,9 +402,9 @@ bounds, giving a symmetric distribution.</p>
 and <code>b &lt;= N &lt;= a</code> for <code>b &lt; a</code>.</p>
 <p>The end-point value b may or may not be included in the range depending on
 floating-point rounding in the equation <code>a + (b-a) * random()</code>.</p>
-<h2 id="von_mises_variate"><a class="header" href="#von_mises_variate"><code>von_mises_variate</code></a></h2>
+<h2 id="ixiavon_mises_variate"><a class="header" href="#ixiavon_mises_variate"><code>ixia.von_mises_variate</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.vonmisesvariate">Original section for <code>random.vonmisesvariate</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.vonmisesvariate">Original section for <code>random.vonmisesvariate</code></a></p>
 </blockquote>
 <pre><code class="language-py">def von_mises_variate(mu: Number, kappa: Number) -&gt; float
 </code></pre>
@@ -412,9 +412,9 @@ floating-point rounding in the equation <code>a + (b-a) * random()</code>.</p>
 and \( 2\pi \), and <code>kappa</code> is the concentration parameter, which must be
 greater than or equal to zero. If <code>kappa</code> is equal to zero, this distribution
 reduces to a uniform random angle over the range \( 0 \) to \( 2\pi \).</p>
-<h2 id="weibull_variate"><a class="header" href="#weibull_variate"><code>weibull_variate</code></a></h2>
+<h2 id="ixiaweibull_variate"><a class="header" href="#ixiaweibull_variate"><code>ixia.weibull_variate</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.weibullvariate">Original section for <code>random.weibullvariate</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.weibullvariate">Original section for <code>random.weibullvariate</code></a></p>
 </blockquote>
 <pre><code class="language-py">def weibull_variate(alpha: Number, beta: Number) -&gt; float
 </code></pre>

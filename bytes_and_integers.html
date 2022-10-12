@@ -137,38 +137,38 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="bytes-and-integers"><a class="header" href="#bytes-and-integers">Bytes and integers</a></h1>
-<h2 id="rand_bits"><a class="header" href="#rand_bits"><code>rand_bits</code></a></h2>
+<h2 id="ixiarand_bits"><a class="header" href="#ixiarand_bits"><code>ixia.rand_bits</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.getrandbits">Original section for <code>random.getrandbits</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.getrandbits">Original section for <code>random.getrandbits</code></a></p>
 </blockquote>
 <pre><code class="language-py">def rand_bits(k: int) -&gt; int
 </code></pre>
 <p>Returns a non-negative Python integer with <code>k</code> random bits.</p>
-<h2 id="rand_bytes"><a class="header" href="#rand_bytes"><code>rand_bytes</code></a></h2>
+<h2 id="ixiarand_bytes"><a class="header" href="#ixiarand_bytes"><code>ixia.rand_bytes</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.randbytes">Original section for <code>random.randbytes</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.randbytes">Original section for <code>random.randbytes</code></a></p>
 </blockquote>
 <pre><code class="language-py">def rand_bytes(n: int = 32) -&gt; bytes
 </code></pre>
 <p>Generates <code>n</code> random bytes. Defaults to 32.</p>
-<h2 id="rand_hex"><a class="header" href="#rand_hex"><code>rand_hex</code></a></h2>
+<h2 id="ixiarand_hex"><a class="header" href="#ixiarand_hex"><code>ixia.rand_hex</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/secrets.html#secrets.token_hex">Original section for <code>secrets.token_hex</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/secrets.html#secrets.token_hex">Original section for <code>secrets.token_hex</code></a></p>
 </blockquote>
 <pre><code class="language-py">def rand_hex(n: int) -&gt; str
 </code></pre>
 <p>Returns a hex string composed of <code>n</code> random bytes.</p>
-<h2 id="rand_int"><a class="header" href="#rand_int"><code>rand_int</code></a></h2>
+<h2 id="ixiarand_int"><a class="header" href="#ixiarand_int"><code>ixia.rand_int</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.randint">Original section for <code>random.randint</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.randint">Original section for <code>random.randint</code></a></p>
 </blockquote>
 <pre><code class="language-py">def rand_int(a: int, b: int) -&gt; int
 </code></pre>
 <p>Returns a random integer <code>N</code> such that <code>a &lt;= N &lt;= b</code>.
 Alias for <a href="#rand_range"><code>ixia.rand_range(a, b+1)</code></a>.</p>
-<h2 id="rand_range"><a class="header" href="#rand_range"><code>rand_range</code></a></h2>
+<h2 id="ixiarand_range"><a class="header" href="#ixiarand_range"><code>ixia.rand_range</code></a></h2>
 <blockquote>
-<p>Link: <a href="https://docs.python.org/3/library/random.html#random.randrange">Original section for <code>random.randrange</code></a></p>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.randrange">Original section for <code>random.randrange</code></a></p>
 </blockquote>
 <pre><code class="language-py">def rand_range(start: int, stop: int | None = None, step: int = 1) -&gt; int
 </code></pre>
@@ -177,14 +177,14 @@ equivalent to <code>ixia.choice(range(start, stop, step))</code>, but doesn't ac
 build a range object.</p>
 <p>The positional argument pattern matches that of <code>range()</code>. Keyword arguments
 should not be used because the function may use them in unexpected ways.</p>
-<h2 id="rand_urlsafe"><a class="header" href="#rand_urlsafe"><code>rand_urlsafe</code></a></h2>
+<h2 id="ixiarand_urlsafe"><a class="header" href="#ixiarand_urlsafe"><code>ixia.rand_urlsafe</code></a></h2>
 <blockquote>
 <p><a href="https://docs.python.org/3/library/secrets.html#secrets.token_urlsafe">Original section for <code>secrets.token_urlsafe</code></a></p>
 </blockquote>
 <pre><code class="language-py">def rand_urlsafe(n: int = 32) -&gt; str
 </code></pre>
 <p>Returns a random URL-safe text string, composed of <code>n</code> bytes, in Base64 encoding. Defaults to 32.</p>
-<h2 id="universe_rand"><a class="header" href="#universe_rand"><code>universe_rand</code></a></h2>
+<h2 id="ixiauniverse_rand"><a class="header" href="#ixiauniverse_rand"><code>ixia.universe_rand</code></a></h2>
 <pre><code class="language-py">def universe_rand() -&gt; int
 </code></pre>
 
