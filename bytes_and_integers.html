@@ -143,24 +143,33 @@
 </blockquote>
 <pre><code class="language-py">def rand_bits(k: int) -&gt; int
 </code></pre>
+<p>Returns a non-negative Python integer with <code>k</code> random bits.</p>
 <h2 id="rand_bytes"><a class="header" href="#rand_bytes"><code>rand_bytes</code></a></h2>
 <blockquote>
 <p>Link: <a href="https://docs.python.org/3/library/random.html#random.randbytes">Original section for <code>random.randbytes</code></a></p>
 </blockquote>
 <pre><code class="language-py">def rand_bytes(n: int) -&gt; bytes
 </code></pre>
+<p>Generates <code>n</code> random bytes.</p>
 <h2 id="rand_int"><a class="header" href="#rand_int"><code>rand_int</code></a></h2>
 <blockquote>
 <p>Link: <a href="https://docs.python.org/3/library/random.html#random.randint">Original section for <code>random.randint</code></a></p>
 </blockquote>
 <pre><code class="language-py">def rand_int(a: int, b: int) -&gt; int
 </code></pre>
+<p>Returns a random integer <code>N</code> such that <code>a &lt;= N &lt;= b</code>.
+Alias for <a href="#rand_range"><code>ixia.rand_range(a, b+1)</code></a>.</p>
 <h2 id="rand_range"><a class="header" href="#rand_range"><code>rand_range</code></a></h2>
 <blockquote>
 <p>Link: <a href="https://docs.python.org/3/library/random.html#random.randrange">Original section for <code>random.randrange</code></a></p>
 </blockquote>
 <pre><code class="language-py">def rand_range(start: int, stop: int | None = None, step: int = 1) -&gt; int
 </code></pre>
+<p>Returns a randomly selected element from <code>range(start, stop, step)</code>. This is
+equivalent to <code>ixia.choice(range(start, stop, step))</code>, but doesn't actually
+build a range object.</p>
+<p>The positional argument pattern matches that of <code>range()</code>. Keyword arguments
+should not be used because the function may use them in unexpected ways.</p>
 <h2 id="universe_rand"><a class="header" href="#universe_rand"><code>universe_rand</code></a></h2>
 <pre><code class="language-py">def universe_rand() -&gt; int
 </code></pre>
