@@ -225,7 +225,7 @@ def rand_int(a: int, b: int) -> int:
 
 def rand_hex(n: int) -> str:
     """Returns a hex string composed of n random bytes."""
-    return "".join(f"{s.randbelow(255):0>2x}" for _ in range(n))
+    return "".join(f"{s.randbelow(255):02x}" for _ in range(n))
 
 
 def rand_range(start: int, stop: int | None = None, step: int = 1) -> int:
