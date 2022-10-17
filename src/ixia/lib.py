@@ -6,10 +6,13 @@ from bisect import bisect
 from itertools import accumulate
 from math import acos, ceil, cos, e, exp, factorial, floor, isfinite, log, pi, sin, sqrt
 from os import urandom
+from sys import platform
 from typing import Any, Iterable, MutableSequence, Sequence, TypeVar, Union
 
-T = TypeVar("T")
 Number = Union[int, float]
+PASSPHRASE_PLATFORMS = {"linux", "darwin", "aix"}
+T = TypeVar("T")
+
 
 gauss_next: list[float | None] = [None]
 
@@ -185,6 +188,15 @@ def pareto_variate(alpha: Number) -> float:
     alpha is the shape parameter.
     """
     return (1.0 - random()) ** (-1.0 / alpha)
+
+
+def passphrase(n: int, *, sep: str = "-") -> str:
+    """Generates an XKCD-style passphrase."""
+    if platform not in PASSPHRASE_PLATFORMS:
+        raise ValueError(f"word list unavailable on {platform}")
+    with open("/usr/share/dict/words") as f:
+        words = f.read().splitlines()
+    return sep.join(choices(words, k=n)).lower()
 
 
 def rand_bits(k: int) -> int:

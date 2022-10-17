@@ -48,6 +48,19 @@ interoperates with the `float` values returned by [`ixia.random()`](distribution
 includes integers, floats, and fractions but excludes decimals). Weights are
 assumed to be non-negative and finite. If all weights are zero, a `ValueError` is raised.
 
+## `ixia.passphrase`
+
+```py
+def passphrase(n: int, *, sep: str = "-") -> str
+```
+
+Generates an [XKCD-style](https://xkcd.com/936/) passphrase made up from `n` words[^1], separated by `sep` (`-` by default).
+
+⚠️ Only available on Unix platforms.
+
+[^1]: taken from `/usr/share/dict/words`
+
+
 ## `ixia.sample`
 
 > **Link:** [Original section for `random.sample`](https://docs.python.org/3/library/random.html#random.sample)
