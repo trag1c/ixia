@@ -44,7 +44,7 @@ same length as the `seq` sequence. Specifying both `weights` and
 `cumulative_weights` will raise a `TypeError`.
 
 The `weights` or `cumulative_weights` can use any numeric type that
-interoperates with the `float` values returned by [`ixia.random()`](distributions.md#random) (that
+interoperates with the `float` values returned by [`ixia.random()`](distributions.md#ixiarandom) (that
 includes integers, floats, and fractions but excludes decimals). Weights are
 assumed to be non-negative and finite. If all weights are zero, a `ValueError` is raised.
 
@@ -111,7 +111,7 @@ def shuffle(seq: MutableSequence[Any]) -> None
 
 Shuffles the sequence `seq` in place.
 
-> For out of place shuffling, use [`ixia.shuffled()`](#shuffled).
+> For out of place shuffling, use [`ixia.shuffled()`](#ixiashuffled).
 
 
 ## `ixia.shuffled`
@@ -125,4 +125,4 @@ Shuffles the sequence `seq` out of place.
 If `seq` is a mutable type `M[T]`, the function will return `M[T]`.  
 If `seq` is an immutable type `IM[T]`, the function will return `list[T]`.
 
-> For in place shuffling, use [`ixia.shuffle()`](#shuffle).
+> For in place shuffling, use [`ixia.shuffle()`](#ixiashuffle).
