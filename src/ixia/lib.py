@@ -193,7 +193,7 @@ def pareto_variate(alpha: Number) -> float:
 def passphrase(n: int, *, sep: str = "-") -> str:
     """Generates an XKCD-style passphrase."""
     if platform not in PASSPHRASE_PLATFORMS:
-        raise ValueError(f"word list unavailable on {platform}")
+        raise NotImplementedError(f"word list unavailable on {platform}")
     with open("/usr/share/dict/words") as f:
         words = f.read().splitlines()
     return sep.join(choices(words, k=n)).lower()
