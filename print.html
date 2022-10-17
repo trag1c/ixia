@@ -160,6 +160,13 @@ since Python 3.8:</p>
 <p>On the following pages of this documentation, function signatures often mention
 the <code>Number</code> type—that's simply an alias to <code>Union[int, float]</code>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="bytes-and-integers"><a class="header" href="#bytes-and-integers">Bytes and integers</a></h1>
+<h2 id="ixiarand_below"><a class="header" href="#ixiarand_below"><code>ixia.rand_below</code></a></h2>
+<blockquote>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/secrets.html#secrets.randbelow">Original section for <code>secrets.randbelow</code></a></p>
+</blockquote>
+<pre><code class="language-py">def rand_below(n: int) -&gt; int
+</code></pre>
+<p>Returns a random int in the range $[0, n)$.</p>
 <h2 id="ixiarand_bits"><a class="header" href="#ixiarand_bits"><code>ixia.rand_bits</code></a></h2>
 <blockquote>
 <p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.getrandbits">Original section for <code>random.getrandbits</code></a></p>
@@ -248,6 +255,14 @@ same length as the <code>seq</code> sequence. Specifying both <code>weights</cod
 interoperates with the <code>float</code> values returned by <a href="distributions.html#random"><code>ixia.random()</code></a> (that
 includes integers, floats, and fractions but excludes decimals). Weights are
 assumed to be non-negative and finite. If all weights are zero, a <code>ValueError</code> is raised.</p>
+<h2 id="ixiapassphrase"><a class="header" href="#ixiapassphrase"><code>ixia.passphrase</code></a></h2>
+<pre><code class="language-py">def passphrase(n: int, *, sep: str = &quot;-&quot;) -&gt; str
+</code></pre>
+<p>Generates an <a href="https://xkcd.com/936/">XKCD-style</a> passphrase made up from <code>n</code> words<sup class="footnote-reference"><a href="#1">1</a></sup>, separated by <code>sep</code> (<code>-</code> by default).</p>
+<p>⚠️ Only available on Unix platforms.</p>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>taken from <code>/usr/share/dict/words</code></p>
+</div>
 <h2 id="ixiasample"><a class="header" href="#ixiasample"><code>ixia.sample</code></a></h2>
 <blockquote>
 <p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.sample">Original section for <code>random.sample</code></a></p>
