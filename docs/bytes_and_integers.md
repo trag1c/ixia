@@ -1,5 +1,15 @@
 # Bytes and integers
 
+## `ixia.rand_below`
+
+> **Link:** [Original section for `secrets.randbelow`](https://docs.python.org/3/library/secrets.html#secrets.randbelow)
+
+```py
+def rand_below(n: int) -> int
+```
+
+Returns a random int in the range $[0, n)$.
+
 ## `ixia.rand_bits`
 
 > **Link:** [Original section for `random.getrandbits`](https://docs.python.org/3/library/random.html#random.getrandbits)

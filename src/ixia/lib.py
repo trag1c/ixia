@@ -199,6 +199,11 @@ def passphrase(n: int, *, sep: str = "-") -> str:
     return sep.join(choices(words, k=n)).lower()
 
 
+def rand_below(n: int) -> int:
+    """Returns a random int in the range [0, n)."""
+    return s.randbelow(n)
+
+
 def rand_bits(k: int) -> int:
     """Generates an int with k random bits."""
     if k < 0:
