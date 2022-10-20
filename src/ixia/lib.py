@@ -15,8 +15,9 @@ T = TypeVar("T")
 
 
 class Cache:
-    words: list[str] = []
     gauss_next: float | None = None
+    words: list[str] = []
+    words_path: str = "/usr/share/dict/words"
 
 
 def beta_variate(alpha: Number, beta: Number) -> float:
@@ -196,9 +197,10 @@ def passphrase(n: int, *, sep: str = "-", words_path: str = "/usr/share/dict/wor
     """Generates an XKCD-style passphrase."""
     if platform not in PASSPHRASE_PLATFORMS:
         raise NotImplementedError(f"word list unavailable on {platform}")
-    if not Cache.words:
+    if not Cache.words or Cache.words_path != words_path:
         with open(words_path) as f:
             Cache.words = f.read().splitlines()
+        Cache.words_path = words_path
     return sep.join(choices(Cache.words, k=n)).lower()
 
 
