@@ -14,7 +14,9 @@ PASSPHRASE_PLATFORMS = {"linux", "darwin", "aix"}
 T = TypeVar("T")
 
 
-gauss_next: list[float | None] = [None]
+class Cache:
+    words: list[str] = []
+    gauss_next: float | None = None
 
 
 def beta_variate(alpha: Number, beta: Number) -> float:
@@ -144,13 +146,13 @@ def gauss(mu: Number, sigma: Number) -> float:
 
     Not thread-safe without a lock around calls.
     """
-    z = gauss_next[0]
-    gauss_next[0] = None
+    z = Cache.gauss_next
+    Cache.gauss_next = None
     if z is None:
         x2pi = random() * 2 * pi
         g2rad = sqrt(-2.0 * log(1.0 - random()))
         z = cos(x2pi) * g2rad
-        gauss_next[0] = sin(x2pi) * g2rad
+        Cache.gauss_next = sin(x2pi) * g2rad
     return mu + z * sigma
 
 
@@ -190,13 +192,14 @@ def pareto_variate(alpha: Number) -> float:
     return (1.0 - random()) ** (-1.0 / alpha)
 
 
-def passphrase(n: int, *, sep: str = "-") -> str:
+def passphrase(n: int, *, sep: str = "-", words_path: str = "/usr/share/dict/words") -> str:
     """Generates an XKCD-style passphrase."""
     if platform not in PASSPHRASE_PLATFORMS:
         raise NotImplementedError(f"word list unavailable on {platform}")
-    with open("/usr/share/dict/words") as f:
-        words = f.read().splitlines()
-    return sep.join(choices(words, k=n)).lower()
+    if not Cache.words:
+        with open(words_path) as f:
+            Cache.words = f.read().splitlines()
+    return sep.join(choices(Cache.words, k=n)).lower()
 
 
 def rand_below(n: int) -> int:
