@@ -218,14 +218,14 @@ def rand_bytes(n: int = 32) -> bytes:
     return urandom(n)
 
 
-def rand_int(a: int, b: int) -> int:
-    """Returns random integer in range [a, b], including both end points."""
-    return rand_range(a, b + 1)
-
-
 def rand_hex(n: int) -> str:
     """Returns a hex string composed of n random bytes."""
     return "".join(f"{s.randbelow(255):02x}" for _ in range(n))
+
+
+def rand_int(a: int, b: int) -> int:
+    """Returns random integer in range [a, b], including both end points."""
+    return rand_range(a, b + 1)
 
 
 def rand_range(start: int, stop: int | None = None, step: int = 1) -> int:
