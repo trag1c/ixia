@@ -4,6 +4,9 @@ version = "1.0.0"
 description = "A library connecting secrets' security with random's usability"
 authors = ["trag1c <trag1cdev@yahoo.com>"]
 license = "MIT"
+documentation = "https://trag1c.github.io/ixia/"
+repository = "https://github.com/trag1c/ixia"
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"
