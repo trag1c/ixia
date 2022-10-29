@@ -86,3 +86,7 @@ Returns a random URL-safe text string, composed of `n` bytes, in Base64 encoding
 ```py
 def universe_rand() -> int
 ```
+
+Generates a random number based on the universe.
+
+Thanks to the work of the recent Nobel Prize laureates, it was possible to code this function that computes a random number by simulating universe dimensions phasing on gamma ray emission using the sum of the spins of the pair positron/electron in a normalized Higgs field. Surprisingly, Taylor series is involved in this beautiful mathematical operation. It may or may not always return 42, we do not know.
