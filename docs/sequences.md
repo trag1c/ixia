@@ -51,14 +51,14 @@ assumed to be non-negative and finite. If all weights are zero, a `ValueError` i
 ## `ixia.passphrase`
 
 ```py
-def passphrase(n: int, *, sep: str = "-") -> str
+def passphrase(
+    n: int, *, sep: str = "-", words_path: str = "/usr/share/dict/words"
+) -> str
 ```
 
-Generates an [XKCD-style](https://xkcd.com/936/) passphrase made up from `n` words[^1], separated by `sep` (`-` by default).
+Generates an [XKCD-style](https://xkcd.com/936/) passphrase made up from `n` words (based on the file specified by `words_path`), separated by `sep` (`-` by default).
 
-⚠️ Only available on Unix platforms.
-
-[^1]: taken from `/usr/share/dict/words`
+⚠️ The default word list is not available on Windows.
 
 
 ## `ixia.sample`
