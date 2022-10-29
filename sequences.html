@@ -175,13 +175,12 @@ interoperates with the <code>float</code> values returned by <a href="distributi
 includes integers, floats, and fractions but excludes decimals). Weights are
 assumed to be non-negative and finite. If all weights are zero, a <code>ValueError</code> is raised.</p>
 <h2 id="ixiapassphrase"><a class="header" href="#ixiapassphrase"><code>ixia.passphrase</code></a></h2>
-<pre><code class="language-py">def passphrase(n: int, *, sep: str = &quot;-&quot;) -&gt; str
+<pre><code class="language-py">def passphrase(
+    n: int, *, sep: str = &quot;-&quot;, words_path: str = &quot;/usr/share/dict/words&quot;
+) -&gt; str
 </code></pre>
-<p>Generates an <a href="https://xkcd.com/936/">XKCD-style</a> passphrase made up from <code>n</code> words<sup class="footnote-reference"><a href="#1">1</a></sup>, separated by <code>sep</code> (<code>-</code> by default).</p>
-<p>⚠️ Only available on Unix platforms.</p>
-<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p>taken from <code>/usr/share/dict/words</code></p>
-</div>
+<p>Generates an <a href="https://xkcd.com/936/">XKCD-style</a> passphrase made up from <code>n</code> words (based on the file specified by <code>words_path</code>), separated by <code>sep</code> (<code>-</code> by default).</p>
+<p>⚠️ The default word list is not available on Windows.</p>
 <h2 id="ixiasample"><a class="header" href="#ixiasample"><code>ixia.sample</code></a></h2>
 <blockquote>
 <p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.sample">Original section for <code>random.sample</code></a></p>
