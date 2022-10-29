@@ -194,7 +194,9 @@ def pareto_variate(alpha: Number) -> float:
     return (1.0 - random()) ** (-1.0 / alpha)
 
 
-def passphrase(n: int, *, sep: str = "-", words_path: str = PASSPHRASE_DEFAULT_PATH) -> str:
+def passphrase(
+    n: int, *, sep: str = "-", words_path: str = PASSPHRASE_DEFAULT_PATH
+) -> str:
     """Generates an XKCD-style passphrase."""
     if words_path == PASSPHRASE_DEFAULT_PATH and platform not in PASSPHRASE_PLATFORMS:
         raise NotImplementedError(f"word list unavailable on {platform}")
