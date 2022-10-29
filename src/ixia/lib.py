@@ -10,6 +10,7 @@ from sys import platform
 from typing import Any, Iterable, MutableSequence, Sequence, TypeVar, Union
 
 Number = Union[int, float]
+PASSPHRASE_DEFAULT_PATH = "/usr/share/dict/words"
 PASSPHRASE_PLATFORMS = {"linux", "darwin", "aix"}
 T = TypeVar("T")
 
@@ -193,9 +194,9 @@ def pareto_variate(alpha: Number) -> float:
     return (1.0 - random()) ** (-1.0 / alpha)
 
 
-def passphrase(n: int, *, sep: str = "-", words_path: str = "/usr/share/dict/words") -> str:
+def passphrase(n: int, *, sep: str = "-", words_path: str = PASSPHRASE_DEFAULT_PATH) -> str:
     """Generates an XKCD-style passphrase."""
-    if platform not in PASSPHRASE_PLATFORMS:
+    if words_path == PASSPHRASE_DEFAULT_PATH and platform not in PASSPHRASE_PLATFORMS:
         raise NotImplementedError(f"word list unavailable on {platform}")
     if not Cache.words or Cache.words_path != words_path:
         with open(words_path) as f:
