@@ -7,7 +7,7 @@ functions, such as [`ixia.passphrase()`](https://trag1c.github.io/ixia/sequences
 ## Installation
 Ixia is available on PyPI and can be installed with pip, or any other Python package manager:
 ```sh
-$ pip install dahlia
+$ pip install ixia
 ```
 (Some systems may require you to use `pip3`, `python -m pip`, or `py -m pip` instead.)
 
