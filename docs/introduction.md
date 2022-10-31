@@ -1,6 +1,6 @@
 # Ixia
 Ixia is a cryptographically secure RNG library. It mainly merges `secrets`'
-security with `random`'s versatility, but it also adds some of its own
+security with `random`'s versatility, but also adds some of its own
 functions, such as [`ixia.passphrase()`](sequences.md#ixiapassphrase), [`ixia.shuffled()`](sequences.md#ixiashuffled) or
 [`ixia.universe_rand()`](bytes_and_integers.md#ixiauniverse_rand). All random values are generated using `urandom` (or `BCryptGenRandom` on Windows).
 
