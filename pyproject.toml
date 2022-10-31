@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "ixia"
 version = "1.0.0"
-description = "A library connecting secrets' security with random's usability"
+description = "A library connecting secrets' security with random's versatility"
 authors = ["trag1c <trag1cdev@yahoo.com>"]
 license = "MIT"
 documentation = "https://trag1c.github.io/ixia/"
