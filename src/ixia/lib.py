@@ -3,6 +3,7 @@ from __future__ import annotations
 import secrets as s
 from base64 import urlsafe_b64encode
 from bisect import bisect
+from io import TextIOBase
 from itertools import accumulate
 from math import acos, ceil, cos, e, exp, factorial, floor, isfinite, log, pi, sin, sqrt
 from os import urandom
@@ -234,6 +235,18 @@ def rand_hex(n: int) -> str:
 def rand_int(a: int, b: int) -> int:
     """Returns random integer in range [a, b], including both end points."""
     return rand_range(a, b + 1)
+
+
+def rand_line(file: TextIOBase | str) -> str:
+    """
+    Returns a random line from a file. Given a string, assumes it is
+    a path, reads it, and returns a random line from the read content.
+    Given a readable IO object, reads it, and returns a random line from the read content.
+    """
+    if isinstance(file, TextIOBase):
+        return choice(file.read().splitlines())
+    with open(file) as f:
+        return rand_line(f)
 
 
 def rand_range(start: int, stop: int | None = None, step: int = 1) -> int:
