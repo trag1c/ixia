@@ -241,7 +241,8 @@ def rand_line(file: TextIOBase | str) -> str:
     """
     Returns a random line from a file. Given a string, assumes it is
     a path, reads it, and returns a random line from the read content.
-    Given a readable IO object, reads it, and returns a random line from the read content.
+    Given a readable IO object, reads it,
+    and returns a random line from the read content.
     """
     if isinstance(file, TextIOBase):
         return choice(file.read().splitlines())
