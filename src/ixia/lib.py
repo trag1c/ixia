@@ -3,12 +3,13 @@ from __future__ import annotations
 import secrets as s
 from base64 import urlsafe_b64encode
 from bisect import bisect
+from collections.abc import Iterable, MutableSequence, Sequence
 from io import TextIOBase
 from itertools import accumulate
 from math import acos, ceil, cos, e, exp, factorial, floor, isfinite, log, pi, sin, sqrt
 from os import urandom
 from sys import platform
-from typing import Any, Iterable, MutableSequence, Sequence, TypeVar, Union
+from typing import Any, TypeVar, Union
 
 Number = Union[int, float]
 PASSPHRASE_DEFAULT_PATH = "/usr/share/dict/words"
