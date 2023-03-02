@@ -89,6 +89,7 @@ sample(range(10 ** 7), k=60)
 
 If the sample size is larger than the population size, a `ValueError` is raised.
 
+
 ## `ixia.shuffle`
 
 > **Link:** [Original section for `random.shuffle`](https://docs.python.org/3/library/random.html#random.shuffle)
