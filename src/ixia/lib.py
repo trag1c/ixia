@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import secrets as s
+import secrets
 from base64 import urlsafe_b64encode
 from bisect import bisect
 from collections.abc import Iterable, MutableSequence, Sequence
@@ -38,7 +38,7 @@ def beta_variate(alpha: Number, beta: Number) -> float:
 
 def choice(seq: Sequence[T]) -> T:
     """Chooses a random element from a non-empty sequence."""
-    return s.choice(seq)
+    return secrets.choice(seq)
 
 
 def choices(
@@ -207,7 +207,7 @@ def passphrase(
 
 def rand_below(n: int) -> int:
     """Returns a random int in the range [0, n)."""
-    return s.randbelow(n)
+    return secrets.randbelow(n)
 
 
 def rand_bits(k: int) -> int:
@@ -231,7 +231,7 @@ def rand_bytes(n: int = 32) -> bytes:
 
 def rand_hex(n: int) -> str:
     """Returns a hex string composed of n random bytes."""
-    return "".join(f"{s.randbelow(255):02x}" for _ in range(n))
+    return "".join(f"{secrets.randbelow(255):02x}" for _ in range(n))
 
 
 def rand_int(a: int, b: int) -> int:
@@ -258,13 +258,13 @@ def rand_range(start: int, stop: int | None = None, step: int = 1) -> int:
         if step != 1:
             raise TypeError("Missing a non-None stop argument")
         if start > 0:
-            return s.randbelow(start)
+            return secrets.randbelow(start)
         raise ValueError("empty range for rand_range")
 
     width = stop - start
     if step == 1:
         if width > 0:
-            return start + s.randbelow(width)
+            return start + secrets.randbelow(width)
         raise ValueError(f"empty range for rand_range ({start}, {stop}, {step})")
 
     if step > 0:
@@ -275,7 +275,7 @@ def rand_range(start: int, stop: int | None = None, step: int = 1) -> int:
         raise ValueError("zero step for rand_range")
     if n <= 0:
         raise ValueError("empty range for rand_range")
-    return start + step * s.randbelow(n)
+    return start + step * secrets.randbelow(n)
 
 
 def rand_urlsafe(n: int = 32) -> str:
@@ -339,13 +339,13 @@ def sample(seq: Sequence[T], k: int, *, counts: Iterable[int] | None = None) -> 
     if n <= setsize:
         pool = list(seq)
         for i in range(k):
-            j = s.randbelow(n - i)
+            j = secrets.randbelow(n - i)
             result.append(pool[j])
             pool[j] = pool[n - i - 1]
     else:
         selected: set[int] = set()
         for _ in range(k):
-            while (j := s.randbelow(n)) in selected:
+            while (j := secrets.randbelow(n)) in selected:
                 pass
             selected.add(j)
             result.append(seq[j])
@@ -360,7 +360,7 @@ def shuffle(seq: MutableSequence[Any]) -> None:
     Use shuffled() for out of place shuffling.
     """
     for i in range(len(seq) - 1, 0, -1):
-        j = s.randbelow(i + 1)
+        j = secrets.randbelow(i + 1)
         seq[i], seq[j] = seq[j], seq[i]
 
 
