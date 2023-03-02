@@ -5,7 +5,6 @@ from .lib import (
     expo_variate,
     gamma_variate,
     gauss,
-    rand_bits,
     log_norm_variate,
     normal_variate,
     pareto_variate,
