@@ -6,7 +6,7 @@ from bisect import bisect
 from collections.abc import Iterable, MutableSequence, Sequence
 from io import TextIOBase
 from itertools import accumulate
-from math import acos, ceil, cos, e, exp, factorial, floor, isfinite, log, pi, sin, sqrt
+from math import acos, ceil, cos, e, exp, factorial, floor, isfinite, log, pi, sin, sqrt, tau
 from os import urandom
 from pathlib import Path
 from sys import platform
@@ -150,10 +150,10 @@ def gauss(mu: Number, sigma: Number) -> float:
     z = Cache.gauss_next
     Cache.gauss_next = None
     if z is None:
-        x2pi = random() * 2 * pi
+        xtau = random() * tau
         g2rad = sqrt(-2.0 * log(1.0 - random()))
-        z = cos(x2pi) * g2rad
-        Cache.gauss_next = sin(x2pi) * g2rad
+        z = cos(xtau) * g2rad
+        Cache.gauss_next = sin(xtau) * g2rad
     return mu + z * sigma
 
 
@@ -430,13 +430,13 @@ def von_mises_variate(mu: Number, kappa: Number) -> float:
     """
     Circular data distribution.
 
-    mu is the mean angle, expressed in raidans between 0 and 2*pi, and kappa is the
+    mu is the mean angle, expressed in raidans between 0 and tau, and kappa is the
     concentration parameter, which must be greater than or equal to zero. If kappa is
     equal to zero, this distribution reduces to a uniform random angle over
-    the range 0 to 2*pi.
+    the range 0 to tau.
     """
     if kappa <= 1e-6:
-        return 2 * pi * random()
+        return tau * random()
 
     s = 0.5 / kappa
     r = s + sqrt(1.0 + s * s)
@@ -451,8 +451,8 @@ def von_mises_variate(mu: Number, kappa: Number) -> float:
     q = 1.0 / r
     f = (q + z) / (1.0 + q * z)
     if random() > 0.5:
-        return (mu + acos(f)) % (2 * pi)
-    return (mu - acos(f)) % (2 * pi)
+        return (mu + acos(f)) % tau
+    return (mu - acos(f)) % tau
 
 
 def weibull_variate(alpha: Number, beta: Number) -> float:
