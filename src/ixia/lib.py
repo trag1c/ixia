@@ -122,24 +122,20 @@ def gamma_variate(alpha: Number, beta: Number) -> float:
             if r + sg - 4.5 * z >= 0 or r >= log(z):
                 return x * beta
 
-    elif alpha == 1.0:
+    if alpha == 1.0:
         return -log(1.0 - random()) * beta
 
-    else:
-        while True:
-            b = (e + alpha) / e
-            p = b * random()
-            if p <= 1.0:
-                x = p ** (1.0 / alpha)
-            else:
-                x = -log((b - p) / alpha)
-            u = random()
-            if p > 1.0:
-                if u <= x ** (alpha - 1.0):
-                    break
-            elif u <= exp(-x):
+    while True:
+        b = (e + alpha) / e
+        p = b * random()
+        x = p ** (1.0 / alpha) if p <= 1.0 else -log((b - p) / alpha)
+        u = random()
+        if p > 1.0:
+            if u <= x ** (alpha - 1.0):
                 break
-        return x * beta
+        elif u <= exp(-x):
+            break
+    return x * beta
 
 
 def gauss(mu: Number, sigma: Number) -> float:
