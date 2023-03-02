@@ -1,5 +1,17 @@
 # Bytes, integers and strings
 
+## `ixia.passphrase`
+
+```py
+def passphrase(
+    n: int, *, sep: str = "-", words_path: str = "/usr/share/dict/words"
+) -> str
+```
+
+Generates an [XKCD-style](https://xkcd.com/936/) passphrase made up from `n` words (based on the file specified by `words_path`), separated by `sep` (`-` by default).
+
+⚠️ The default word list is not available on Windows.
+
 ## `ixia.rand_below`
 
 > **Link:** [Original section for `secrets.randbelow`](https://docs.python.org/3/library/secrets.html#secrets.randbelow)
