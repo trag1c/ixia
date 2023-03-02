@@ -6,7 +6,21 @@ from bisect import bisect
 from collections.abc import Iterable, MutableSequence, Sequence
 from io import TextIOBase
 from itertools import accumulate
-from math import acos, ceil, cos, e, exp, factorial, floor, isfinite, log, pi, sin, sqrt, tau
+from math import (
+    acos,
+    ceil,
+    cos,
+    e,
+    exp,
+    factorial,
+    floor,
+    isfinite,
+    log,
+    pi,
+    sin,
+    sqrt,
+    tau,
+)
 from os import urandom
 from pathlib import Path
 from sys import platform
@@ -285,7 +299,7 @@ def rand_urlsafe(n: int = 32) -> str:
 
 def random() -> float:
     """Generates a random number in range [0.0, 1.0)."""
-    return (int.from_bytes(urandom(7), "big") >> 3) * 2**-53
+    return (int.from_bytes(urandom(7), "big") >> 3) * 2 ** -53
 
 
 def sample(seq: Sequence[T], k: int, *, counts: Iterable[int] | None = None) -> list[T]:
@@ -419,7 +433,7 @@ def universe_rand() -> int:
     # simulates quantum noise
     while s < bm:
         t = rand_int(0x00, bm)  # theoretical (size -> inf) entity noise probability
-        s += int(sum((t**i) / factorial(i) for i in range(t % bm)))  # taylor series
+        s += int(sum((t ** i) / factorial(i) for i in range(t % bm)))  # taylor series
     ds = sum(map(int, str(s)))
     while ds >= lt:
         ds = sum(map(int, str(ds)))  # one-digit convergence
