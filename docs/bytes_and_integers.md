@@ -12,6 +12,7 @@ Generates an [XKCD-style](https://xkcd.com/936/) passphrase made up from `n` wor
 
 ⚠️ The default word list is not available on Windows.
 
+
 ## `ixia.rand_below`
 
 > **Link:** [Original section for `secrets.randbelow`](https://docs.python.org/3/library/secrets.html#secrets.randbelow)
@@ -21,6 +22,7 @@ def rand_below(n: int) -> int
 ```
 
 Returns a random int in the range \\( [0, n) \\).
+
 
 ## `ixia.rand_bits`
 
