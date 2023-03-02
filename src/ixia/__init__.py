@@ -56,4 +56,4 @@ __all__ = (
     "von_mises_variate",
     "weibull_variate",
 )
-__version__ = "1.0.0"
+__version__ = "1.1.0"

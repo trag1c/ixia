@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ixia"
-version = "1.0.0"
+version = "1.1.0"
 description = "A library connecting secrets' security with random's versatility"
 authors = ["trag1c <trag1cdev@yahoo.com>"]
 license = "MIT"
