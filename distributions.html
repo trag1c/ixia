@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="bytes_and_integers.html"><strong aria-hidden="true">2.</strong> Bytes and integers</a></li><li class="chapter-item expanded "><a href="sequences.html"><strong aria-hidden="true">3.</strong> Sequences</a></li><li class="chapter-item expanded "><a href="distributions.html" class="active"><strong aria-hidden="true">4.</strong> Real-valued distributions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="credits.html">Credits</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="bytes_and_integers.html"><strong aria-hidden="true">2.</strong> Bytes, integers and strings</a></li><li class="chapter-item expanded "><a href="sequences.html"><strong aria-hidden="true">3.</strong> Sequences</a></li><li class="chapter-item expanded "><a href="distributions.html" class="active"><strong aria-hidden="true">4.</strong> Real-valued distributions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="credits.html">Credits</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -258,9 +258,9 @@ floating-point rounding in the equation <code>a + (b-a) * random()</code>.</p>
 <pre><code class="language-py">def von_mises_variate(mu: Number, kappa: Number) -&gt; float
 </code></pre>
 <p><code>mu</code> is the mean angle, expressed in radians between \( 0 \)
-and \( 2\pi \), and <code>kappa</code> is the concentration parameter, which must be
+and \( \tau \), and <code>kappa</code> is the concentration parameter, which must be
 greater than or equal to zero. If <code>kappa</code> is equal to zero, this distribution
-reduces to a uniform random angle over the range \( 0 \) to \( 2\pi \).</p>
+reduces to a uniform random angle over the range \( 0 \) to \( \tau \).</p>
 <h2 id="ixiaweibull_variate"><a class="header" href="#ixiaweibull_variate"><code>ixia.weibull_variate</code></a></h2>
 <blockquote>
 <p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.weibullvariate">Original section for <code>random.weibullvariate</code></a></p>

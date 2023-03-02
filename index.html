@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html" class="active"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="bytes_and_integers.html"><strong aria-hidden="true">2.</strong> Bytes and integers</a></li><li class="chapter-item expanded "><a href="sequences.html"><strong aria-hidden="true">3.</strong> Sequences</a></li><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">4.</strong> Real-valued distributions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="credits.html">Credits</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html" class="active"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="bytes_and_integers.html"><strong aria-hidden="true">2.</strong> Bytes, integers and strings</a></li><li class="chapter-item expanded "><a href="sequences.html"><strong aria-hidden="true">3.</strong> Sequences</a></li><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">4.</strong> Real-valued distributions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="credits.html">Credits</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -150,15 +150,16 @@ security with <code>random</code>'s versatility, but also adds some of its own
 functions, such as <a href="sequences.html#ixiapassphrase"><code>ixia.passphrase()</code></a>, <a href="sequences.html#ixiashuffled"><code>ixia.shuffled()</code></a> or
 <a href="bytes_and_integers.html#ixiauniverse_rand"><code>ixia.universe_rand()</code></a>. All random values are generated using <code>urandom</code> (or <code>BCryptGenRandom</code> on Windows).</p>
 <h2 id="-important-notes"><a class="header" href="#-important-notes">⚠️ Important Notes</a></h2>
-<p>While supporting Python 3.8+, Ixia is based on the Python 3.10 implementation
+<p>While supporting Python 3.8+, Ixia is based on the Python 3.11 implementation
 of the <code>random</code> module. The following changes have been made to the module
 since Python 3.8:</p>
 <ul>
 <li><code>getrandbits</code> accepts 0 for <code>k</code></li>
 <li><code>choices</code> raises a <code>ValueError</code> if all weights are zero</li>
 <li><code>sample</code> has a new <code>counts</code> parameter</li>
+<li><code>gauss</code> and <code>normal_variate</code> have default parameter values</li>
 </ul>
-<p>Additionally, Ixia executes 3.9 and 3.10 deprecations, thus:</p>
+<p>Additionally, Ixia executes 3.9+ deprecations, thus:</p>
 <ul>
 <li><code>ixia.rand_range</code> doesn't convert non-integer types to equivalent integers</li>
 <li><code>ixia.sample</code> doesn't support <code>set</code> as a sequence type</li>

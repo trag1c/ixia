@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Bytes and integers - Ixia</title>
+        <title>Bytes, integers and strings - Ixia</title>
 
 
         <!-- Custom HTML head -->
@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="bytes_and_integers.html" class="active"><strong aria-hidden="true">2.</strong> Bytes and integers</a></li><li class="chapter-item expanded "><a href="sequences.html"><strong aria-hidden="true">3.</strong> Sequences</a></li><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">4.</strong> Real-valued distributions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="credits.html">Credits</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="bytes_and_integers.html" class="active"><strong aria-hidden="true">2.</strong> Bytes, integers and strings</a></li><li class="chapter-item expanded "><a href="sequences.html"><strong aria-hidden="true">3.</strong> Sequences</a></li><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">4.</strong> Real-valued distributions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="credits.html">Credits</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -144,7 +144,14 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="bytes-and-integers"><a class="header" href="#bytes-and-integers">Bytes and integers</a></h1>
+                        <h1 id="bytes-integers-and-strings"><a class="header" href="#bytes-integers-and-strings">Bytes, integers and strings</a></h1>
+<h2 id="ixiapassphrase"><a class="header" href="#ixiapassphrase"><code>ixia.passphrase</code></a></h2>
+<pre><code class="language-py">def passphrase(
+    n: int, *, sep: str = &quot;-&quot;, words_path: str = &quot;/usr/share/dict/words&quot;
+) -&gt; str
+</code></pre>
+<p>Generates an <a href="https://xkcd.com/936/">XKCD-style</a> passphrase made up from <code>n</code> words (based on the file specified by <code>words_path</code>), separated by <code>sep</code> (<code>-</code> by default).</p>
+<p>⚠️ The default word list is not available on Windows.</p>
 <h2 id="ixiarand_below"><a class="header" href="#ixiarand_below"><code>ixia.rand_below</code></a></h2>
 <blockquote>
 <p><strong>Link:</strong> <a href="https://docs.python.org/3/library/secrets.html#secrets.randbelow">Original section for <code>secrets.randbelow</code></a></p>
@@ -159,6 +166,10 @@
 <pre><code class="language-py">def rand_bits(k: int) -&gt; int
 </code></pre>
 <p>Returns a non-negative Python integer with <code>k</code> random bits.</p>
+<h2 id="ixiarand_bool"><a class="header" href="#ixiarand_bool"><code>ixia.rand_bool</code></a></h2>
+<pre><code class="language-py">def rand_bool() -&gt; bool
+</code></pre>
+<p>Returns a random bool.</p>
 <h2 id="ixiarand_bytes"><a class="header" href="#ixiarand_bytes"><code>ixia.rand_bytes</code></a></h2>
 <blockquote>
 <p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.randbytes">Original section for <code>random.randbytes</code></a></p>
@@ -181,6 +192,13 @@
 </code></pre>
 <p>Returns a random integer <code>N</code> such that <code>a &lt;= N &lt;= b</code>.
 Alias for <a href="#rand_range"><code>ixia.rand_range(a, b+1)</code></a>.</p>
+<h2 id="ixiarand_line"><a class="header" href="#ixiarand_line"><code>ixia.rand_line</code></a></h2>
+<pre><code class="language-py">def rand_line(file: TextIOBase | str) -&gt; str
+</code></pre>
+<p>Returns a random line from a file. Given a string, assumes it is
+a path, reads it, and returns a random line from the read content.
+Given a readable IO object, reads it,
+and returns a random line from the read content.</p>
 <h2 id="ixiarand_range"><a class="header" href="#ixiarand_range"><code>ixia.rand_range</code></a></h2>
 <blockquote>
 <p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.randrange">Original section for <code>random.randrange</code></a></p>

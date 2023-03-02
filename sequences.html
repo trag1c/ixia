@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="bytes_and_integers.html"><strong aria-hidden="true">2.</strong> Bytes and integers</a></li><li class="chapter-item expanded "><a href="sequences.html" class="active"><strong aria-hidden="true">3.</strong> Sequences</a></li><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">4.</strong> Real-valued distributions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="credits.html">Credits</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="bytes_and_integers.html"><strong aria-hidden="true">2.</strong> Bytes, integers and strings</a></li><li class="chapter-item expanded "><a href="sequences.html" class="active"><strong aria-hidden="true">3.</strong> Sequences</a></li><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">4.</strong> Real-valued distributions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="credits.html">Credits</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -182,13 +182,6 @@ same length as the <code>seq</code> sequence. Specifying both <code>weights</cod
 interoperates with the <code>float</code> values returned by <a href="distributions.html#ixiarandom"><code>ixia.random()</code></a> (that
 includes integers, floats, and fractions but excludes decimals). Weights are
 assumed to be non-negative and finite. If all weights are zero, a <code>ValueError</code> is raised.</p>
-<h2 id="ixiapassphrase"><a class="header" href="#ixiapassphrase"><code>ixia.passphrase</code></a></h2>
-<pre><code class="language-py">def passphrase(
-    n: int, *, sep: str = &quot;-&quot;, words_path: str = &quot;/usr/share/dict/words&quot;
-) -&gt; str
-</code></pre>
-<p>Generates an <a href="https://xkcd.com/936/">XKCD-style</a> passphrase made up from <code>n</code> words (based on the file specified by <code>words_path</code>), separated by <code>sep</code> (<code>-</code> by default).</p>
-<p>⚠️ The default word list is not available on Windows.</p>
 <h2 id="ixiasample"><a class="header" href="#ixiasample"><code>ixia.sample</code></a></h2>
 <blockquote>
 <p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.sample">Original section for <code>random.sample</code></a></p>
