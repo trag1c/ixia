@@ -35,6 +35,15 @@ def rand_bits(k: int) -> int
 Returns a non-negative Python integer with `k` random bits.
 
 
+## `ixia.rand_bool`
+
+```py
+def rand_bool() -> bool
+```
+
+Returns a random bool.
+
+
 ## `ixia.rand_bytes`
 
 > **Link:** [Original section for `random.randbytes`](https://docs.python.org/3/library/random.html#random.randbytes)
