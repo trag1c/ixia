@@ -77,6 +77,18 @@ def rand_int(a: int, b: int) -> int
 Returns a random integer `N` such that `a <= N <= b`.
 Alias for [`ixia.rand_range(a, b+1)`](#rand_range).
 
+
+## `ixia.rand_line`
+
+```py
+def rand_line(file: TextIOBase | str) -> str
+```
+Returns a random line from a file. Given a string, assumes it is
+a path, reads it, and returns a random line from the read content.
+Given a readable IO object, reads it,
+and returns a random line from the read content.
+
+
 ## `ixia.rand_range`
 
 > **Link:** [Original section for `random.randrange`](https://docs.python.org/3/library/random.html#random.randrange)
