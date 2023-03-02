@@ -138,7 +138,7 @@ def gamma_variate(alpha: Number, beta: Number) -> float:
     return x * beta
 
 
-def gauss(mu: Number, sigma: Number) -> float:
+def gauss(mu: Number = 0.0, sigma: Number = 1.0) -> float:
     """
     Gaussian distribution.
 
@@ -168,7 +168,7 @@ def log_norm_variate(mu: Number, sigma: Number) -> float:
     return exp(normal_variate(mu, sigma))
 
 
-def normal_variate(mu: Number, sigma: Number) -> float:
+def normal_variate(mu: Number = 0.0, sigma: Number = 1.0) -> float:
     """
     Normal distribution.
 
