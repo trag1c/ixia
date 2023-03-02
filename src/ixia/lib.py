@@ -8,6 +8,7 @@ from io import TextIOBase
 from itertools import accumulate
 from math import acos, ceil, cos, e, exp, factorial, floor, isfinite, log, pi, sin, sqrt
 from os import urandom
+from pathlib import Path
 from sys import platform
 from typing import Any, TypeVar, Union
 
@@ -203,8 +204,7 @@ def passphrase(
     if words_path == PASSPHRASE_DEFAULT_PATH and platform not in PASSPHRASE_PLATFORMS:
         raise NotImplementedError(f"word list unavailable on {platform}")
     if not Cache.words or Cache.words_path != words_path:
-        with open(words_path) as f:
-            Cache.words = f.read().splitlines()
+        Cache.words = Path(words_path).read_text().splitlines()
         Cache.words_path = words_path
     return sep.join(choices(Cache.words, k=n)).lower()
 
@@ -252,7 +252,7 @@ def rand_line(file: TextIOBase | str) -> str:
     """
     if isinstance(file, TextIOBase):
         return choice(file.read().splitlines())
-    with open(file) as f:
+    with Path(file).open() as f:
         return rand_line(f)
 
 
