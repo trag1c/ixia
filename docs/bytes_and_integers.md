@@ -1,4 +1,4 @@
-# Bytes and integers
+# Bytes, integers and strings
 
 ## `ixia.rand_below`
 
