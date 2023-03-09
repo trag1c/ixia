@@ -1,7 +1,8 @@
 # Summary
 
 - [Introduction](introduction.md)
-- [Bytes, integers and strings](bytes_and_integers.md)
+- [Integers](integers.md)
+- [Strings and bytes](strings_and_bytes.md)
 - [Sequences](sequences.md)
 - [Real-valued distributions](distributions.md)
 
