@@ -1,3 +1,7 @@
+from .date_time import (
+    rand_date,
+    rand_time,
+)
 from .distributions import (
     beta_variate,
     expo_variate,
@@ -38,10 +42,12 @@ __all__ = (
     "rand_bits",
     "rand_bool",
     "rand_bytes",
+    "rand_date",
     "rand_hex",
     "rand_int",
     "rand_line",
     "rand_range",
+    "rand_time",
     "rand_urlsafe",
     "random",
     "sample",
