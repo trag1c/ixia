@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import datetime as dt
-from itertools import *
 from typing import Tuple, Union
 
 from .integers import rand_below, rand_int
