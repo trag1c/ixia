@@ -3,8 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Page not found - Ixia</title>
-        <base href="/">
+        <title>Integers - Ixia</title>
 
 
         <!-- Custom HTML head -->
@@ -86,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="integers.html"><strong aria-hidden="true">2.</strong> Integers</a></li><li class="chapter-item expanded "><a href="strings_and_bytes.html"><strong aria-hidden="true">3.</strong> Strings and bytes</a></li><li class="chapter-item expanded "><a href="sequences.html"><strong aria-hidden="true">4.</strong> Sequences</a></li><li class="chapter-item expanded "><a href="date_and_time.html"><strong aria-hidden="true">5.</strong> Date & Time</a></li><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">6.</strong> Real-valued distributions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="credits.html">Credits</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="integers.html" class="active"><strong aria-hidden="true">2.</strong> Integers</a></li><li class="chapter-item expanded "><a href="strings_and_bytes.html"><strong aria-hidden="true">3.</strong> Strings and bytes</a></li><li class="chapter-item expanded "><a href="sequences.html"><strong aria-hidden="true">4.</strong> Sequences</a></li><li class="chapter-item expanded "><a href="date_and_time.html"><strong aria-hidden="true">5.</strong> Date & Time</a></li><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">6.</strong> Real-valued distributions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="credits.html">Credits</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -147,14 +146,61 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="document-not-found-404"><a class="header" href="#document-not-found-404">Document not found (404)</a></h1>
-<p>This URL is invalid, sorry. Please use the navigation bar or search to continue.</p>
+                        <h1 id="integers"><a class="header" href="#integers">Integers</a></h1>
+<h2 id="ixiarand_below"><a class="header" href="#ixiarand_below"><code>ixia.rand_below</code></a></h2>
+<blockquote>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/secrets.html#secrets.randbelow">Original section for <code>secrets.randbelow</code></a></p>
+</blockquote>
+<pre><code class="language-py">def rand_below(n: int) -&gt; int
+</code></pre>
+<p>Returns a random int in the range \( [0, n) \).</p>
+<h2 id="ixiarand_bits"><a class="header" href="#ixiarand_bits"><code>ixia.rand_bits</code></a></h2>
+<blockquote>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.getrandbits">Original section for <code>random.getrandbits</code></a></p>
+</blockquote>
+<pre><code class="language-py">def rand_bits(k: int) -&gt; int
+</code></pre>
+<p>Returns a non-negative Python integer with <code>k</code> random bits.</p>
+<h2 id="ixiarand_bool"><a class="header" href="#ixiarand_bool"><code>ixia.rand_bool</code></a></h2>
+<pre><code class="language-py">def rand_bool() -&gt; bool
+</code></pre>
+<p>Returns a random bool.</p>
+<h2 id="ixiarand_int"><a class="header" href="#ixiarand_int"><code>ixia.rand_int</code></a></h2>
+<blockquote>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.randint">Original section for <code>random.randint</code></a></p>
+</blockquote>
+<pre><code class="language-py">def rand_int(a: int, b: int) -&gt; int
+</code></pre>
+<p>Returns a random integer <code>N</code> such that <code>a &lt;= N &lt;= b</code>.
+Alias for <a href="#rand_range"><code>ixia.rand_range(a, b+1)</code></a>.</p>
+<h2 id="ixiarand_range"><a class="header" href="#ixiarand_range"><code>ixia.rand_range</code></a></h2>
+<blockquote>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.randrange">Original section for <code>random.randrange</code></a></p>
+</blockquote>
+<pre><code class="language-py">def rand_range(start: int, stop: int | None = None, step: int = 1) -&gt; int
+</code></pre>
+<p>Returns a randomly selected element from <code>range(start, stop, step)</code>. This is
+equivalent to <code>ixia.choice(range(start, stop, step))</code>, but doesn't actually
+build a range object.</p>
+<p>The positional argument pattern matches that of <code>range()</code>. Keyword arguments
+should not be used because the function may use them in unexpected ways.</p>
+<h2 id="ixiauniverse_rand"><a class="header" href="#ixiauniverse_rand"><code>ixia.universe_rand</code></a></h2>
+<pre><code class="language-py">def universe_rand() -&gt; int
+</code></pre>
+<p>Generates a random number based on the universe.</p>
+<p>Thanks to the work of the recent Nobel Prize laureates, it was possible to code this function that computes a random number by simulating universe dimensions phasing on gamma ray emission using the sum of the spins of the pair positron/electron in a normalized Higgs field. Surprisingly, Taylor series is involved in this beautiful mathematical operation. It may or may not always return 42, we do not know.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="introduction.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
+                            <a rel="next" href="strings_and_bytes.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -162,7 +208,13 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="introduction.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
+                    <a rel="next" href="strings_and_bytes.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>

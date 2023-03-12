@@ -72,10 +72,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -83,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="bytes_and_integers.html"><strong aria-hidden="true">2.</strong> Bytes, integers and strings</a></li><li class="chapter-item expanded "><a href="sequences.html"><strong aria-hidden="true">3.</strong> Sequences</a></li><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">4.</strong> Real-valued distributions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="credits.html" class="active">Credits</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="integers.html"><strong aria-hidden="true">2.</strong> Integers</a></li><li class="chapter-item expanded "><a href="strings_and_bytes.html"><strong aria-hidden="true">3.</strong> Strings and bytes</a></li><li class="chapter-item expanded "><a href="sequences.html"><strong aria-hidden="true">4.</strong> Sequences</a></li><li class="chapter-item expanded "><a href="date_and_time.html"><strong aria-hidden="true">5.</strong> Date & Time</a></li><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">6.</strong> Real-valued distributions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="credits.html" class="active">Credits</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>

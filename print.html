@@ -73,10 +73,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -84,7 +86,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="bytes_and_integers.html"><strong aria-hidden="true">2.</strong> Bytes, integers and strings</a></li><li class="chapter-item expanded "><a href="sequences.html"><strong aria-hidden="true">3.</strong> Sequences</a></li><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">4.</strong> Real-valued distributions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="credits.html">Credits</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="integers.html"><strong aria-hidden="true">2.</strong> Integers</a></li><li class="chapter-item expanded "><a href="strings_and_bytes.html"><strong aria-hidden="true">3.</strong> Strings and bytes</a></li><li class="chapter-item expanded "><a href="sequences.html"><strong aria-hidden="true">4.</strong> Sequences</a></li><li class="chapter-item expanded "><a href="date_and_time.html"><strong aria-hidden="true">5.</strong> Date & Time</a></li><li class="chapter-item expanded "><a href="distributions.html"><strong aria-hidden="true">6.</strong> Real-valued distributions</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="credits.html">Credits</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -168,14 +170,7 @@ since Python 3.8:</p>
 </ul>
 <p>On the following pages of this documentation, function signatures often mention
 the <code>Number</code> type—that's simply an alias to <code>Union[int, float]</code>.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="bytes-integers-and-strings"><a class="header" href="#bytes-integers-and-strings">Bytes, integers and strings</a></h1>
-<h2 id="ixiapassphrase"><a class="header" href="#ixiapassphrase"><code>ixia.passphrase</code></a></h2>
-<pre><code class="language-py">def passphrase(
-    n: int, *, sep: str = &quot;-&quot;, words_path: str = &quot;/usr/share/dict/words&quot;
-) -&gt; str
-</code></pre>
-<p>Generates an <a href="https://xkcd.com/936/">XKCD-style</a> passphrase made up from <code>n</code> words (based on the file specified by <code>words_path</code>), separated by <code>sep</code> (<code>-</code> by default).</p>
-<p>⚠️ The default word list is not available on Windows.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="integers"><a class="header" href="#integers">Integers</a></h1>
 <h2 id="ixiarand_below"><a class="header" href="#ixiarand_below"><code>ixia.rand_below</code></a></h2>
 <blockquote>
 <p><strong>Link:</strong> <a href="https://docs.python.org/3/library/secrets.html#secrets.randbelow">Original section for <code>secrets.randbelow</code></a></p>
@@ -194,6 +189,38 @@ the <code>Number</code> type—that's simply an alias to <code>Union[int, float]
 <pre><code class="language-py">def rand_bool() -&gt; bool
 </code></pre>
 <p>Returns a random bool.</p>
+<h2 id="ixiarand_int"><a class="header" href="#ixiarand_int"><code>ixia.rand_int</code></a></h2>
+<blockquote>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.randint">Original section for <code>random.randint</code></a></p>
+</blockquote>
+<pre><code class="language-py">def rand_int(a: int, b: int) -&gt; int
+</code></pre>
+<p>Returns a random integer <code>N</code> such that <code>a &lt;= N &lt;= b</code>.
+Alias for <a href="integers.html#rand_range"><code>ixia.rand_range(a, b+1)</code></a>.</p>
+<h2 id="ixiarand_range"><a class="header" href="#ixiarand_range"><code>ixia.rand_range</code></a></h2>
+<blockquote>
+<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.randrange">Original section for <code>random.randrange</code></a></p>
+</blockquote>
+<pre><code class="language-py">def rand_range(start: int, stop: int | None = None, step: int = 1) -&gt; int
+</code></pre>
+<p>Returns a randomly selected element from <code>range(start, stop, step)</code>. This is
+equivalent to <code>ixia.choice(range(start, stop, step))</code>, but doesn't actually
+build a range object.</p>
+<p>The positional argument pattern matches that of <code>range()</code>. Keyword arguments
+should not be used because the function may use them in unexpected ways.</p>
+<h2 id="ixiauniverse_rand"><a class="header" href="#ixiauniverse_rand"><code>ixia.universe_rand</code></a></h2>
+<pre><code class="language-py">def universe_rand() -&gt; int
+</code></pre>
+<p>Generates a random number based on the universe.</p>
+<p>Thanks to the work of the recent Nobel Prize laureates, it was possible to code this function that computes a random number by simulating universe dimensions phasing on gamma ray emission using the sum of the spins of the pair positron/electron in a normalized Higgs field. Surprisingly, Taylor series is involved in this beautiful mathematical operation. It may or may not always return 42, we do not know.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="strings-and-bytes"><a class="header" href="#strings-and-bytes">Strings and bytes</a></h1>
+<h2 id="ixiapassphrase"><a class="header" href="#ixiapassphrase"><code>ixia.passphrase</code></a></h2>
+<pre><code class="language-py">def passphrase(
+    n: int, *, sep: str = &quot;-&quot;, words_path: str = &quot;/usr/share/dict/words&quot;
+) -&gt; str
+</code></pre>
+<p>Generates an <a href="https://xkcd.com/936/">XKCD-style</a> passphrase made up from <code>n</code> words (based on the file specified by <code>words_path</code>), separated by <code>sep</code> (<code>-</code> by default).</p>
+<p>⚠️ The default word list is not available on Windows.</p>
 <h2 id="ixiarand_bytes"><a class="header" href="#ixiarand_bytes"><code>ixia.rand_bytes</code></a></h2>
 <blockquote>
 <p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.randbytes">Original section for <code>random.randbytes</code></a></p>
@@ -208,14 +235,6 @@ the <code>Number</code> type—that's simply an alias to <code>Union[int, float]
 <pre><code class="language-py">def rand_hex(n: int) -&gt; str
 </code></pre>
 <p>Returns a hex string composed of <code>n</code> random bytes.</p>
-<h2 id="ixiarand_int"><a class="header" href="#ixiarand_int"><code>ixia.rand_int</code></a></h2>
-<blockquote>
-<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.randint">Original section for <code>random.randint</code></a></p>
-</blockquote>
-<pre><code class="language-py">def rand_int(a: int, b: int) -&gt; int
-</code></pre>
-<p>Returns a random integer <code>N</code> such that <code>a &lt;= N &lt;= b</code>.
-Alias for <a href="bytes_and_integers.html#rand_range"><code>ixia.rand_range(a, b+1)</code></a>.</p>
 <h2 id="ixiarand_line"><a class="header" href="#ixiarand_line"><code>ixia.rand_line</code></a></h2>
 <pre><code class="language-py">def rand_line(file: TextIOBase | str) -&gt; str
 </code></pre>
@@ -223,17 +242,6 @@ Alias for <a href="bytes_and_integers.html#rand_range"><code>ixia.rand_range(a, 
 a path, reads it, and returns a random line from the read content.
 Given a readable IO object, reads it,
 and returns a random line from the read content.</p>
-<h2 id="ixiarand_range"><a class="header" href="#ixiarand_range"><code>ixia.rand_range</code></a></h2>
-<blockquote>
-<p><strong>Link:</strong> <a href="https://docs.python.org/3/library/random.html#random.randrange">Original section for <code>random.randrange</code></a></p>
-</blockquote>
-<pre><code class="language-py">def rand_range(start: int, stop: int | None = None, step: int = 1) -&gt; int
-</code></pre>
-<p>Returns a randomly selected element from <code>range(start, stop, step)</code>. This is
-equivalent to <code>ixia.choice(range(start, stop, step))</code>, but doesn't actually
-build a range object.</p>
-<p>The positional argument pattern matches that of <code>range()</code>. Keyword arguments
-should not be used because the function may use them in unexpected ways.</p>
 <h2 id="ixiarand_urlsafe"><a class="header" href="#ixiarand_urlsafe"><code>ixia.rand_urlsafe</code></a></h2>
 <blockquote>
 <p><a href="https://docs.python.org/3/library/secrets.html#secrets.token_urlsafe">Original section for <code>secrets.token_urlsafe</code></a></p>
@@ -241,11 +249,6 @@ should not be used because the function may use them in unexpected ways.</p>
 <pre><code class="language-py">def rand_urlsafe(n: int = 32) -&gt; str
 </code></pre>
 <p>Returns a random URL-safe text string, composed of <code>n</code> bytes, in Base64 encoding. Defaults to 32.</p>
-<h2 id="ixiauniverse_rand"><a class="header" href="#ixiauniverse_rand"><code>ixia.universe_rand</code></a></h2>
-<pre><code class="language-py">def universe_rand() -&gt; int
-</code></pre>
-<p>Generates a random number based on the universe.</p>
-<p>Thanks to the work of the recent Nobel Prize laureates, it was possible to code this function that computes a random number by simulating universe dimensions phasing on gamma ray emission using the sum of the spins of the pair positron/electron in a normalized Higgs field. Surprisingly, Taylor series is involved in this beautiful mathematical operation. It may or may not always return 42, we do not know.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="sequences"><a class="header" href="#sequences">Sequences</a></h1>
 <h2 id="ixiachoice"><a class="header" href="#ixiachoice"><code>ixia.choice</code></a></h2>
 <blockquote>
@@ -333,6 +336,49 @@ If <code>seq</code> is an immutable type <code>IM[T]</code>, the function will r
 <blockquote>
 <p>For in place shuffling, use <a href="sequences.html#ixiashuffle"><code>ixia.shuffle()</code></a>.</p>
 </blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="date--time"><a class="header" href="#date--time">Date &amp; Time</a></h1>
+<h2 id="ixiarand_date"><a class="header" href="#ixiarand_date"><code>ixia.rand_date</code></a></h2>
+<pre><code class="language-py">Datelike = str | int | tuple[int, int, int] | datetime.date | datetime.datetime
+
+def rand_date(start: Datelike, end: Datelike | None = None) -&gt; datetime.date
+</code></pre>
+<p>Returns a random date between <code>start</code> and <code>end</code> (both inclusive).</p>
+<p>The inputs can be of the following types:</p>
+<ul>
+<li>ISO format string (e.g. &quot;2023-03-12&quot;)</li>
+<li>year integer (<code>rand_date(2020, 2022)</code> ⇔ <code>rand_date(&quot;2020-01-01&quot;, &quot;2022-12-31&quot;)</code>)</li>
+<li>(year, month, day) tuple</li>
+<li><code>datetime.date</code> object</li>
+<li><code>datetime.datetime</code> object</li>
+</ul>
+<p>If <code>end</code> is not specified, it's gonna be set to the end of the start date's year,<br />
+(e.g. <code>rand_date(&quot;2023-09-01&quot;)</code> → <code>rand_date(&quot;2023-09-01&quot;, &quot;2023-12-31&quot;)</code>).</p>
+<h2 id="ixiarand_time"><a class="header" href="#ixiarand_time"><code>ixia.rand_time</code></a></h2>
+<pre><code class="language-py">Timelike = (
+    str
+    | int
+    | tuple[int, int]
+    | tuple[int, int, int]
+    | tuple[int, int, int, int]
+    | datetime.time
+    | datetime.datetime
+)
+
+def rand_time(
+    start: Timelike | None = None, end: Timelike | None = None
+) -&gt; datetime.time
+</code></pre>
+<p>Returns a random date between <code>start</code> and <code>end</code> (both inclusive).</p>
+<p>The inputs can be of the following types:</p>
+<ul>
+<li>ISO format string (e.g. <code>&quot;12:34:56.789012&quot;</code>)</li>
+<li>hour integer</li>
+<li>2–4 integer (hour, minute, second, microsecond) tuple (only the first two are required)</li>
+<li><code>datetime.time</code> object</li>
+<li><code>datetime.datetime</code> object</li>
+</ul>
+<p>Both <code>start</code> and <code>end</code> are optional, and default to <code>datetime.time.min</code>
+(midnight) and <code>datetime.time.max</code> (<code>23:59:59.999999</code>), respectively.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="real-valued-distributions"><a class="header" href="#real-valued-distributions">Real-valued distributions</a></h1>
 <h2 id="ixiabeta_variate"><a class="header" href="#ixiabeta_variate"><code>ixia.beta_variate</code></a></h2>
 <blockquote>
@@ -373,7 +419,7 @@ and \( (-\infty, 0] \) for <code>lambda_ &lt; 0</code>.</p>
 <p><code>mu</code> is the mean, and <code>sigma</code> is the standard deviation. This is slightly
 faster than the <a href="distributions.html#normal_variate"><code>ixia.normal_variate()</code></a> function.</p>
 <blockquote>
-<p><strong>Multitherading Note</strong><br />
+<p><strong>Multithreading Note</strong><br />
 When two threads call this function simultaneously, it is possible that they
 will receive the same return value.
 This can be avoided in two ways:</p>
