@@ -1,7 +1,4 @@
-from .date_time import (
-    rand_date,
-    rand_time,
-)
+from .date_time import rand_date, rand_time
 from .distributions import (
     beta_variate,
     expo_variate,

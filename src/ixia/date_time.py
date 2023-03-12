@@ -5,10 +5,15 @@ from typing import Tuple, Union
 
 from .integers import rand_below, rand_int
 
-
-Datelike = Union[str, int, Tuple[int, int, int], dt.date]
+Datelike = Union[str, int, Tuple[int, int, int], dt.date, dt.datetime]
 Timelike = Union[
-    str, int, Tuple[int, int], Tuple[int, int, int], Tuple[int, int, int, int], dt.time
+    str,
+    int,
+    Tuple[int, int],
+    Tuple[int, int, int],
+    Tuple[int, int, int, int],
+    dt.time,
+    dt.datetime,
 ]
 
 
@@ -19,6 +24,8 @@ def _convert_date(date: Datelike) -> dt.date:
         return dt.date(date, 1, 1)
     if isinstance(date, tuple):
         return dt.date(*date)
+    if isinstance(date, dt.datetime):
+        return date.date()
     return date
 
 
@@ -29,15 +36,17 @@ def _convert_time(time: Timelike) -> dt.time:
         return dt.time(time)
     if isinstance(time, tuple):
         return dt.time(*time)
+    if isinstance(time, dt.datetime):
+        return time.time()
     return time
 
 
 def _microseconds(time: dt.time) -> int:
     return (
         time.microsecond
-        + time.second * 10 ** 6
-        + time.minute * 6 * 10 ** 7
-        + time.hour * 36 * 10 ** 8
+        + time.second * 10**6
+        + time.minute * 6 * 10**7
+        + time.hour * 36 * 10**8
     )
 
 
