@@ -46,3 +46,6 @@ The inputs can be of the following types:
 - 2–4 integer (hour, minute, second, microsecond) tuple (only the first two are required)
 - `datetime.time` object
 - `datetime.datetime` object
+
+Both `start` and `end` are optional, and default to `datetime.time.min`
+(midnight) and `datetime.time.max` (`23:59:59.999999`), respectively.
