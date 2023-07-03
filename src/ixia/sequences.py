@@ -12,9 +12,21 @@ from .distributions import Number, random
 T = TypeVar("T")
 
 
-def choice(seq: Sequence[T]) -> T:
-    """Chooses a random element from a non-empty sequence."""
-    return secrets.choice(seq)
+def choice(
+    seq: Sequence[T],
+    weights: Sequence[Number] | None = None,
+    *,
+    cumulative_weights: Sequence[Number] | None = None,
+) -> T:
+    """
+    Chooses a random element from a non-empty sequence.
+
+    If the relative weights or cumulative weights are not specified,
+    the selections are made with equal probability.
+    """
+    if weights is None and cumulative_weights is None:
+        return secrets.choice(seq)
+    return choices(seq, weights, cumulative_weights=cumulative_weights)[0]
 
 
 def choices(
