@@ -25,7 +25,7 @@ def beta_variate(alpha: Number, beta: Number) -> float:
     return 0.0
 
 
-def expo_variate(lambda_: float) -> float:
+def expo_variate(lambda_: float = 1.0) -> float:
     """
     Exponential distribution.
 
