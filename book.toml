@@ -1,9 +1,0 @@
-[book]
-authors = ["trag1c"]
-language = "en"
-multilingual = false
-src = "docs"
-title = "Ixia"
-
-[output.html]
-mathjax-support = true
