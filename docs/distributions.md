@@ -11,7 +11,7 @@ def beta_variate(alpha: Number, beta: Number) -> float
 Beta distribution.
 
 Conditions on the parameters are `alpha > 0` and `beta > 0`.
-Returned values range between \\( 0 \\) and \\( 1 \\).
+Returned values range between $0$ and $1$.
 
 
 ## `ixia.expo_variate`
@@ -24,9 +24,9 @@ def expo_variate(lambda_: float) -> float
 
 Exponential distribution.
 
-`lambda_` is \\( 1 \\) divided by the desired mean. It should be nonzero.
-Returned values are in range \\( [0, +\infty) \\) for `lambda_ > 0`,
-and \\( (-\infty, 0] \\) for `lambda_ < 0`.
+`lambda_` is $1$ divided by the desired mean. It should be nonzero.
+Returned values are in range $[0, +\infty)$ for `lambda_ > 0`,
+and $(-\infty, 0]$ for `lambda_ < 0`.
 
 
 ## `ixia.gamma_variate`
@@ -42,7 +42,7 @@ Gamma distribution.
 Conditions on the parameters are `alpha > 0` and `beta > 0`.
 
 The probability distribution function is
-\\[ f(x)=\frac{x^{\alpha-1}\cdot e^{\frac{-x}{\beta}}}{\Gamma(\alpha)\cdot\beta^\alpha} \\]
+$$f(x)=\frac{x^{\alpha-1}\cdot e^{\frac{-x}{\beta}}}{\Gamma(\alpha)\cdot\beta^\alpha}$$
 
 ## `ixia.gauss`
 
@@ -78,7 +78,7 @@ Log normal distribution.
 
 If you take the natural logarithm of this distribution, you'll get a normal
 distribution with mean `mu` and standard deviation `sigma`. `mu` can have any
-value, and `sigma` must be greater than \\( 0 \\).
+value, and `sigma` must be greater than $0$.
 
 
 ## `ixia.normal_variate`
@@ -115,7 +115,7 @@ Pareto distribution.
 def random() -> float
 ```
 
-Generates a random floating point number in the range \\( [0, 1) \\).
+Generates a random floating point number in the range $[0, 1)$.
 
 
 ## `ixia.triangular`
@@ -159,10 +159,10 @@ floating-point rounding in the equation `a + (b-a) * random()`.
 def von_mises_variate(mu: Number, kappa: Number) -> float
 ```
 
-`mu` is the mean angle, expressed in radians between \\( 0 \\)
-and \\( \tau \\), and `kappa` is the concentration parameter, which must be
+`mu` is the mean angle, expressed in radians between $0$
+and $\tau$, and `kappa` is the concentration parameter, which must be
 greater than or equal to zero. If `kappa` is equal to zero, this distribution
-reduces to a uniform random angle over the range \\( 0 \\) to \\( \tau \\).
+reduces to a uniform random angle over the range $0$ to $\tau$.
 
 
 ## `ixia.weibull_variate`

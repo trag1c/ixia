@@ -8,7 +8,7 @@
 def rand_below(n: int) -> int
 ```
 
-Returns a random int in the range \\( [0, n) \\).
+Returns a random int in the range $[0, n)$.
 
 
 ## `ixia.rand_bits`
