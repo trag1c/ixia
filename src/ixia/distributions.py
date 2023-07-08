@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-from math import acos, cos, e, exp, log, pi, sin, sqrt, tau
+from math import acos, cos, e, exp, fabs, floor, lgamma, log, log2, pi, sin, sqrt, tau
+from operator import index
 from os import urandom
 from typing import Union
 
@@ -23,6 +24,72 @@ def beta_variate(alpha: Number, beta: Number) -> float:
     if y := gamma_variate(alpha, 1.0):
         return y / (y + gamma_variate(beta, 1.0))
     return 0.0
+
+
+def binomial_variate(n: int = 1, p: Number = 0.5) -> int:
+    """
+    Binomial random variable.
+
+    Gives the number of successess for n independent trials
+    with the probability of success in each trial being p:
+
+        sum(random() < p for _ in range(n))
+
+    Returns an integer in the range [0, n]
+    """
+    if n < 0:
+        raise ValueError("n must be non-negative")
+    if p == 0.0:
+        return 0
+    if p == 1.0:
+        return n
+    if not (0.0 < p < 1.0):
+        raise ValueError("p must be in range [0, 1]")
+    if n == 1:
+        return index(random() < p)
+    if p > 0.5:
+        return n - binomial_variate(n, 1.0 - p)
+
+    if n * p < 10.0:
+        x = y = 0
+        if not (c := log2(1.0 - p)):
+            return x
+        while True:
+            y += floor(log2(random()) / c) + 1
+            if y > n:
+                return x
+            x += 1
+
+    assert n*p >= 10.0 and p <= 0.5
+    setup_complete = False
+    alpha = m = h = lpq = 0.0
+
+    spq = sqrt(n * p * (1.0 - p))
+    b = 1.15 + 2.53 * spq
+    a = -0.0873 + 0.0248 * b + 0.01 * p
+    c = n * p + 0.5
+    vr = 0.92 - 4.2 / b
+
+    while True:
+        u = random() - 0.5
+        us = 0.5 - fabs(u := random() - 0.5)
+        k = floor((2.0 * a / us + b) * u + c)
+        if k < 0 or k > n:
+            continue
+
+        v = random()
+        if us >= 0.07 and v <= vr:
+            return k
+
+        if not setup_complete:
+            alpha = (2.83 + 5.1 / b) * spq
+            lpq = log(p / (1.0 - p))
+            m = floor((n + 1) * p)
+            h = lgamma(m + 1) + lgamma(n - m + 1)
+            setup_complete = True
+        v *= alpha / (a / (us * us) + b)
+        if log(v) <= h - lgamma(k + 1) - lgamma(n - k + 1) + (k - m) * lpq:
+            return k
 
 
 def expo_variate(lambda_: float = 1.0) -> float:
