@@ -31,6 +31,11 @@ def rand_int(a: int, b: int) -> int:
     return rand_range(a, b + 1)
 
 
+def rand_ints(a: int, b: int, *, k: int) -> list[int]:
+    """Returns a list of k random integers in range [a, b]."""
+    return [rand_int(a, b) for _ in range(k)]
+
+
 def rand_range(start: int, stop: int | None = None, step: int = 1) -> int:
     """Chooses a random item from range([start,] stop[, step])."""
     if stop is None:
