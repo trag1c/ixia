@@ -39,8 +39,18 @@ Returns a random bool.
 def rand_int(a: int, b: int) -> int
 ```
 
-Returns a random integer `N` such that `a <= N <= b`.
+Returns a random integer `N` in the range $[a, b]$.
 Alias for [`ixia.rand_range(a, b+1)`](#rand_range).
+
+
+## `ixia.rand_ints`
+
+```py
+def rand_ints(a: int, b: int, *, k: int) -> list[int]
+```
+
+Returns a list of `k` random integrs in the range $[a, b]$.
+Equivalent to `[rand_int(a, b) for _ in range(k)]`.
 
 
 ## `ixia.rand_range`

@@ -57,6 +57,11 @@ includes integers, floats, and fractions but excludes decimals). Weights are
 assumed to be non-negative and finite. If all weights are zero, a `ValueError` is raised.
 
 
+## `ixia.rand_ints`
+
+> **Link:** See the [Integers section](integers.md#ixiarand_ints).
+
+
 ## `ixia.sample`
 
 > **Link:** [Original section for `random.sample`](https://docs.python.org/3/library/random.html#random.sample)
