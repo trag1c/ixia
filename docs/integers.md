@@ -49,7 +49,7 @@ Alias for [`ixia.rand_range(a, b+1)`](#rand_range).
 def rand_ints(a: int, b: int, *, k: int) -> list[int]
 ```
 
-Returns a list of `k` random integrs in the range $[a, b]$.
+Returns a list of `k` random integrs in the range $[a, b]$.  
 Equivalent to `[rand_int(a, b) for _ in range(k)]`.
 
 
