@@ -24,6 +24,8 @@ def choice(
     If the relative weights or cumulative weights are not specified,
     the selections are made with equal probability.
     """
+    if not seq:
+        raise IndexError("Cannot choose from an empty sequence")
     if weights is None and cumulative_weights is None:
         return secrets.choice(seq)
     return choices(seq, weights, cumulative_weights=cumulative_weights)[0]
