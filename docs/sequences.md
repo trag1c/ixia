@@ -5,10 +5,18 @@
 > **Link:** [Original section for `random.choices`](https://docs.python.org/3/library/random.html#random.choice)
 
 ```py
-def choice(seq: Sequence[T]) -> T
+def choice(
+    seq: Sequence[T],
+    weights: Sequence[Number] | None = None,
+    *,
+    cumulative_weights: Sequence[Number] | None = None
+) -> T
 ```
 
 Chooses a random element from a non-empty sequence `seq`.
+
+If the relative weights or cumulative weights are not specified,
+the selections are made with equal probability.
 
 If `seq` is empty, `IndexError` is raised.
 
