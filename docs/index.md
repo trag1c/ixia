@@ -7,14 +7,15 @@ functions, such as [`ixia.passphrase()`](strings_and_bytes.md#ixiapassphrase),
 values are generated using `urandom` (or `BCryptGenRandom` on Windows).
 
 ## ⚠️ Important Notes
-While supporting Python 3.8+, Ixia is based on the Python 3.11 implementation
+While supporting Python 3.8+, Ixia is based on the Python 3.12 implementation
 of the `random` module. The following changes have been made to the module
 since Python 3.8:
 
 - `getrandbits` accepts 0 for `k`
 - `choices` raises a `ValueError` if all weights are zero
 - `sample` has a new `counts` parameter
-- `gauss` and `normal_variate` have default parameter values
+- `gauss`, `expovariate` and `normalvariate` have default parameter values
+- `binomialvariate` was added
 
 Additionally, Ixia executes 3.9+ deprecations, thus:
 
