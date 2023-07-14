@@ -13,6 +13,19 @@ Beta distribution.
 Conditions on the parameters are `alpha > 0` and `beta > 0`.
 Returned values range between $0$ and $1$.
 
+## `ixia.binomial_variate`
+
+> **Link:** [Original section for `random.binomialvariate`](https://docs.python.org/3.12/library/random.html#random.binomialvariate)
+
+Binomial random variable.
+
+Gives the number of successes for `n` independent trials
+with the probability of success in each trial being `p`.
+
+Equivalent to `sum(random() < p for _ in range(n))`.
+
+Returns an integer in the range $[0, n]$.
+
 
 ## `ixia.expo_variate`
 

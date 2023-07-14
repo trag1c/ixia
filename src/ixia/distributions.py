@@ -32,7 +32,7 @@ def binomial_variate(n: int = 1, p: Number = 0.5) -> int:
     """
     Binomial random variable.
 
-    Gives the number of successess for n independent trials
+    Gives the number of successes for n independent trials
     with the probability of success in each trial being p:
 
         sum(random() < p for _ in range(n))
