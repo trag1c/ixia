@@ -19,7 +19,7 @@ Returned values range between $0$ and $1$.
 > **Link:** [Original section for `random.expovariate`](https://docs.python.org/3/library/random.html#random.expovariate)
 
 ```py
-def expo_variate(lambda_: float) -> float
+def expo_variate(lambda_: float = 1.0) -> float
 ```
 
 Exponential distribution.
