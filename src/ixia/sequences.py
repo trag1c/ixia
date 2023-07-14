@@ -61,7 +61,7 @@ def choices(
     if len(cumulative_weights) != n:
         raise ValueError("The number of weights does not match the sequence")
 
-    total = cumulative_weights[-1] + 0.0
+    total = cumulative_weights[-1] + 0.0  # convert to float
     if total <= 0.0:
         raise ValueError("Total of weights must be greater than zero")
 
@@ -116,11 +116,13 @@ def sample(seq: Sequence[T], k: int, *, counts: Iterable[int] | None = None) -> 
         raise ValueError("Sample larger than sequence or is negative")
 
     result: list[T] = []
-    setsize = 21
+    setsize = 21  # size of a small set minus size of an empty list
     if k > 5:
         setsize += 4 ** ceil(log(k * 3, 4))
 
     if n <= setsize:
+        # An n-length list is smaller than a k-length set.
+        # Invariant:  non-selected at pool[0 : n-i]
         pool = list(seq)
         for i in range(k):
             j = secrets.randbelow(n - i)

@@ -21,6 +21,8 @@ def beta_variate(alpha: Number, beta: Number) -> float:
     Conditions on the parameters are alpha > 0 and beta > 0.
     Returned values range between 0 and 1.
     """
+    # This version is due to Janne Sinkkonen, and matches all the std
+    # texts (e.g., Knuth Vol 2 Ed 3 pg 134 "the beta distribution").
     if y := gamma_variate(alpha, 1.0):
         return y / (y + gamma_variate(beta, 1.0))
     return 0.0
@@ -37,6 +39,7 @@ def binomial_variate(n: int = 1, p: Number = 0.5) -> int:
 
     Returns an integer in the range [0, n]
     """
+    # Error checking and edge cases
     if n < 0:
         raise ValueError("n must be non-negative")
     if p == 0.0:
@@ -45,12 +48,18 @@ def binomial_variate(n: int = 1, p: Number = 0.5) -> int:
         return n
     if not (0.0 < p < 1.0):
         raise ValueError("p must be in range [0, 1]")
+
+    # Fast path for a common case
     if n == 1:
         return index(random() < p)
+
+    # Exploit symmetry to establish:  p <= 0.5
     if p > 0.5:
         return n - binomial_variate(n, 1.0 - p)
 
     if n * p < 10.0:
+        # BG: Geometric method by Devroye with running time of O(np).
+        # https://dl.acm.org/doi/pdf/10.1145/42372.42381
         x = y = 0
         if not (c := log2(1.0 - p)):
             return x
@@ -60,11 +69,13 @@ def binomial_variate(n: int = 1, p: Number = 0.5) -> int:
                 return x
             x += 1
 
+    # BTRS: Transformed rejection with squeeze method by Wolfgang Hörmann
+    # https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.8407
     assert n*p >= 10.0 and p <= 0.5
     setup_complete = False
     alpha = m = h = lpq = 0.0
 
-    spq = sqrt(n * p * (1.0 - p))
+    spq = sqrt(n * p * (1.0 - p))  # Standard deviation of the distribution
     b = 1.15 + 2.53 * spq
     a = -0.0873 + 0.0248 * b + 0.01 * p
     c = n * p + 0.5
@@ -77,10 +88,15 @@ def binomial_variate(n: int = 1, p: Number = 0.5) -> int:
         if k < 0 or k > n:
             continue
 
+        # The early-out "squeeze" test substantially reduces
+        # the number of acceptance condition evaluations.
         v = random()
         if us >= 0.07 and v <= vr:
             return k
 
+        # Acceptance-rejection test.
+        # Note, the original paper errorneously omits the call to log(v)
+        # when comparing to the log of the rescaled binomial distribution.
         if not setup_complete:
             alpha = (2.83 + 5.1 / b) * spq
             lpq = log(p / (1.0 - p))
@@ -100,6 +116,8 @@ def expo_variate(lambda_: float = 1.0) -> float:
     Return values range from 0 to positive infinity if lambda_ is positive,
     and from negative infinity to 0 if lambda_ is negative.
     """
+    # we use 1-random() instead of random() to preclude
+    # the possibility of taking the log of zero
     return -log(1.0 - random()) / lambda_
 
 
@@ -113,6 +131,11 @@ def gamma_variate(alpha: Number, beta: Number) -> float:
         raise ValueError("gamma_variate: alpha and beta must be > 0.0")
 
     if alpha > 1.0:
+
+        # Uses R.C.H. Cheng, "The generation of Gamma
+        # variables with non-integral shape parameters",
+        # Applied Statistics, (1977), 26, No. 1, p71-74
+
         ainv = sqrt(2.0 * alpha - 1.0)
         b = alpha - log(4)
         c = alpha + ainv
@@ -131,8 +154,11 @@ def gamma_variate(alpha: Number, beta: Number) -> float:
                 return x * beta
 
     if alpha == 1.0:
+        # expovariate(1/beta)
         return -log(1.0 - random()) * beta
 
+    # alpha is between 0 and 1 (exclusive)
+    # Uses ALGORITHM GS of Statistical Computing - Kennedy & Gentle
     while True:
         b = (e + alpha) / e
         p = b * random()
@@ -182,6 +208,10 @@ def normal_variate(mu: Number = 0.0, sigma: Number = 1.0) -> float:
 
     mu is the mean, and sigma is the standard deviation.
     """
+    # Uses Kinderman and Monahan method. Reference: Kinderman,
+    # A.J. and Monahan, J.F., "Computer generation of random
+    # variables using the ratio of uniform deviates", ACM Trans
+    # Math Software, 3, (1977), pp257-260.
     nv = 4 * exp(-0.5) / sqrt(2.0)
     while True:
         u1 = random()
@@ -198,6 +228,7 @@ def pareto_variate(alpha: Number) -> float:
 
     alpha is the shape parameter.
     """
+    # Jain, pg. 495
     return (1.0 - random()) ** (-1.0 / alpha)
 
 
@@ -239,6 +270,12 @@ def von_mises_variate(mu: Number, kappa: Number) -> float:
     equal to zero, this distribution reduces to a uniform random angle over
     the range 0 to tau.
     """
+    # Based upon an algorithm published in: Fisher, N.I.,
+    # "Statistical Analysis of Circular Data", Cambridge
+    # University Press, 1993.
+
+    # Thanks to Magnus Kessler for a correction to the
+    # implementation of step 4.
     if kappa <= 1e-6:
         return tau * random()
 
@@ -265,4 +302,5 @@ def weibull_variate(alpha: Number, beta: Number) -> float:
 
     alpha is the scale parameter, beta is the shape parameter.
     """
+    # Jain, pg. 499; bug fix courtesy Bill Arms
     return alpha * (-log(1.0 - random())) ** (1.0 / beta)
