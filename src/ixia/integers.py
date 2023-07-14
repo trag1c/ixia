@@ -23,7 +23,7 @@ def rand_bits(k: int) -> int:
 
 def rand_bool() -> bool:
     """Returns a random bool."""
-    return bool(round(random()))
+    return random() < 0.5
 
 
 def rand_int(a: int, b: int) -> int:

@@ -48,6 +48,7 @@ def choices(
 
     if cumulative_weights is None:
         if weights is None:
+            n += 0.0  # convert to float for a small speed improvement
             return [seq[floor(random() * n)] for _ in range(k)]
         try:
             cumulative_weights = list(accumulate(weights))
