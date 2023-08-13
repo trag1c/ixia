@@ -3,14 +3,14 @@ from __future__ import annotations
 from math import acos, cos, e, exp, fabs, floor, lgamma, log, log2, pi, sin, sqrt, tau
 from operator import index
 from os import urandom
-from typing import Union
+from typing import ClassVar, Union
 
 Number = Union[int, float]
 
 
 class Cache:
     gauss_next: float | None = None
-    words: list[str] = []
+    words: ClassVar[list[str]] = []
     words_path: str = "/usr/share/dict/words"
 
 
@@ -154,7 +154,7 @@ def gamma_variate(alpha: Number, beta: Number) -> float:
                 return x * beta
 
     if alpha == 1.0:
-        # expovariate(1/beta)
+        # expovariate(1/beta)  # noqa: ERA001
         return -log(1.0 - random()) * beta
 
     # alpha is between 0 and 1 (exclusive)
