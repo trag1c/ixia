@@ -19,6 +19,9 @@ mkdocs = "^1.5.2"
 mkdocs-material = "^9.1.21"
 ruff = "^0.0.284"
 
+[tool.mypy]
+exclude = "tests"
+
 [tool.ruff]
 target-version = "py38"
 select = [
