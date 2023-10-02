@@ -18,6 +18,7 @@ from .integers import (
     rand_bits,
     rand_bool,
     rand_int,
+    rand_ints,
     rand_range,
     universe_rand,
 )
@@ -42,6 +43,7 @@ __all__ = (
     "rand_date",
     "rand_hex",
     "rand_int",
+    "rand_ints",
     "rand_line",
     "rand_range",
     "rand_time",
