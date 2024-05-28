@@ -15,7 +15,8 @@ def rand_below(n: int) -> int:
 def rand_bits(k: int) -> int:
     """Generates an int with k random bits."""
     if k < 0:
-        raise ValueError("number of bits must be non-negative")
+        msg = "number of bits must be non-negative"
+        raise ValueError(msg)
     numbytes = (k + 7) // 8
     x = int.from_bytes(urandom(numbytes), "big")
     return x >> (numbytes * 8 - k)
@@ -40,25 +41,30 @@ def rand_range(start: int, stop: int | None = None, step: int = 1) -> int:
     """Chooses a random item from range([start,] stop[, step])."""
     if stop is None:
         if step != 1:
-            raise TypeError("Missing a non-None stop argument")
+            msg = "Missing a non-None stop argument"
+            raise TypeError(msg)
         if start > 0:
             return secrets.randbelow(start)
-        raise ValueError("empty range for rand_range")
+        msg = "empty range for rand_range"
+        raise ValueError(msg)
 
     width = stop - start
     if step == 1:
         if width > 0:
             return start + secrets.randbelow(width)
-        raise ValueError(f"empty range for rand_range ({start}, {stop}, {step})")
+        msg = f"empty range for rand_range ({start}, {stop}, {step})"
+        raise ValueError(msg)
 
     if step > 0:
         n = (width + step - 1) // step
     elif step < 0:
         n = (width + step + 1) // step
     else:
-        raise ValueError("zero step for rand_range")
+        msg = "zero step for rand_range"
+        raise ValueError(msg)
     if n <= 0:
-        raise ValueError("empty range for rand_range")
+        msg = "empty range for rand_range"
+        raise ValueError(msg)
     return start + step * secrets.randbelow(n)
 
 

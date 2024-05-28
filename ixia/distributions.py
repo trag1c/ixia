@@ -3,15 +3,17 @@ from __future__ import annotations
 from math import acos, cos, e, exp, fabs, floor, lgamma, log, log2, pi, sin, sqrt, tau
 from operator import index
 from os import urandom
+from pathlib import Path
 from typing import ClassVar, Union
 
 Number = Union[int, float]
+PASSPHRASE_DEFAULT_PATH = Path("/usr/share/dict/words")
 
 
-class Cache:
+class _Cache:
     gauss_next: float | None = None
     words: ClassVar[list[str]] = []
-    words_path: str = "/usr/share/dict/words"
+    words_path: Path = Path("/usr/share/dict/words")
 
 
 def beta_variate(alpha: Number, beta: Number) -> float:
@@ -41,13 +43,15 @@ def binomial_variate(n: int = 1, p: Number = 0.5) -> int:
     """
     # Error checking and edge cases
     if n < 0:
-        raise ValueError("n must be non-negative")
+        msg = "n must be non-negative"
+        raise ValueError(msg)
     if p == 0.0:
         return 0
     if p == 1.0:
         return n
     if not (0.0 < p < 1.0):
-        raise ValueError("p must be in range [0, 1]")
+        msg = "p must be in range [0, 1]"
+        raise ValueError(msg)
 
     # Fast path for a common case
     if n == 1:
@@ -71,7 +75,6 @@ def binomial_variate(n: int = 1, p: Number = 0.5) -> int:
 
     # BTRS: Transformed rejection with squeeze method by Wolfgang Hörmann
     # https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.8407
-    assert n*p >= 10.0 and p <= 0.5
     setup_complete = False
     alpha = m = h = lpq = 0.0
 
@@ -127,10 +130,10 @@ def gamma_variate(alpha: Number, beta: Number) -> float:
     Conditions on the parameters are alpha > 0 and beta > 0.
     """
     if alpha <= 0.0 or beta <= 0.0:
-        raise ValueError("gamma_variate: alpha and beta must be > 0.0")
+        msg = "gamma_variate: alpha and beta must be > 0.0"
+        raise ValueError(msg)
 
     if alpha > 1.0:
-
         # Uses R.C.H. Cheng, "The generation of Gamma
         # variables with non-integral shape parameters",
         # Applied Statistics, (1977), 26, No. 1, p71-74
@@ -180,13 +183,13 @@ def gauss(mu: Number = 0.0, sigma: Number = 1.0) -> float:
 
     Not thread-safe without a lock around calls.
     """
-    z = Cache.gauss_next
-    Cache.gauss_next = None
+    z = _Cache.gauss_next
+    _Cache.gauss_next = None
     if z is None:
         xtau = random() * tau
         g2rad = sqrt(-2.0 * log(1.0 - random()))
         z = cos(xtau) * g2rad
-        Cache.gauss_next = sin(xtau) * g2rad
+        _Cache.gauss_next = sin(xtau) * g2rad
     return mu + z * sigma
 
 
@@ -228,7 +231,7 @@ def pareto_variate(alpha: Number) -> float:
     alpha is the shape parameter.
     """
     # Jain, pg. 495
-    return (1.0 - random()) ** (-1.0 / alpha)
+    return (1.0 - random()) ** (-1.0 / alpha)  # type: ignore[no-any-return]
 
 
 def random() -> float:
@@ -302,4 +305,4 @@ def weibull_variate(alpha: Number, beta: Number) -> float:
     alpha is the scale parameter, beta is the shape parameter.
     """
     # Jain, pg. 499; bug fix courtesy Bill Arms
-    return alpha * (-log(1.0 - random())) ** (1.0 / beta)
+    return alpha * (-log(1.0 - random())) ** (1.0 / beta)  # type: ignore[no-any-return]
