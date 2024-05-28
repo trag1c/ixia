@@ -7,7 +7,7 @@ from os import urandom
 from pathlib import Path
 from sys import platform
 
-from .distributions import Cache
+from .distributions import _Cache
 from .sequences import choice, choices
 
 PASSPHRASE_DEFAULT_PATH = "/usr/share/dict/words"
@@ -21,10 +21,10 @@ def passphrase(
     if words_path == PASSPHRASE_DEFAULT_PATH and platform not in PASSPHRASE_PLATFORMS:
         msg = f"word list unavailable on {platform}"
         raise NotImplementedError(msg)
-    if not Cache.words or Cache.words_path != words_path:
-        Cache.words = Path(words_path).read_text().splitlines()
-        Cache.words_path = words_path
-    return sep.join(choices(Cache.words, k=n)).lower()
+    if not _Cache.words or _Cache.words_path != words_path:
+        _Cache.words = Path(words_path).read_text().splitlines()
+        _Cache.words_path = words_path
+    return sep.join(choices(_Cache.words, k=n)).lower()
 
 
 def rand_bytes(n: int = 32) -> bytes:

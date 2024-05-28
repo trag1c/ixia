@@ -8,7 +8,7 @@ from typing import ClassVar, Union
 Number = Union[int, float]
 
 
-class Cache:
+class _Cache:
     gauss_next: float | None = None
     words: ClassVar[list[str]] = []
     words_path: str = "/usr/share/dict/words"
@@ -181,13 +181,13 @@ def gauss(mu: Number = 0.0, sigma: Number = 1.0) -> float:
 
     Not thread-safe without a lock around calls.
     """
-    z = Cache.gauss_next
-    Cache.gauss_next = None
+    z = _Cache.gauss_next
+    _Cache.gauss_next = None
     if z is None:
         xtau = random() * tau
         g2rad = sqrt(-2.0 * log(1.0 - random()))
         z = cos(xtau) * g2rad
-        Cache.gauss_next = sin(xtau) * g2rad
+        _Cache.gauss_next = sin(xtau) * g2rad
     return mu + z * sigma
 
 
