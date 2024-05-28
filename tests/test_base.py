@@ -15,7 +15,7 @@ URLSAFE_CHARSET = ascii_letters + digits + "_-"
 
 
 def test_bytes() -> None:
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match="negative argument not allowed"):
         rand_bytes(-1)
     assert rand_bytes(0) == b""
     assert len(rand_bytes(8)) == 8
