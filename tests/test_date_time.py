@@ -20,7 +20,9 @@ def test_convert_date() -> None:
     assert dt.date(2022, 1, 1) == _convert_date((2022, 1, 1))
 
     # with input as datetime
-    assert dt.date(2022, 1, 1) == _convert_date(dt.datetime(2022, 1, 1, 12, 00, 00))
+    assert dt.date(2022, 1, 1) == _convert_date(
+        dt.datetime(2022, 1, 1, 12, 00, 00, tzinfo=dt.timezone.utc)
+    )
 
 
 def test_convert_time() -> None:
@@ -36,7 +38,9 @@ def test_convert_time() -> None:
     assert dt.time(12) == _convert_time((12, 0, 0, 0))
 
     # with input as datetime
-    assert dt.time(12) == _convert_time(dt.datetime(2022, 1, 1, 12, 00, 00))
+    assert dt.time(12) == _convert_time(
+        dt.datetime(2022, 1, 1, 12, 00, 00, tzinfo=dt.timezone.utc)
+    )
 
 
 def test_microseconds() -> None:
