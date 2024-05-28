@@ -71,7 +71,7 @@ def binomial_variate(n: int = 1, p: Number = 0.5) -> int:
 
     # BTRS: Transformed rejection with squeeze method by Wolfgang Hörmann
     # https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.8407
-    assert n*p >= 10.0 and p <= 0.5
+    assert n * p >= 10.0 and p <= 0.5
     setup_complete = False
     alpha = m = h = lpq = 0.0
 
@@ -130,7 +130,6 @@ def gamma_variate(alpha: Number, beta: Number) -> float:
         raise ValueError("gamma_variate: alpha and beta must be > 0.0")
 
     if alpha > 1.0:
-
         # Uses R.C.H. Cheng, "The generation of Gamma
         # variables with non-integral shape parameters",
         # Applied Statistics, (1977), 26, No. 1, p71-74

@@ -1,4 +1,5 @@
 import datetime as dt
+
 from ixia.date_time import (
     _convert_date,
     _convert_time,
@@ -6,6 +7,7 @@ from ixia.date_time import (
     rand_date,
     rand_time,
 )
+
 
 def test_convert_date():
     # with input as str
