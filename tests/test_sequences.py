@@ -1,6 +1,6 @@
-from sys import platform
+import sys
 
-from pytest import raises
+import pytest
 
 from ixia import passphrase, shuffled
 
@@ -14,10 +14,19 @@ def test_shuffled() -> None:
         assert sorted(s) == sorted(TEST_LIST)
 
 
+@pytest.mark.skipif(
+    sys.platform not in {"linux", "darwin", "aix"},
+    reason="Not implemented on this platform",
+)
 def test_passphrase() -> None:
-    if platform not in ("linux", "darwin", "aix"):
-        with raises(NotImplementedError):
-            passphrase(0)
-    else:
-        assert not passphrase(0)
-        assert passphrase(1)
+    assert not passphrase(0)
+    assert passphrase(1)
+
+
+@pytest.mark.skipif(
+    sys.platform in {"linux", "darwin", "aix"},
+    reason="Not implemented on this platform",
+)
+def test_passphrase_not_implemented() -> None:
+    with pytest.raises(NotImplementedError):
+        passphrase(0)
