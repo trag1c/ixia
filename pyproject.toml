@@ -20,6 +20,16 @@ ruff = "^0.4.5"
 interrogate = "^1.7.0"
 pytest-cov = "^5.0.0"
 
+[tool.interrogate]
+exclude = ["tests"]
+ignore-init-method = true
+ignore-semiprivate = true
+ignore-private = true
+ignore-module = true
+ignore-magic = true
+ignore-nested-functions = true
+verbose = 1
+
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = ["COM", "D", "FIX", "ANN1", "ANN401", "ISC001", "T201", "TD003", "PLR2004"]
