@@ -82,7 +82,6 @@ def binomial_variate(n: int = 1, p: Number = 0.5) -> int:
     vr = 0.92 - 4.2 / b
 
     while True:
-        u = random() - 0.5
         us = 0.5 - fabs(u := random() - 0.5)
         k = floor((2.0 * a / us + b) * u + c)
         if k < 0 or k > n:
