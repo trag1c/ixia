@@ -19,7 +19,8 @@ def passphrase(
 ) -> str:
     """Generates an XKCD-style passphrase."""
     if words_path == PASSPHRASE_DEFAULT_PATH and platform not in PASSPHRASE_PLATFORMS:
-        raise NotImplementedError(f"word list unavailable on {platform}")
+        msg = f"word list unavailable on {platform}"
+        raise NotImplementedError(msg)
     if not Cache.words or Cache.words_path != words_path:
         Cache.words = Path(words_path).read_text().splitlines()
         Cache.words_path = words_path

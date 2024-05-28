@@ -25,7 +25,8 @@ def choice(
     the selections are made with equal probability.
     """
     if not seq:
-        raise IndexError("Cannot choose from an empty sequence")
+        msg = "Cannot choose from an empty sequence"
+        raise IndexError(msg)
     if weights is None and cumulative_weights is None:
         return secrets.choice(seq)
     return choices(seq, weights, cumulative_weights=cumulative_weights)[0]
@@ -55,21 +56,24 @@ def choices(
         except TypeError:
             if not isinstance(weights, int):
                 raise
-            raise TypeError(
-                f"The number of choices must be a keyword argument: k={weights}"
-            ) from None
+            msg = f"The number of choices must be a keyword argument: k={weights}"
+            raise TypeError(msg) from None
     elif weights is not None:
-        raise TypeError("Cannot specify both weights and cumulative weights")
+        msg = "Cannot specify both weights and cumulative weights"
+        raise TypeError(msg)
 
     if len(cumulative_weights) != n:
-        raise ValueError("The number of weights does not match the sequence")
+        msg = "The number of weights does not match the sequence"
+        raise ValueError(msg)
 
     total = cumulative_weights[-1] + 0.0  # convert to float
     if total <= 0.0:
-        raise ValueError("Total of weights must be greater than zero")
+        msg = "Total of weights must be greater than zero"
+        raise ValueError(msg)
 
     if not isfinite(total):
-        raise ValueError("Total of weights must be finite")
+        msg = "Total of weights must be finite"
+        raise ValueError(msg)
 
     hi = n - 1
     return [seq[bisect(cumulative_weights, random() * total, 0, hi)] for _ in range(k)]
@@ -107,16 +111,20 @@ def sample(seq: Sequence[T], k: int, *, counts: Iterable[int] | None = None) -> 
     if counts is not None:
         cum_counts = list(accumulate(counts))
         if len(cum_counts) != n:
-            raise ValueError("The number of counts does not match the sequence")
+            msg = "The number of counts does not match the sequence"
+            raise ValueError(msg)
         total = cum_counts.pop()
         if not isinstance(total, int):
-            raise TypeError("Counts must be integers")
+            msg = "Counts must be integers"
+            raise TypeError(msg)
         if total <= 0:
-            raise ValueError("Total of counts must be greater than zero")
+            msg = "Total of counts must be greater than zero"
+            raise ValueError(msg)
         selections = sample(range(total), k=k)
         return [seq[bisect(cum_counts, s)] for s in selections]
     if not 0 <= k <= n:
-        raise ValueError("Sample larger than sequence or is negative")
+        msg = "Sample larger than sequence or is negative"
+        raise ValueError(msg)
 
     result: list[T] = []
     setsize = 21  # size of a small set minus size of an empty list

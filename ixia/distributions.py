@@ -41,13 +41,15 @@ def binomial_variate(n: int = 1, p: Number = 0.5) -> int:
     """
     # Error checking and edge cases
     if n < 0:
-        raise ValueError("n must be non-negative")
+        msg = "n must be non-negative"
+        raise ValueError(msg)
     if p == 0.0:
         return 0
     if p == 1.0:
         return n
     if not (0.0 < p < 1.0):
-        raise ValueError("p must be in range [0, 1]")
+        msg = "p must be in range [0, 1]"
+        raise ValueError(msg)
 
     # Fast path for a common case
     if n == 1:
@@ -127,7 +129,8 @@ def gamma_variate(alpha: Number, beta: Number) -> float:
     Conditions on the parameters are alpha > 0 and beta > 0.
     """
     if alpha <= 0.0 or beta <= 0.0:
-        raise ValueError("gamma_variate: alpha and beta must be > 0.0")
+        msg = "gamma_variate: alpha and beta must be > 0.0"
+        raise ValueError(msg)
 
     if alpha > 1.0:
         # Uses R.C.H. Cheng, "The generation of Gamma
