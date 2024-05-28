@@ -1,7 +1,7 @@
 site_name: Ixia Documentation
 repo_url: https://github.com/trag1c/ixia
 repo_name: trag1c/ixia
-copyright: Copyright &copy; 2023 trag1c
+copyright: Copyright &copy; 2022–2024 trag1c
 nav:
   - Home: index.md
   - Integers: integers.md
