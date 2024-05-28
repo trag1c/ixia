@@ -97,7 +97,7 @@ def binomial_variate(n: int = 1, p: Number = 0.5) -> int:
             return k
 
         # Acceptance-rejection test.
-        # Note, the original paper errorneously omits the call to log(v)
+        # Note, the original paper erroneously omits the call to log(v)
         # when comparing to the log of the rescaled binomial distribution.
         if not setup_complete:
             alpha = (2.83 + 5.1 / b) * spq
