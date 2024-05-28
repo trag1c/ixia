@@ -73,7 +73,6 @@ def binomial_variate(n: int = 1, p: Number = 0.5) -> int:
 
     # BTRS: Transformed rejection with squeeze method by Wolfgang Hörmann
     # https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.8407
-    assert n * p >= 10.0 and p <= 0.5
     setup_complete = False
     alpha = m = h = lpq = 0.0
 
