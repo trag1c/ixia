@@ -227,7 +227,7 @@ def pareto_variate(alpha: Number) -> float:
     alpha is the shape parameter.
     """
     # Jain, pg. 495
-    return (1.0 - random()) ** (-1.0 / alpha)
+    return (1.0 - random()) ** (-1.0 / alpha)  # type: ignore[no-any-return]
 
 
 def random() -> float:
@@ -301,4 +301,4 @@ def weibull_variate(alpha: Number, beta: Number) -> float:
     alpha is the scale parameter, beta is the shape parameter.
     """
     # Jain, pg. 499; bug fix courtesy Bill Arms
-    return alpha * (-log(1.0 - random())) ** (1.0 / beta)
+    return alpha * (-log(1.0 - random())) ** (1.0 / beta)  # type: ignore[no-any-return]
