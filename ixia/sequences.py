@@ -89,7 +89,7 @@ def sample(seq: Sequence[T], k: int, *, counts: Iterable[int] | None = None) -> 
     partitioned into grand prize and second place winners (the subslices).
 
     Members of the sequence don't need to be hashable nor unique. If the sequence
-    contains repeats, then each occurence is a possible selection in the sample.
+    contains repeats, then each occurrence is a possible selection in the sample.
 
     Repeated elements can be specified one at a time or with
     the optional counts parameter. For example:

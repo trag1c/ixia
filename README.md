@@ -20,7 +20,7 @@ Ixia documentation is available at https://trag1c.github.io/ixia/.
 Ixia is licensed under the MIT License.
 
 ## ⚠️ Important Notes
-While supporting Python 3.8+, Ixia is based on the Python 3.11 implementation
+While supporting Python 3.8+, Ixia is based on the Python 3.12 implementation
 of the `random` module. The following changes have been made to the module
 since Python 3.8:
 - `getrandbits` accepts 0 for `k`
