@@ -1,7 +1,7 @@
 from math import ceil
 from string import ascii_letters, digits, hexdigits
 
-from pytest import raises
+import pytest
 
 from ixia import (
     rand_bytes,
@@ -15,7 +15,7 @@ URLSAFE_CHARSET = ascii_letters + digits + "_-"
 
 
 def test_bytes() -> None:
-    with raises(ValueError):
+    with pytest.raises(ValueError):
         rand_bytes(-1)
     assert rand_bytes(0) == b""
     assert len(rand_bytes(8)) == 8
