@@ -1,6 +1,7 @@
 from .date_time import rand_date, rand_time
 from .distributions import (
     beta_variate,
+    binomial_variate,
     expo_variate,
     gamma_variate,
     gauss,
@@ -27,6 +28,7 @@ from .strings import passphrase, rand_bytes, rand_hex, rand_line, rand_urlsafe
 
 __all__ = (
     "beta_variate",
+    "binomial_variate",
     "choice",
     "choices",
     "expo_variate",
