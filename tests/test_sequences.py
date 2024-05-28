@@ -1,6 +1,4 @@
-import sys
-
-import pytest
+from pathlib import Path
 
 from ixia import passphrase, shuffled
 
@@ -14,19 +12,7 @@ def test_shuffled() -> None:
         assert sorted(s) == sorted(TEST_LIST)
 
 
-@pytest.mark.skipif(
-    sys.platform not in {"linux", "darwin", "aix"},
-    reason="Not implemented on this platform",
-)
-def test_passphrase() -> None:
-    assert not passphrase(0)
-    assert passphrase(1)
-
-
-@pytest.mark.skipif(
-    sys.platform in {"linux", "darwin", "aix"},
-    reason="Not implemented on this platform",
-)
-def test_passphrase_not_implemented() -> None:
-    with pytest.raises(NotImplementedError):
-        passphrase(0)
+def test_passphrase(tmp_path: Path) -> None:
+    (path := tmp_path / "words.txt").write_text("one\ntwo\nthree\nfour\nfive")
+    assert not passphrase(0, words_path=path)
+    assert passphrase(1, words_path=path)

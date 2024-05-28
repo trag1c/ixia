@@ -3,26 +3,23 @@ from __future__ import annotations
 import secrets
 from base64 import urlsafe_b64encode
 from io import TextIOBase
-from os import urandom
+from os import PathLike, urandom
 from pathlib import Path
-from sys import platform
 
-from .distributions import _Cache
+from .distributions import PASSPHRASE_DEFAULT_PATH, _Cache
 from .sequences import choice, choices
-
-PASSPHRASE_DEFAULT_PATH = "/usr/share/dict/words"
-PASSPHRASE_PLATFORMS = {"linux", "darwin", "aix"}
 
 
 def passphrase(
-    n: int, *, sep: str = "-", words_path: str = PASSPHRASE_DEFAULT_PATH
+    n: int, *, sep: str = "-", words_path: PathLike[str] | str = PASSPHRASE_DEFAULT_PATH
 ) -> str:
     """Generates an XKCD-style passphrase."""
-    if words_path == PASSPHRASE_DEFAULT_PATH and platform not in PASSPHRASE_PLATFORMS:
-        msg = f"word list unavailable on {platform}"
+    words_path = Path(words_path)
+    if words_path == PASSPHRASE_DEFAULT_PATH and not words_path.exists():
+        msg = "word list unavailable at the default path; please provide a valid path"
         raise NotImplementedError(msg)
-    if not _Cache.words or _Cache.words_path != words_path:
-        _Cache.words = Path(words_path).read_text().splitlines()
+    if not (_Cache.words and _Cache.words_path == words_path):
+        _Cache.words = words_path.read_text().splitlines()
         _Cache.words_path = words_path
     return sep.join(choices(_Cache.words, k=n)).lower()
 
