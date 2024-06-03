@@ -2,6 +2,7 @@ site_name: Ixia Documentation
 repo_url: https://github.com/trag1c/ixia
 repo_name: trag1c/ixia
 copyright: Copyright &copy; 2022–2024 trag1c
+
 nav:
   - Home: index.md
   - Integers: integers.md
@@ -9,6 +10,7 @@ nav:
   - Sequences: sequences.md
   - Date & Time: date_and_time.md
   - Real-valued distributions: distributions.md
+
 theme:
   name: material
   palette:
@@ -30,6 +32,7 @@ theme:
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to light mode
+
 markdown_extensions:
   - admonition
   - footnotes
@@ -40,6 +43,7 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
+
 extra_javascript:
   - javascripts/katex.js 
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js  
@@ -47,3 +51,8 @@ extra_javascript:
 
 extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
+
+extra:
+  version:
+    provider: mike
+    alias: true
