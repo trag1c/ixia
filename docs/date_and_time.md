@@ -10,6 +10,7 @@ def rand_date(start: Datelike, end: Datelike | None = None) -> datetime.date
 Returns a random date between `start` and `end` (both inclusive).
 
 The inputs can be of the following types:
+
 - ISO format string (e.g. "2023-03-12")
 - year integer (`rand_date(2020, 2022)` ⇔ `rand_date("2020-01-01", "2022-12-31")`)
 - (year, month, day) tuple
@@ -41,6 +42,7 @@ def rand_time(
 Returns a random date between `start` and `end` (both inclusive).
 
 The inputs can be of the following types:
+
 - ISO format string (e.g. `"12:34:56.789012"`)
 - hour integer
 - 2–4 integer (hour, minute, second, microsecond) tuple (only the first two are required)
