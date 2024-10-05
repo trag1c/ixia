@@ -60,7 +60,7 @@ just coverage  # pytest (with coverage), interrogate (docstring coverage)
 ```
 
 ## License
-`ixia` is licensed under the [MIT License].
+`ixia` is licensed under the [MIT License].  
 © [trag1c], 2022–2024
 
 [MIT License]: https://opensource.org/license/mit/
