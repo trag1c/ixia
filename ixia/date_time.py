@@ -1,17 +1,17 @@
 from __future__ import annotations
 
 import datetime as dt
-from typing import Tuple, Union
+from typing import Union
 
 from .integers import rand_below, rand_int
 
-Datelike = Union[str, int, Tuple[int, int, int], dt.date, dt.datetime]
+Datelike = Union[str, int, tuple[int, int, int], dt.date, dt.datetime]
 Timelike = Union[
     str,
     int,
-    Tuple[int, int],
-    Tuple[int, int, int],
-    Tuple[int, int, int, int],
+    tuple[int, int],
+    tuple[int, int, int],
+    tuple[int, int, int, int],
     dt.time,
     dt.datetime,
 ]
