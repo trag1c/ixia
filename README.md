@@ -37,17 +37,12 @@ Please open an issue before submitting a pull request
 
 To get started:
 
-1. Clone the project
-```sh
-git clone https://github.com/trag1c/ixia.git
-```
-
+1. Clone your fork of the project.
 2. Install the project with [uv]:
 ```sh
 uv sync
 ```
-
-3. After you're done, use the following [`just`][just] recipes for checking your
+3. After you're done, use the following [`just`][just] recipes to check your
    changes (or run the commands manually):
 ```sh
 just check     # pytest, mypy, ruff
@@ -65,4 +60,3 @@ just coverage  # pytest (with coverage), interrogate (docstring coverage)
 [ixia-universe-rand]: https://trag1c.github.io/ixia/integers.html#ixiauniverse_rand
 [uv]: https://docs.astral.sh/uv/
 [just]: https://github.com/casey/just/
-[justfile]: https://github.com/trag1c/ixia/blob/main/justfile
