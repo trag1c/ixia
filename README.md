@@ -42,16 +42,13 @@ To get started:
 git clone https://github.com/trag1c/ixia.git
 ```
 
-2. Set up the project with [just] (make sure you have [poetry] installed):
+2. Install the project with [uv]:
 ```sh
-just install
+uv sync
 ```
 
-> [!note]
-> If you don't want to install `just`, simply look up the recipes
-> in the project's [`justfile`][justfile].
-
-3. After you're done, use the following `just` recipes for checking your changes:
+3. After you're done, use the following [`just`][just] recipes for checking your
+   changes (or run the commands manually):
 ```sh
 just check     # pytest, mypy, ruff
 just coverage  # pytest (with coverage), interrogate (docstring coverage)
@@ -66,6 +63,6 @@ just coverage  # pytest (with coverage), interrogate (docstring coverage)
 [ixia-passphrase]: https://trag1c.github.io/ixia/strings_and_bytes.html#ixiapassphrase
 [ixia-shuffled]: https://trag1c.github.io/ixia/sequences.html#ixiashuffled
 [ixia-universe-rand]: https://trag1c.github.io/ixia/integers.html#ixiauniverse_rand
-[poetry]: https://python-poetry.org/
+[uv]: https://docs.astral.sh/uv/
 [just]: https://github.com/casey/just/
 [justfile]: https://github.com/trag1c/ixia/blob/main/justfile
