@@ -49,7 +49,7 @@ def test_choice() -> None:
 
 def test_choice_empty_seq() -> None:
     with pytest.raises(
-        IndexError, match=re.escape("Cannot choose from an empty sequence")
+        IndexError, match=re.escape("cannot choose from an empty sequence")
     ):
         choice([])
 
@@ -65,23 +65,23 @@ def test_choice_with_weights() -> None:
             ([1], 1),
             {},
             TypeError,
-            "The number of choices must be a keyword argument: k=1",
+            "the number of choices must be a keyword argument: k=1",
         ),
         (([1], 1.0), {}, TypeError, "'float' object is not iterable"),
         (
             ([1], [1]),
             {"cumulative_weights": [1]},
             TypeError,
-            "Cannot specify both weights and cumulative weights",
+            "cannot specify both weights and cumulative weights",
         ),
         (
             ([1],),
             {"cumulative_weights": [1, 2]},
             ValueError,
-            "The number of weights does not match the sequence",
+            "the number of weights does not match the sequence",
         ),
-        (([0], [0]), {}, ValueError, "Total of weights must be greater than zero"),
-        (([0], [1e309]), {}, ValueError, "Total of weights must be finite"),
+        (([0], [0]), {}, ValueError, "total of weights must be greater than zero"),
+        (([0], [1e309]), {}, ValueError, "total of weights must be finite"),
     ],
 )
 def test_choices_erroneous_cases(
@@ -113,20 +113,20 @@ def test_sample_counts() -> None:
 @pytest.mark.parametrize(
     ("args", "kwargs", "exc_type", "exc_msg"),
     [
-        (([1], 2), {}, ValueError, "Sample larger than sequence or is negative"),
-        (([1], -1), {}, ValueError, "Sample larger than sequence or is negative"),
+        (([1], 2), {}, ValueError, "sample larger than sequence or is negative"),
+        (([1], -1), {}, ValueError, "sample larger than sequence or is negative"),
         (
             ([1], 1),
             {"counts": [1, 2]},
             ValueError,
-            "The number of counts does not match the sequence",
+            "the number of counts does not match the sequence",
         ),
-        (([1, 2], 1), {"counts": "12"}, TypeError, "Counts must be integers"),
+        (([1, 2], 1), {"counts": "12"}, TypeError, "counts must be integers"),
         (
             ([1], 1),
             {"counts": [0]},
             ValueError,
-            "Total of counts must be greater than zero",
+            "total of counts must be greater than zero",
         ),
     ],
 )
