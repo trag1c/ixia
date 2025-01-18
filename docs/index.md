@@ -20,10 +20,6 @@ Additionally, Ixia executes 3.9+ deprecations, thus:
 - `ixia.sample` doesn't support `set` as a sequence type
 - `ixia.shuffle` doesn't support the `random` parameter
 
-On the following pages of this documentation, function signatures often mention
-the `Number` type—that's simply an alias to `Union[int, float]`.
-
-
 ## Credits
 - The original `random` module documentation & implementation: [Python Software Foundation](https://docs.python.org/3/library/random.html)
 - `universe_rand` implementation: [qexat](https://github.com/qexat)
