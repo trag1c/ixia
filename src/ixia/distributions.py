@@ -146,7 +146,7 @@ def gamma_variate(alpha: Number, beta: Number) -> float:
         while True:
             u = random()
             if not 1e-7 < u < 0.9999999:
-                continue
+                continue  # pragma: no cover
             u2 = 1.0 - random()
             v = log(u / (1.0 - u)) / ainv
             x = alpha * exp(v)
