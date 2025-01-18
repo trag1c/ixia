@@ -13,7 +13,7 @@ PASSPHRASE_DEFAULT_PATH = Path("/usr/share/dict/words")
 class _Cache:
     gauss_next: float | None = None
     words: ClassVar[list[str]] = []
-    words_path: Path = Path("/usr/share/dict/words")
+    words_path: Path = PASSPHRASE_DEFAULT_PATH
 
 
 def beta_variate(alpha: Number, beta: Number) -> float:
