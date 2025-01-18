@@ -4,7 +4,7 @@ from math import acos, cos, e, exp, fabs, floor, lgamma, log, log2, pi, sin, sqr
 from operator import index
 from os import urandom
 from pathlib import Path
-from typing import ClassVar, Union
+from typing import ClassVar
 
 PASSPHRASE_DEFAULT_PATH = Path("/usr/share/dict/words")
 
