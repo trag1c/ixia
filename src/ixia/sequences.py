@@ -3,6 +3,7 @@ from __future__ import annotations
 import secrets
 from bisect import bisect
 from collections.abc import Iterable, MutableSequence, Sequence
+from enum import Enum
 from itertools import accumulate
 from math import ceil, floor, isfinite, log
 from typing import Any, TypeVar
@@ -10,6 +11,7 @@ from typing import Any, TypeVar
 from .distributions import random
 
 T = TypeVar("T")
+E = TypeVar("E", bound=Enum)
 
 
 def choice(
@@ -173,3 +175,12 @@ def shuffled(seq: Sequence[T]) -> MutableSequence[T]:
         shuffle(seq_)
         return seq_
     return sample(seq, len(seq))
+
+
+def rand_enum(enum: type[E]) -> E:
+    """Choose a random enum member."""
+    members = tuple(enum.__members__.values())
+    if not members:
+        msg = "enum has 0 members"
+        raise ValueError(msg)
+    return secrets.choice(members)

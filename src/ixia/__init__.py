@@ -23,7 +23,7 @@ from .integers import (
     rand_range,
     universe_rand,
 )
-from .sequences import choice, choices, sample, shuffle, shuffled
+from .sequences import choice, choices, rand_enum, sample, shuffle, shuffled
 from .strings import passphrase, rand_bytes, rand_hex, rand_line, rand_urlsafe
 
 __all__ = (
@@ -43,6 +43,7 @@ __all__ = (
     "rand_bool",
     "rand_bytes",
     "rand_date",
+    "rand_enum",
     "rand_hex",
     "rand_int",
     "rand_ints",
