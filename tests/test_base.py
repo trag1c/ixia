@@ -99,7 +99,7 @@ def test_rand_range() -> None:
 
 
 def test_rand_range_erroneous_cases() -> None:
-    with pytest.raises(TypeError, match=re.escape("Missing a non-None stop argument")):
+    with pytest.raises(TypeError, match=re.escape("missing a non-None stop argument")):
         rand_range(1, step=2)
 
     with pytest.raises(ValueError, match=re.escape("empty range for rand_range")):

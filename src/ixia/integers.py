@@ -41,7 +41,7 @@ def rand_range(start: int, stop: int | None = None, step: int = 1) -> int:
     """Chooses a random item from range([start,] stop[, step])."""
     if stop is None:
         if step != 1:
-            msg = "Missing a non-None stop argument"
+            msg = "missing a non-None stop argument"
             raise TypeError(msg)
         if start > 0:
             return secrets.randbelow(start)
