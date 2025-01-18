@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import math
 import re
-from collections import Counter
 from typing import TYPE_CHECKING
 
 import pytest
@@ -69,13 +68,13 @@ def test_binomial_variate(n: int, p: float, possible_outcomes: set[int]) -> None
 @pytest.mark.parametrize(
     ("args", "exc_msg"),
     [
-        ((-1,), "n must be non-negative"),
+        ((-1, 0.5), "n must be non-negative"),
         ((1, -0.5), "p must be in range [0, 1]"),
         ((1, 1.5), "p must be in range [0, 1]"),
     ],
 )
 def test_binomial_variate_erroneous_cases(
-    args: tuple[float, ...], exc_msg: str
+    args: tuple[int, float], exc_msg: str
 ) -> None:
     with pytest.raises(ValueError, match=re.escape(exc_msg)):
         binomial_variate(*args)
@@ -117,7 +116,8 @@ def test_gamma_variate_nonpositive_inputs(alpha: float, beta: float) -> None:
 
 def test_gauss_sigma_zero() -> None:
     for _ in range(1000):
-        assert gauss(mu := random(), 0) == mu
+        mu = random()
+        assert gauss(mu, 0) == mu
 
 
 @pytest.mark.parametrize(("mu", "sigma"), [(0, 1), (1, 1), (5, 2), (21, 37), (-19, 84)])
@@ -174,7 +174,7 @@ def test_random() -> None:
 def test_triangular() -> None:
     for mode in (0.5, None):
         for _ in range(10000):
-            assert 0 <= triangular(0, 1) <= 1
+            assert 0 <= triangular(0, 1, mode) <= 1
 
     for i in range(3):
         assert triangular(i, i, i) == i
