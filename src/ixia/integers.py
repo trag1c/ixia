@@ -22,9 +22,9 @@ def rand_bits(k: int) -> int:
     return x >> (numbytes * 8 - k)
 
 
-def rand_bool() -> bool:
-    """Returns a random bool."""
-    return random() < 0.5
+def rand_bool(p: float = 0.5) -> bool:
+    """Returns a bool with a probability `p` of being true (0.5 by default)."""
+    return random() < p
 
 
 def rand_int(a: int, b: int) -> int:
