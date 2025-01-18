@@ -18,9 +18,9 @@ URLSAFE_CHARSET = ascii_letters + digits + "_-"
 def test_bool() -> None:
     assert rand_bool(p=1.0) is True
     assert rand_bool(p=0.0) is False
-    assert 200 < [rand_bool() for _ in range(1000)].count(True) < 800
-    assert [rand_bool(p=0.9) for _ in range(1000)].count(True) > 500
-    assert [rand_bool(p=0.01) for _ in range(1000)].count(True) < 100
+    assert 200 < sum(rand_bool() for _ in range(1000)) < 800
+    assert sum(rand_bool(p=0.9) for _ in range(1000)) > 500
+    assert sum(rand_bool(p=0.01) for _ in range(1000)) < 100
 
 
 def test_bytes() -> None:
