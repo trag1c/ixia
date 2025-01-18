@@ -7,16 +7,16 @@ from itertools import accumulate
 from math import ceil, floor, isfinite, log
 from typing import Any, TypeVar
 
-from .distributions import Number, random
+from .distributions import random
 
 T = TypeVar("T")
 
 
 def choice(
     seq: Sequence[T],
-    weights: Sequence[Number] | None = None,
+    weights: Sequence[float] | None = None,
     *,
-    cumulative_weights: Sequence[Number] | None = None,
+    cumulative_weights: Sequence[float] | None = None,
 ) -> T:
     """
     Chooses a random element from a non-empty sequence.
@@ -34,9 +34,9 @@ def choice(
 
 def choices(
     seq: Sequence[T],
-    weights: Sequence[Number] | None = None,
+    weights: Sequence[float] | None = None,
     *,
-    cumulative_weights: Sequence[Number] | None = None,
+    cumulative_weights: Sequence[float] | None = None,
     k: int = 1,
 ) -> list[T]:
     """
