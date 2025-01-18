@@ -1,11 +1,12 @@
 import re
+from enum import Enum
 from pathlib import Path
 from typing import Any
 from unittest.mock import patch
 
 import pytest
 
-from ixia import choice, choices, passphrase, rand_line, sample, shuffled
+from ixia import choice, choices, passphrase, rand_enum, rand_line, sample, shuffled
 
 TEST_LIST = [6, 3, 9, 1, 2, 4, 8, 0, 5, 7]
 TEST_TUPLE = tuple(TEST_LIST)
@@ -138,3 +139,19 @@ def test_sample_erroneous_cases(
 ) -> None:
     with pytest.raises(exc_type, match=re.escape(exc_msg)):
         sample(*args, **kwargs)
+
+
+def test_rand_enum() -> None:
+    class Foo(Enum):
+        A = 1
+        B = 2
+        C = 3
+
+    for _ in range(100):
+        assert isinstance(rand_enum(Foo), Foo)
+
+    class Empty(Enum):
+        pass
+
+    with pytest.raises(ValueError, match=re.escape("enum has 0 members")):
+        rand_enum(Empty)
