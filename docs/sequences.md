@@ -7,9 +7,9 @@
 ```py
 def choice(
     seq: Sequence[T],
-    weights: Sequence[Number] | None = None,
+    weights: Sequence[float] | None = None,
     *,
-    cumulative_weights: Sequence[Number] | None = None
+    cumulative_weights: Sequence[float] | None = None
 ) -> T
 ```
 
@@ -28,9 +28,9 @@ If `seq` is empty, `IndexError` is raised.
 ```py
 def choices(
     seq: Sequence[T],
-    weights: Sequence[Number] | None = None,
+    weights: Sequence[float] | None = None,
     *,
-    cumulative_weights: Sequence[Number] | None = None,
+    cumulative_weights: Sequence[float] | None = None,
     k: int = 1,
 ) -> list[T]
 ```

@@ -4,9 +4,8 @@ from math import acos, cos, e, exp, fabs, floor, lgamma, log, log2, pi, sin, sqr
 from operator import index
 from os import urandom
 from pathlib import Path
-from typing import ClassVar, Union
+from typing import ClassVar
 
-Number = Union[int, float]
 PASSPHRASE_DEFAULT_PATH = Path("/usr/share/dict/words")
 
 
@@ -16,7 +15,7 @@ class _Cache:
     words_path: Path = PASSPHRASE_DEFAULT_PATH
 
 
-def beta_variate(alpha: Number, beta: Number) -> float:
+def beta_variate(alpha: float, beta: float) -> float:
     """
     Beta distribution.
 
@@ -30,7 +29,7 @@ def beta_variate(alpha: Number, beta: Number) -> float:
     return 0.0
 
 
-def binomial_variate(n: int = 1, p: Number = 0.5) -> int:
+def binomial_variate(n: int = 1, p: float = 0.5) -> int:
     """
     Binomial random variable.
 
@@ -123,7 +122,7 @@ def expo_variate(lambda_: float = 1.0) -> float:
     return -log(1.0 - random()) / lambda_
 
 
-def gamma_variate(alpha: Number, beta: Number) -> float:
+def gamma_variate(alpha: float, beta: float) -> float:
     """
     Gamma distribution.
 
@@ -174,7 +173,7 @@ def gamma_variate(alpha: Number, beta: Number) -> float:
     return x * beta
 
 
-def gauss(mu: Number = 0.0, sigma: Number = 1.0) -> float:
+def gauss(mu: float = 0.0, sigma: float = 1.0) -> float:
     """
     Gaussian distribution.
 
@@ -193,7 +192,7 @@ def gauss(mu: Number = 0.0, sigma: Number = 1.0) -> float:
     return mu + z * sigma
 
 
-def log_norm_variate(mu: Number, sigma: Number) -> float:
+def log_norm_variate(mu: float, sigma: float) -> float:
     """
     Log normal distribution.
 
@@ -204,7 +203,7 @@ def log_norm_variate(mu: Number, sigma: Number) -> float:
     return exp(normal_variate(mu, sigma))
 
 
-def normal_variate(mu: Number = 0.0, sigma: Number = 1.0) -> float:
+def normal_variate(mu: float = 0.0, sigma: float = 1.0) -> float:
     """
     Normal distribution.
 
@@ -224,7 +223,7 @@ def normal_variate(mu: Number = 0.0, sigma: Number = 1.0) -> float:
     return mu + z * sigma
 
 
-def pareto_variate(alpha: Number) -> float:
+def pareto_variate(alpha: float) -> float:
     """
     Pareto distribution.
 
@@ -258,12 +257,12 @@ def triangular(low: float = 0.0, high: float = 1.0, mode: float | None = None) -
     return low + (high - low) * sqrt(u * c)
 
 
-def uniform(a: Number, b: Number) -> float:
+def uniform(a: float, b: float) -> float:
     """Generates a random number in range [a, b) or [a, b] depending on rounding."""
     return a + (b - a) * random()
 
 
-def von_mises_variate(mu: Number, kappa: Number) -> float:
+def von_mises_variate(mu: float, kappa: float) -> float:
     """
     Circular data distribution.
 
@@ -298,7 +297,7 @@ def von_mises_variate(mu: Number, kappa: Number) -> float:
     return (mu - acos(f)) % tau
 
 
-def weibull_variate(alpha: Number, beta: Number) -> float:
+def weibull_variate(alpha: float, beta: float) -> float:
     """
     Weibull distribution.
 
