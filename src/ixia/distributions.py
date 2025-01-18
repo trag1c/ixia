@@ -13,7 +13,7 @@ PASSPHRASE_DEFAULT_PATH = Path("/usr/share/dict/words")
 class _Cache:
     gauss_next: float | None = None
     words: ClassVar[list[str]] = []
-    words_path: Path = Path("/usr/share/dict/words")
+    words_path: Path = PASSPHRASE_DEFAULT_PATH
 
 
 def beta_variate(alpha: Number, beta: Number) -> float:
@@ -146,7 +146,7 @@ def gamma_variate(alpha: Number, beta: Number) -> float:
         while True:
             u = random()
             if not 1e-7 < u < 0.9999999:
-                continue
+                continue  # pragma: no cover
             u2 = 1.0 - random()
             v = log(u / (1.0 - u)) / ainv
             x = alpha * exp(v)

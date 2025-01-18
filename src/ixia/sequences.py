@@ -98,7 +98,7 @@ def sample(seq: Sequence[T], k: int, *, counts: Iterable[int] | None = None) -> 
 
     is equivalent to:
 
-        sample("red", "red", "red", "red", "blue", "blue"], k=5)
+        sample(["red", "red", "red", "red", "blue", "blue"], k=5)
 
     To choose a sample from a range of integers, use range() for the sequence
     argument. This is especially fast and space efficient

@@ -6,6 +6,7 @@ fmt:
     uv run ruff check --select=I --fix
     uv run ruff format
 
+alias cov := coverage
 coverage:
     uv run pytest --cov src --cov-report term-missing
     uv run interrogate -vv
