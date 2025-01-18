@@ -103,10 +103,11 @@ def test_sample() -> None:
 
 
 def test_sample_counts() -> None:
-    assert sample([1, 2], 1, counts=[1, 0]) == [1]
-    assert sample([1, 2], 1, counts=[1, 10**10]) == [2]
-    assert sample([1, 2], 50, counts=[0, 50]) == [2] * 50
-    assert sample([1, 2], 50, counts=[0, 500]) == [2] * 50
+    for _ in range(100):
+        assert sample([1, 2], 1, counts=[1, 0]) == [1]
+        assert sample([1, 2], 1, counts=[1, 10**10]) == [2]
+        assert sample([1, 2], 50, counts=[0, 50]) == [2] * 50
+        assert sample([1, 2], 500, counts=[0, 50000]) == [2] * 500
 
 
 @pytest.mark.parametrize(
