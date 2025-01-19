@@ -184,3 +184,12 @@ def rand_enum(enum: type[E]) -> E:
         msg = "enum has 0 members"
         raise ValueError(msg)
     return secrets.choice(members)
+
+
+def perm(n: int) -> list[int]:
+    """
+    Return a random permutation of the integers from 0 to n - 1.
+
+    This is equivalent to `sample(range(n), n)`.
+    """
+    return sample(range(n), n)
