@@ -8,12 +8,12 @@ from .distributions import random
 
 
 def rand_below(n: int) -> int:
-    """Returns a random int in the range [0, n)."""
+    """Return a random int in the range `[0, n)`."""
     return secrets.randbelow(n)
 
 
 def rand_bits(k: int) -> int:
-    """Generates an int with k random bits."""
+    """Generate an int with `k` random bits."""
     if k < 0:
         msg = "number of bits must be non-negative"
         raise ValueError(msg)
@@ -23,22 +23,22 @@ def rand_bits(k: int) -> int:
 
 
 def rand_bool(p: float = 0.5) -> bool:
-    """Returns a bool with a probability `p` of being true (0.5 by default)."""
+    """Return a bool with a probability `p` of being true (0.5 by default)."""
     return random() < p
 
 
 def rand_int(a: int, b: int) -> int:
-    """Returns random integer in range [a, b], including both end points."""
+    """Return random integer in range `[a, b]`, including both end points."""
     return rand_range(a, b + 1)
 
 
 def rand_ints(a: int, b: int, *, k: int) -> list[int]:
-    """Returns a list of k random integers in range [a, b]."""
+    """Return a list of `k` random integers in range `[a, b]`."""
     return [rand_int(a, b) for _ in range(k)]
 
 
 def rand_range(start: int, stop: int | None = None, step: int = 1) -> int:
-    """Chooses a random item from range([start,] stop[, step])."""
+    """Choose a random item from `range([start,] stop[, step])`."""
     if stop is None:
         if step != 1:
             msg = "missing a non-None stop argument"
@@ -69,7 +69,7 @@ def rand_range(start: int, stop: int | None = None, step: int = 1) -> int:
 
 
 def universe_rand() -> int:
-    """Generates a random number based on the universe."""
+    """Generate a random number based on the universe."""
     bm = 0xFF  # bound max, 1 byte
     s = 0
     lt = ord("\n")  # low threshold

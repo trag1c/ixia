@@ -21,7 +21,7 @@ def choice(
     cumulative_weights: Sequence[float] | None = None,
 ) -> T:
     """
-    Chooses a random element from a non-empty sequence.
+    Choose a random element from a non-empty sequence.
 
     If the relative weights or cumulative weights are not specified,
     the selections are made with equal probability.
@@ -42,7 +42,7 @@ def choices(
     k: int = 1,
 ) -> list[T]:
     """
-    Returns a k sized list of sequence elements chosen with replacement.
+    Return a `k` sized list of sequence elements chosen with replacement.
 
     If the relative weights or cumulative weights are not specified,
     the selections are made with equal probability.
@@ -83,7 +83,7 @@ def choices(
 
 def sample(seq: Sequence[T], k: int, *, counts: Iterable[int] | None = None) -> list[T]:
     """
-    Chooses k unique random elements from the sequence.
+    Choose `k` unique random elements from the sequence.
 
     Returns a new list containing elements from the sequence while leaving the original
     sequence unchanged. The resulting list is in selection order so that all sub-slices
@@ -95,18 +95,19 @@ def sample(seq: Sequence[T], k: int, *, counts: Iterable[int] | None = None) -> 
 
     Repeated elements can be specified one at a time or with
     the optional counts parameter. For example:
-
+    ```
         sample(["red", "blue"], counts=[4, 2], k=5)
-
+    ```
     is equivalent to:
-
+    ```
         sample(["red", "red", "red", "red", "blue", "blue"], k=5)
-
+    ```
     To choose a sample from a range of integers, use range() for the sequence
     argument. This is especially fast and space efficient
     for sampling from a large sequence:
-
+    ```
         sample(range(10_000_000), 60)
+    ```
     """
     n = len(seq)
 
@@ -154,9 +155,9 @@ def sample(seq: Sequence[T], k: int, *, counts: Iterable[int] | None = None) -> 
 
 def shuffle(seq: MutableSequence[Any]) -> None:
     """
-    Shuffles the sequence in place, and returns None.
+    Shuffle the sequence in place, and return `None`.
 
-    Use shuffled() for out of place shuffling.
+    Use `shuffled()` for out of place shuffling.
     """
     for i in range(len(seq) - 1, 0, -1):
         j = secrets.randbelow(i + 1)
@@ -165,10 +166,9 @@ def shuffle(seq: MutableSequence[Any]) -> None:
 
 def shuffled(seq: Sequence[T]) -> MutableSequence[T]:
     """
-    Returns a shuffled copy of the sequence.
-    Returns a list for immutable sequences.
+    Return a shuffled copy of the sequence (a list for immutable sequences).
 
-    Use shuffle() for in place shuffling.
+    Use `shuffle()` for in place shuffling.
     """
     if isinstance(seq, MutableSequence):
         seq_ = seq[:]

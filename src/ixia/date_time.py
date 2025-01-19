@@ -52,7 +52,7 @@ def _microseconds(time: dt.time) -> int:
 
 def rand_date(start: Datelike, end: Datelike | None = None) -> dt.date:
     """
-    Returns a random date between start and end. If end is None, defaults to Dec 31.
+    Return a random date between start and end. If end is None, defaults to Dec 31.
     """
     start = _convert_date(start)
     if end is None:
@@ -66,7 +66,7 @@ def rand_date(start: Datelike, end: Datelike | None = None) -> dt.date:
 
 def rand_time(start: Timelike | None = None, end: Timelike | None = None) -> dt.time:
     """
-    Returns a random time between start and end.
+    Return a random time between start and end.
     If start is None, defaults to 00:00:00.
     If end is None, defaults to 23:59:59.999999.
     """

@@ -19,7 +19,7 @@ def beta_variate(alpha: float, beta: float) -> float:
     """
     Beta distribution.
 
-    Conditions on the parameters are alpha > 0 and beta > 0.
+    Conditions on the parameters are `alpha > 0` and `beta > 0`.
     Returned values range between 0 and 1.
     """
     # This version is due to Janne Sinkkonen, and matches all the std
@@ -35,10 +35,10 @@ def binomial_variate(n: int = 1, p: float = 0.5) -> int:
 
     Gives the number of successes for n independent trials
     with the probability of success in each trial being p:
-
+    ```
         sum(random() < p for _ in range(n))
-
-    Returns an integer in the range [0, n]
+    ```
+    Returns an integer in the range `[0, n]`.
     """
     # Error checking and edge cases
     if n < 0:
@@ -113,9 +113,9 @@ def expo_variate(lambda_: float = 1.0) -> float:
     """
     Exponential distribution.
 
-    lambda_ is 1.0 divided by the desired mean. It should be nonzero.
-    Return values range from 0 to positive infinity if lambda_ is positive,
-    and from negative infinity to 0 if lambda_ is negative.
+    `lambda_` is `1.0` divided by the desired mean. It should be nonzero.
+    Return values range from 0 to positive infinity if `lambda_` is positive,
+    and from negative infinity to 0 if `lambda_` is negative.
     """
     # we use 1-random() instead of random() to preclude
     # the possibility of taking the log of zero
@@ -126,7 +126,7 @@ def gamma_variate(alpha: float, beta: float) -> float:
     """
     Gamma distribution.
 
-    Conditions on the parameters are alpha > 0 and beta > 0.
+    Conditions on the parameters are `alpha > 0` and `beta > 0`.
     """
     if alpha <= 0.0 or beta <= 0.0:
         msg = "gamma_variate: alpha and beta must be > 0.0"
@@ -177,7 +177,7 @@ def gauss(mu: float = 0.0, sigma: float = 1.0) -> float:
     """
     Gaussian distribution.
 
-    mu is the mean, and sigma is the standard deviation.
+    `mu` is the mean, and `sigma` is the standard deviation.
     This is slightly faster than the normal_variate() function.
 
     Not thread-safe without a lock around calls.
@@ -197,8 +197,8 @@ def log_norm_variate(mu: float, sigma: float) -> float:
     Log normal distribution.
 
     If you take the natural logarithm of this distribution, you'll get
-    a normal distribution with mean mu and standard deviation sigma.
-    mu can have any value, and sigma must be greater than zero.
+    a normal distribution with mean mu and standard deviation `sigma`.
+    `mu` can have any value, and `sigma` must be greater than zero.
     """
     return exp(normal_variate(mu, sigma))
 
@@ -207,7 +207,7 @@ def normal_variate(mu: float = 0.0, sigma: float = 1.0) -> float:
     """
     Normal distribution.
 
-    mu is the mean, and sigma is the standard deviation.
+    `mu` is the mean, and `sigma` is the standard deviation.
     """
     # Uses Kinderman and Monahan method. Reference: Kinderman,
     # A.J. and Monahan, J.F., "Computer generation of random
@@ -227,14 +227,14 @@ def pareto_variate(alpha: float) -> float:
     """
     Pareto distribution.
 
-    alpha is the shape parameter.
+    `alpha` is the shape parameter.
     """
     # Jain, pg. 495
     return (1.0 - random()) ** (-1.0 / alpha)  # type: ignore[no-any-return]
 
 
 def random() -> float:
-    """Generates a random number in range [0.0, 1.0)."""
+    """Generate a random number in range [0.0, 1.0)."""
     return (int.from_bytes(urandom(7), "big") >> 3) * 2**-53
 
 
@@ -258,7 +258,7 @@ def triangular(low: float = 0.0, high: float = 1.0, mode: float | None = None) -
 
 
 def uniform(a: float, b: float) -> float:
-    """Generates a random number in range [a, b) or [a, b] depending on rounding."""
+    """Generates a random number in range `[a, b)` or `[a, b]` depending on rounding."""
     return a + (b - a) * random()
 
 
@@ -266,8 +266,8 @@ def von_mises_variate(mu: float, kappa: float) -> float:
     """
     Circular data distribution.
 
-    mu is the mean angle, expressed in raidans between 0 and tau, and kappa is the
-    concentration parameter, which must be greater than or equal to zero. If kappa is
+    `mu` is the mean angle, expressed in raidans between 0 and tau, and `kappa` is the
+    concentration parameter, which must be greater than or equal to zero. If `kappa` is
     equal to zero, this distribution reduces to a uniform random angle over
     the range 0 to tau.
     """
@@ -301,7 +301,7 @@ def weibull_variate(alpha: float, beta: float) -> float:
     """
     Weibull distribution.
 
-    alpha is the scale parameter, beta is the shape parameter.
+    `alpha` is the scale parameter, `beta` is the shape parameter.
     """
     # Jain, pg. 499; bug fix courtesy Bill Arms
     return alpha * (-log(1.0 - random())) ** (1.0 / beta)  # type: ignore[no-any-return]

@@ -13,7 +13,7 @@ from .sequences import choice, choices
 def passphrase(
     n: int, *, sep: str = "-", words_path: PathLike[str] | str = PASSPHRASE_DEFAULT_PATH
 ) -> str:
-    """Generates an XKCD-style passphrase."""
+    """Generate an XKCD-style passphrase."""
     words_path = Path(words_path)
     if words_path == PASSPHRASE_DEFAULT_PATH and not words_path.exists():
         msg = "word list unavailable at the default path; please provide a valid path"
@@ -25,21 +25,21 @@ def passphrase(
 
 
 def rand_bytes(n: int = 32) -> bytes:
-    """Generates n random bytes. Defaults to 32."""
+    """Generate `n` random bytes. Defaults to 32."""
     return urandom(n)
 
 
 def rand_hex(n: int) -> str:
-    """Returns a hex string composed of n random bytes."""
+    """Return a hex string composed of `n` random bytes."""
     return "".join(f"{secrets.randbelow(255):02x}" for _ in range(n))
 
 
 def rand_line(file: TextIOBase | str) -> str:
     """
-    Returns a random line from a file. Given a string, assumes it is
-    a path, reads it, and returns a random line from the read content.
-    Given a readable IO object, reads it,
-    and returns a random line from the read content.
+    Return a random line from a file. Given a string, assume it is
+    a path, read it, and return a random line from the read content.
+    Given a readable IO object, read it,
+    and return a random line from the read content.
     """
     if isinstance(file, TextIOBase):
         return choice(file.read().splitlines())
@@ -48,5 +48,5 @@ def rand_line(file: TextIOBase | str) -> str:
 
 
 def rand_urlsafe(n: int = 32) -> str:
-    """Returns a random URL-safe text string, in Base64 encoding."""
+    """Return a random URL-safe text string, in Base64 encoding."""
     return urlsafe_b64encode(rand_bytes(n)).rstrip(b"=").decode("ascii")
