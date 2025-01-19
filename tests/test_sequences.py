@@ -6,7 +6,17 @@ from unittest.mock import patch
 
 import pytest
 
-from ixia import choice, choices, passphrase, rand_enum, rand_line, sample, shuffled
+from ixia import (
+    beta_variate,
+    choice,
+    choices,
+    passphrase,
+    perm,
+    rand_enum,
+    rand_line,
+    sample,
+    shuffled,
+)
 
 TEST_LIST = [6, 3, 9, 1, 2, 4, 8, 0, 5, 7]
 TEST_TUPLE = tuple(TEST_LIST)
@@ -155,3 +165,11 @@ def test_rand_enum() -> None:
 
     with pytest.raises(ValueError, match=re.escape("enum has 0 members")):
         rand_enum(Empty)
+
+
+def test_perm() -> None:
+    for _ in range(500):
+        size = round(beta_variate(1, 8) * 5000)
+        p = perm(size)
+        assert len(p) == size
+        assert set(p) == set(range(size))
