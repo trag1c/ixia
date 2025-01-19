@@ -9,11 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 * Python 3.13 support
-* `ixia.rand_enum` function
+* `ixia.rand_enum`
+* `ixia.perm`
 
 ### Changed
-* `ixia.rand_bool` now accepts an optional `p` argument for setting the probability
-  of being true
+* `ixia.rand_bool` now accepts an optional `p` argument for setting the
+  probability of being true
 
 ### Fixed
 * Corrected a syntax error in `ixia.sample`'s docstring
