@@ -6,7 +6,7 @@ from collections.abc import Iterable, MutableSequence, Sequence
 from enum import Enum
 from itertools import accumulate
 from math import ceil, floor, isfinite, log
-from typing import Any, TypeVar
+from typing import TypeVar
 
 from .distributions import random
 
@@ -153,7 +153,7 @@ def sample(seq: Sequence[T], k: int, *, counts: Iterable[int] | None = None) -> 
     return result
 
 
-def shuffle(seq: MutableSequence[Any]) -> None:
+def shuffle(seq: MutableSequence[T]) -> None:
     """
     Shuffle the sequence in place, and return `None`.
 
