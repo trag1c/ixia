@@ -26,6 +26,7 @@ from .integers import (
 from .sequences import choice, choices, perm, rand_enum, sample, shuffle, shuffled
 from .strings import (
     passphrase,
+    rand_alnum,
     rand_bytes,
     rand_hex,
     rand_line,
@@ -46,6 +47,7 @@ __all__ = (
     "pareto_variate",
     "passphrase",
     "perm",
+    "rand_alnum",
     "rand_below",
     "rand_bits",
     "rand_bool",
