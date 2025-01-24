@@ -67,3 +67,8 @@ def rand_line(file: TextIOBase | BufferedIOBase | PathLike[str] | str) -> str | 
 def rand_urlsafe(n: int = 32) -> str:
     """Return a random URL-safe text string, in Base64 encoding."""
     return urlsafe_b64encode(rand_bytes(n)).rstrip(b"=").decode("ascii")
+
+
+def rand_printable(n: int) -> str:
+    """Return a random printable ASCII (32..126) string of length `n`."""
+    return "".join(chr(secrets.randbelow(95) + 32) for _ in range(n))

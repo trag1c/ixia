@@ -11,6 +11,7 @@ from ixia import (
     rand_hex,
     rand_int,
     rand_ints,
+    rand_printable,
     rand_range,
     rand_urlsafe,
     random,
@@ -116,3 +117,10 @@ def test_rand_range_erroneous_cases() -> None:
 
     with pytest.raises(ValueError, match=re.escape("empty range for rand_range")):
         rand_range(20, 10, 2)
+
+
+def test_rand_printable() -> None:
+    for i in range(1000):
+        val = rand_printable(i)
+        assert len(val) == i
+        assert all(ord(c) in range(32, 127) for c in val)
