@@ -2,9 +2,10 @@ from __future__ import annotations
 
 import secrets
 from base64 import urlsafe_b64encode
-from io import TextIOBase
+from io import BufferedIOBase, TextIOBase
 from os import PathLike, urandom
 from pathlib import Path
+from typing import overload
 
 from .distributions import PASSPHRASE_DEFAULT_PATH, _Cache
 from .sequences import choice, choices
@@ -34,15 +35,26 @@ def rand_hex(n: int) -> str:
     return "".join(f"{secrets.randbelow(255):02x}" for _ in range(n))
 
 
-def rand_line(file: TextIOBase | str) -> str:
+@overload
+def rand_line(file: TextIOBase | PathLike[str] | str) -> str: ...
+
+
+@overload
+def rand_line(file: BufferedIOBase) -> bytes: ...
+
+
+def rand_line(file: TextIOBase | BufferedIOBase | PathLike[str] | str) -> str | bytes:
     """
-    Return a random line from a file. Given a string, assume it is
-    a path, read it, and return a random line from the read content.
-    Given a readable IO object, read it,
-    and return a random line from the read content.
+    Return a random line from a file. Given a string, assume it is a path, read it, and
+    return a random line from the read content.
+    Given a readable IO object, read it, and return a random line from the read content.
+    Return a bytes object if provided an IO object in binary mode.
     """
-    if isinstance(file, TextIOBase):
-        return choice(file.read().splitlines())
+    if isinstance(file, (TextIOBase, BufferedIOBase)):
+        # Supressing an error due to mypy using a different method of merging types.
+        # Here, mypy sees a `Sequence[object]`, pyright sees a `str | bytes`. See:
+        # https://microsoft.github.io/pyright/#/mypy-comparison?id=unions-vs-joins
+        return choice(file.read().splitlines())  # type: ignore[return-value]
     with Path(file).open() as f:
         return rand_line(f)
 

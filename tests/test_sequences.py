@@ -33,9 +33,25 @@ def test_rand_line(tmp_path: Path) -> None:
     lines = ("hello", "there", "general", "kenobi")
     (path := tmp_path / "sample.txt").write_text("\n".join(lines))
 
+    assert rand_line(path) in lines
     assert rand_line(str(path)) in lines
+
     with path.open() as f:
-        assert rand_line(f)
+        assert rand_line(f) in lines
+
+    with path.open("rb") as f:
+        assert rand_line(f) not in lines  # type: ignore[comparison-overlap]
+
+
+def test_rand_line_bin(tmp_path: Path) -> None:
+    lines = (b"hello", b"there", b"general", b"kenobi")
+    (path := tmp_path / "sample.bin").write_bytes(b"\n".join(lines))
+
+    with path.open("rb") as f:
+        assert rand_line(f) in lines
+
+    with path.open() as f:
+        assert rand_line(f) not in lines  # type: ignore[comparison-overlap]
 
 
 def test_passphrase(tmp_path: Path) -> None:
