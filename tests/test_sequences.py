@@ -1,5 +1,6 @@
 import re
 from enum import Enum
+from io import StringIO
 from pathlib import Path
 from typing import Any
 from unittest.mock import patch
@@ -52,6 +53,25 @@ def test_rand_line_bin(tmp_path: Path) -> None:
 
     with path.open() as f:
         assert rand_line(f) not in lines  # type: ignore[comparison-overlap]
+
+
+def test_rand_line_empty(tmp_path: Path) -> None:
+    (path := tmp_path / "empty.txt").touch()
+
+    with pytest.raises(EOFError):
+        rand_line(path)
+
+    with pytest.raises(EOFError):
+        rand_line(StringIO(""))
+
+    buf = StringIO("hello\nthere")
+    buf.readline()
+    assert rand_line(buf) == "there"
+
+    buf = StringIO("there")
+    buf.readline()
+    with pytest.raises(EOFError):
+        rand_line(buf)
 
 
 def test_passphrase(tmp_path: Path) -> None:

@@ -51,10 +51,14 @@ def rand_line(file: TextIOBase | BufferedIOBase | PathLike[str] | str) -> str | 
     Return a bytes object if provided an IO object in binary mode.
     """
     if isinstance(file, (TextIOBase, BufferedIOBase)):
-        # Supressing an error due to mypy using a different method of merging types.
-        # Here, mypy sees a `Sequence[object]`, pyright sees a `str | bytes`. See:
-        # https://microsoft.github.io/pyright/#/mypy-comparison?id=unions-vs-joins
-        return choice(file.read().splitlines())  # type: ignore[return-value]
+        try:
+            # Supressing an error due to mypy using a different method of merging types.
+            # Here, mypy sees a `Sequence[object]`, pyright sees a `str | bytes`. See:
+            # https://microsoft.github.io/pyright/#/mypy-comparison?id=unions-vs-joins
+            return choice(file.read().splitlines())  # type: ignore[return-value]
+        except IndexError:
+            msg = "no more data in file"
+            raise EOFError(msg) from None
     with Path(file).open() as f:
         return rand_line(f)
 
