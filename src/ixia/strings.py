@@ -52,8 +52,9 @@ def rand_line(file: TextIOBase | BufferedIOBase | PathLike[str] | str) -> str | 
     """
     if isinstance(file, (TextIOBase, BufferedIOBase)):
         try:
-            # Supressing an error due to mypy using a different method of merging types.
-            # Here, mypy sees a `Sequence[object]`, pyright sees a `str | bytes`. See:
+            # Suppressing an error due to mypy using a different method of merging
+            # types. Here, mypy sees a `Sequence[object]`, while pyright sees a
+            # `str | bytes`. See this for more details:
             # https://microsoft.github.io/pyright/#/mypy-comparison?id=unions-vs-joins
             return choice(file.read().splitlines())  # type: ignore[return-value]
         except IndexError:
