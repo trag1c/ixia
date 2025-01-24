@@ -24,7 +24,15 @@ from .integers import (
     universe_rand,
 )
 from .sequences import choice, choices, perm, rand_enum, sample, shuffle, shuffled
-from .strings import passphrase, rand_bytes, rand_hex, rand_line, rand_urlsafe
+from .strings import (
+    passphrase,
+    rand_alnum,
+    rand_bytes,
+    rand_hex,
+    rand_line,
+    rand_printable,
+    rand_urlsafe,
+)
 
 __all__ = (
     "beta_variate",
@@ -39,6 +47,7 @@ __all__ = (
     "pareto_variate",
     "passphrase",
     "perm",
+    "rand_alnum",
     "rand_below",
     "rand_bits",
     "rand_bool",
@@ -49,6 +58,7 @@ __all__ = (
     "rand_int",
     "rand_ints",
     "rand_line",
+    "rand_printable",
     "rand_range",
     "rand_time",
     "rand_urlsafe",

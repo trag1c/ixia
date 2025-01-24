@@ -5,12 +5,14 @@ from string import ascii_letters, digits, hexdigits
 import pytest
 
 from ixia import (
+    rand_alnum,
     rand_bits,
     rand_bool,
     rand_bytes,
     rand_hex,
     rand_int,
     rand_ints,
+    rand_printable,
     rand_range,
     rand_urlsafe,
     random,
@@ -116,3 +118,17 @@ def test_rand_range_erroneous_cases() -> None:
 
     with pytest.raises(ValueError, match=re.escape("empty range for rand_range")):
         rand_range(20, 10, 2)
+
+
+def test_rand_printable() -> None:
+    for i in range(1000):
+        val = rand_printable(i)
+        assert len(val) == i
+        assert all(ord(c) in range(32, 127) for c in val)
+
+
+def test_rand_alnum() -> None:
+    for i in range(1000):
+        val = rand_alnum(i)
+        assert len(val) == i
+        assert all(map(str.isalnum, val))

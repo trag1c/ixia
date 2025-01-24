@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Python 3.13 support
 * `ixia.rand_enum`
 * `ixia.perm`
+* `ixia.rand_printable`
+* `ixia.rand_alnum`
 
 ### Changed
 * `ixia.rand_bool` now accepts an optional `p` argument for setting the
