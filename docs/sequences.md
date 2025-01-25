@@ -76,7 +76,7 @@ def rand_enum[E: Enum](enum: type[E]) -> E
 
 Chooses a random enum member.
 
-### Example
+**Example usage:**
 ```pycon
 >>> class Color(Enum):
 ...     RED = 1
