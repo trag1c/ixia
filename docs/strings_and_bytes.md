@@ -55,6 +55,15 @@ Given a readable IO object, reads it,
 and returns a random line from the read content.
 
 
+## `ixia.rand_printable`
+
+```py
+def rand_printable(n: int) -> str
+```
+
+Returns a random printable ASCII (range 32–126) string of length `n`.
+
+
 ## `ixia.rand_urlsafe`
 
 > [Original section for `secrets.token_urlsafe`](https://docs.python.org/3/library/secrets.html#secrets.token_urlsafe)
