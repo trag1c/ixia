@@ -57,6 +57,16 @@ includes integers, floats, and fractions but excludes decimals). Weights are
 assumed to be non-negative and finite. If all weights are zero, a `ValueError` is raised.
 
 
+## `ixia.perm`
+
+```py
+def perm(n: int) -> list[int]
+```
+
+Returns a random permutation of the integers from `0` to `n - 1`. Equivalent to
+`sample(range(n), n)`.
+
+
 ## `ixia.rand_enum`
 
 ```py
