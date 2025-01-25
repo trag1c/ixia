@@ -4,14 +4,17 @@ Ixia is a cryptographically secure Python RNG library. It mainly merges
 functions, such as [`ixia.passphrase()`][ixia-passphrase],
 [`ixia.shuffled()`][ixia-shuffled],
 or [`ixia.universe_rand()`][ixia-universe-rand].
-All random values are generated using `urandom` (or `BCryptGenRandom` on Windows).
+All random values are generated using `urandom`
+(or `BCryptGenRandom` onWindows).
 
 ## Installation
-Ixia is available on PyPI and can be installed with pip, or any other Python package manager:
+Ixia is available on PyPI and can be installed with pip, or any other Python
+package manager:
 ```sh
-$ pip install ixia
+pip install ixia
 ```
-(Some systems may require you to use `pip3`, `python -m pip`, or `py -m pip` instead.)
+(Some systems may require you to use `pip3`, `python -m pip`, or `py -m pip`
+instead.)
 
 ## Documentation
 Ixia documentation is available at https://trag1c.github.io/ixia/.
