@@ -4,12 +4,15 @@
 
 ```py
 def passphrase(
-    n: int, *, sep: str = "-", words_path: str = "/usr/share/dict/words"
+    n: int,
+    *,
+    sep: str = "-",
+    words_path: PathLike[str] | str = "/usr/share/dict/words",
 ) -> str
 ```
 
-Generates an [XKCD-style](https://xkcd.com/936/) passphrase made up from `n`
-words (based on the file specified by `words_path`), separated by `sep` (`-` by
+Generates an [XKCD-style](https://xkcd.com/936/) passphrase made up of `n` words
+(based on the file specified by `words_path`), separated by `sep` (`-` by
 default).
 
 ⚠️ The default word list is not available on Windows.
