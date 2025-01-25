@@ -23,7 +23,7 @@ def rand_bits(k: int) -> int:
 
 
 def rand_bool(p: float = 0.5) -> bool:
-    """Return a bool with a probability `p` of being true (0.5 by default)."""
+    """Return a random bool with a probability `p` of being true (0.5 by default)."""
     return random() < p
 
 

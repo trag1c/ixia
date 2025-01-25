@@ -25,10 +25,10 @@ Returns a non-negative Python integer with `k` random bits.
 ## `ixia.rand_bool`
 
 ```py
-def rand_bool() -> bool
+def rand_bool(p: float = 0.5) -> bool
 ```
 
-Returns a random bool.
+Returns a random bool with a probability `p` of being true (0.5 by default).
 
 
 ## `ixia.rand_int`
