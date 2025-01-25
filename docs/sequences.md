@@ -57,6 +57,27 @@ includes integers, floats, and fractions but excludes decimals). Weights are
 assumed to be non-negative and finite. If all weights are zero, a `ValueError` is raised.
 
 
+## `ixia.rand_enum`
+
+```py
+def rand_enum[E: Enum](enum: type[E]) -> E
+```
+
+Chooses a random enum member.
+
+### Example
+```pycon
+>>> class Color(Enum):
+...     RED = 1
+...     GREEN = 2
+...     BLUE = 3
+>>> rand_enum(Color)
+<Color.RED: 1>
+>>> rand_enum(Color)
+<Color.BLUE: 3>
+```
+
+
 ## `ixia.rand_ints`
 
 > **Link:** See the [Integers section](integers.md#ixiarand_ints).
