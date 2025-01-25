@@ -20,6 +20,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * `ixia.rand_line` has a broader signature, now allowing binary files and any
   path-like objects
 * `ixia.rand_line` now raises a clearer error when the file has no data
+* Improved docstring formatting and style
+* Improved error message consistency
+* Improved type annotations
 
 ### Fixed
 * Corrected a syntax error in `ixia.sample`'s docstring
