@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * `ixia.perm`
 * `ixia.rand_printable`
 * `ixia.rand_alnum`
+* A command-line interface (`python -m ixia`)
 
 ### Changed
 * `ixia.rand_bool` now accepts an optional `p` argument for setting the
