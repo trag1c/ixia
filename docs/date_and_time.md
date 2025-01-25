@@ -12,12 +12,13 @@ Returns a random date between `start` and `end` (both inclusive).
 The inputs can be of the following types:
 
 - ISO format string (e.g. "2023-03-12")
-- year integer (`rand_date(2020, 2022)` ⇔ `rand_date("2020-01-01", "2022-12-31")`)
+- year integer (`rand_date(2020, 2022)` ⇔
+  `rand_date("2020-01-01", "2022-12-31")`)
 - (year, month, day) tuple
 - `datetime.date` object
 - `datetime.datetime` object
 
-If `end` is not specified, it's gonna be set to the end of the start date's year,  
+If `end` is not specified, it will default to the end of the start date's year,
 (e.g. `rand_date("2023-09-01")` → `rand_date("2023-09-01", "2023-12-31")`).
 
 
@@ -45,7 +46,8 @@ The inputs can be of the following types:
 
 - ISO format string (e.g. `"12:34:56.789012"`)
 - hour integer
-- 2–4 integer (hour, minute, second, microsecond) tuple (only the first two are required)
+- 2–4 integer (hour, minute, second, microsecond) tuple (only the first two are
+  required)
 - `datetime.time` object
 - `datetime.datetime` object
 

@@ -52,9 +52,10 @@ same length as the `seq` sequence. Specifying both `weights` and
 `cumulative_weights` will raise a `TypeError`.
 
 The `weights` or `cumulative_weights` can use any numeric type that
-interoperates with the `float` values returned by [`ixia.random()`](distributions.md#ixiarandom) (that
-includes integers, floats, and fractions but excludes decimals). Weights are
-assumed to be non-negative and finite. If all weights are zero, a `ValueError` is raised.
+interoperates with the `float` values returned by
+[`ixia.random()`](distributions.md#ixiarandom) (that includes integers, floats,
+and fractions but excludes decimals). Weights are assumed to be non-negative and
+finite. If all weights are zero, a `ValueError` is raised.
 
 
 ## `ixia.perm`
@@ -126,7 +127,9 @@ is equivalent to
 ```py
 sample(["red", "red", "red", "red", "blue", "blue", k=5])
 ```
-To choose a sample from a range of integers, use a `range()` object as an argument. This is especially fast and space efficient for sampling from a large population:
+To choose a sample from a range of integers, use a `range()` object as an
+argument. This is especially fast and space efficient for sampling from a large
+population:
 ```py
 sample(range(10 ** 7), k=60)
 ```

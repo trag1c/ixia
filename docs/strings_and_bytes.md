@@ -8,7 +8,9 @@ def passphrase(
 ) -> str
 ```
 
-Generates an [XKCD-style](https://xkcd.com/936/) passphrase made up from `n` words (based on the file specified by `words_path`), separated by `sep` (`-` by default).
+Generates an [XKCD-style](https://xkcd.com/936/) passphrase made up from `n`
+words (based on the file specified by `words_path`), separated by `sep` (`-` by
+default).
 
 ⚠️ The default word list is not available on Windows.
 
@@ -72,4 +74,5 @@ Returns a random printable ASCII (range 32–126) string of length `n`.
 def rand_urlsafe(n: int = 32) -> str
 ```
 
-Returns a random URL-safe text string, composed of `n` bytes, in Base64 encoding. Defaults to 32.
+Returns a random URL-safe text string, composed of `n` bytes, in Base64
+encoding. Defaults to 32.
