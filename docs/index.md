@@ -7,7 +7,7 @@ functions, such as [`ixia.passphrase()`](strings_and_bytes.md#ixiapassphrase),
 values are generated using `urandom` (or `BCryptGenRandom` on Windows).
 
 ## ⚠️ Important Notes
-While supporting Python 3.9+, Ixia is based on the Python 3.12 implementation
+While supporting Python 3.9+, Ixia is based on the Python 3.13 implementation
 of the `random` module. The following changes have been made to the module
 since Python 3.9:
 

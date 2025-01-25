@@ -5,6 +5,7 @@ copyright: Copyright &copy; 2022–2025 trag1c
 
 nav:
   - Home: index.md
+  - CLI: cli.md
   - Integers: integers.md
   - Strings and bytes: strings_and_bytes.md
   - Sequences: sequences.md

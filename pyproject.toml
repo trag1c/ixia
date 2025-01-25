@@ -34,7 +34,7 @@ dev = [
 exclude_also = ["if TYPE_CHECKING:", "if sys.version_info.*:", "if __name__ == \"__main__\":"]
 
 [tool.interrogate]
-exclude = ["tests"]
+exclude = ["tests", "src/ixia/__main__.py"]
 ignore-init-method = true
 ignore-semiprivate = true
 ignore-private = true

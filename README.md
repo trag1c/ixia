@@ -17,7 +17,7 @@ $ pip install ixia
 Ixia documentation is available at https://trag1c.github.io/ixia/.
 
 ## ⚠️ Important Notes
-While supporting Python 3.9+, Ixia is based on the Python 3.12 implementation
+While supporting Python 3.9+, Ixia is based on the Python 3.13 implementation
 of the `random` module. The following changes have been made to the module
 since Python 3.9:
 - `gauss`, `expovariate` and `normalvariate` have default parameter values
@@ -51,7 +51,7 @@ just coverage  # pytest (with coverage), interrogate (docstring coverage)
 
 ## License
 `ixia` is licensed under the [MIT License].  
-© [trag1c], 2022–2024
+© [trag1c], 2022–2025
 
 [MIT License]: https://opensource.org/license/mit/
 [trag1c]: https://github.com/trag1c/
