@@ -88,6 +88,9 @@ def test_passphrase_nonexistent() -> None:
         with pytest.raises(NotImplementedError):
             passphrase(1)
 
+        # Ignore the path entirely for n < 1
+        assert not passphrase(0)
+
 
 def test_choice() -> None:
     for _ in range(100):

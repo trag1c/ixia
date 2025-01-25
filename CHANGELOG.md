@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Improved docstring formatting and style
 * Improved error message consistency
 * Improved type annotations
+* `ixia.passphrase` now skips checking the word list for `n < 1`
 
 ### Fixed
 * Corrected a syntax error in `ixia.sample`'s docstring

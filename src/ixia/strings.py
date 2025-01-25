@@ -18,6 +18,8 @@ def passphrase(
     n: int, *, sep: str = "-", words_path: PathLike[str] | str = PASSPHRASE_DEFAULT_PATH
 ) -> str:
     """Generate an XKCD-style passphrase."""
+    if n < 1:
+        return ""
     words_path = Path(words_path)
     if words_path == PASSPHRASE_DEFAULT_PATH and not words_path.exists():
         msg = "word list unavailable at the default path; please provide a valid path"
