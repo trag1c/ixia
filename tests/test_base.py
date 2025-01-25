@@ -15,7 +15,6 @@ from ixia import (
     rand_printable,
     rand_range,
     rand_urlsafe,
-    random,
     universe_rand,
 )
 
@@ -46,11 +45,6 @@ def test_hex() -> None:
         else:
             assert len(val) == i * 2
             assert all(c in hexdigits for c in val)
-
-
-def test_random() -> None:
-    for _ in range(1000):
-        assert 0 <= random() < 1
 
 
 def test_urlsafe() -> None:
