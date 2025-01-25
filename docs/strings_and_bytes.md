@@ -13,6 +13,15 @@ Generates an [XKCD-style](https://xkcd.com/936/) passphrase made up from `n` wor
 ⚠️ The default word list is not available on Windows.
 
 
+## `ixia.rand_alnum`
+
+```py
+def rand_alnum(n: int) -> str
+```
+
+Returns a random alphanumeric (A–Z, a–z, 0–9) string of length `n`.
+
+
 ## `ixia.rand_bytes`
 
 > **Link:** [Original section for `random.randbytes`](https://docs.python.org/3/library/random.html#random.randbytes)
