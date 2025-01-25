@@ -40,6 +40,7 @@ exclude = ["tests", "src/ixia/__main__.py"]
 ignore-init-method = true
 ignore-semiprivate = true
 ignore-private = true
+ignore-overloaded-functions = true
 ignore-module = true
 ignore-magic = true
 ignore-nested-functions = true
