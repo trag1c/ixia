@@ -8,9 +8,7 @@ version = "2.0.0"
 description = "Connecting secrets' security with random's versatility"
 readme = "README.md"
 license = { file = "LICENSE" }
-authors = [
-    { name = "trag1c", email = "trag1cdev@yahoo.com" }
-]
+authors = [{ name = "trag1c", email = "trag1cdev@yahoo.com" }]
 requires-python = ">=3.9"
 dependencies = []
 
@@ -31,7 +29,11 @@ dev = [
 ]
 
 [tool.coverage.report]
-exclude_also = ["if TYPE_CHECKING:", "if sys.version_info.*:", "if __name__ == \"__main__\":"]
+exclude_also = [
+    "if TYPE_CHECKING:",
+    "if sys.version_info.*:",
+    "if __name__ == \"__main__\":",
+]
 
 [tool.interrogate]
 exclude = ["tests", "src/ixia/__main__.py"]
@@ -45,7 +47,17 @@ verbose = 1
 
 [tool.ruff.lint]
 select = ["ALL"]
-ignore = ["COM", "D", "FIX", "ANN401", "ISC001", "T201", "TD003", "PLR2004", "S105"]
+ignore = [
+    "COM",
+    "D",
+    "FIX",
+    "ANN401",
+    "ISC001",
+    "T201",
+    "TD003",
+    "PLR2004",
+    "S105",
+]
 
 [tool.ruff.lint.mccabe]
 max-complexity = 20
