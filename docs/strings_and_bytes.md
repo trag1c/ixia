@@ -52,12 +52,14 @@ Returns a hex string composed of `n` random bytes.
 ## `ixia.rand_line`
 
 ```py
-def rand_line(file: TextIOBase | str) -> str
+def rand_line(file: TextIOBase | PathLike[str] | str) -> str
+def rand_line(file: BufferedIOBase) -> bytes
 ```
-Returns a random line from a file. Given a string, assumes it is
-a path, reads it, and returns a random line from the read content.
-Given a readable IO object, reads it,
-and returns a random line from the read content.
+
+Returns a random line from a file. Given a string or a path-like object, assumes
+it is a path, reads it, and returns a random line from the read content. Given a
+readable IO object, reads it, and returns a random line from the read content.
+Returns a `bytes` object if provided an IO object in binary mode.
 
 
 ## `ixia.rand_printable`

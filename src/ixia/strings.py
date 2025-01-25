@@ -48,8 +48,8 @@ def rand_line(file: BufferedIOBase) -> bytes: ...
 
 def rand_line(file: TextIOBase | BufferedIOBase | PathLike[str] | str) -> str | bytes:
     """
-    Return a random line from a file. Given a string, assume it is a path, read it, and
-    return a random line from the read content.
+    Return a random line from a file. Given a string or a path-like object, assume it is
+    a path, read it, and return a random line from the read content.
     Given a readable IO object, read it, and return a random line from the read content.
     Return a bytes object if provided an IO object in binary mode.
     """
