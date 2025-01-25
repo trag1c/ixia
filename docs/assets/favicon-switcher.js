@@ -1,8 +1,7 @@
 const setFavicon = (mode) => {
     const link = document.querySelector("link[rel~='icon']") || document.createElement("link")
     link.rel = "icon"
-    console.log(1)
-    link.href = mode === "dark" ? "assets/favicon-light.png" : "assets/favicon-dark.png"
+    link.href = mode === "dark" ? "/assets/favicon-light.png" : "/assets/favicon-dark.png"
     document.head.appendChild(link)
 }
 
