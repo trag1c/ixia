@@ -1,7 +1,7 @@
-site_name: Ixia Documentation
+site_name: Ixia
 repo_url: https://github.com/trag1c/ixia
 repo_name: trag1c/ixia
-copyright: Copyright &copy; 2022–2024 trag1c
+copyright: Copyright &copy; 2022–2025 trag1c
 
 nav:
   - Home: index.md
@@ -13,6 +13,8 @@ nav:
 
 theme:
   name: material
+  icon:
+    logo: material/dice-multiple
   palette:
 
     # Palette toggle for light mode
@@ -27,7 +29,7 @@ theme:
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: white
+      primary: black
       accent: white
       toggle:
         icon: material/toggle-switch-off-outline
@@ -45,7 +47,8 @@ markdown_extensions:
       alternate_style: true
 
 extra_javascript:
-  - javascripts/katex.js 
+  - assets/katex.js 
+  - assets/favicon-switcher.js
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js  
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
 
