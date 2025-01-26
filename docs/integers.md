@@ -40,7 +40,7 @@ def rand_int(a: int, b: int) -> int
 ```
 
 Returns a random integer `N` in the range $[a, b]$.
-Alias for [`ixia.rand_range(a, b+1)`](#ixiarand_range).
+Equivalent to [`ixia.rand_range(a, b+1)`](#ixiarand_range).
 
 
 ## `ixia.rand_ints`
